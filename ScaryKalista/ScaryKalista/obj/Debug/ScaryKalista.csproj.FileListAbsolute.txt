@@ -1,2 +1,0 @@
-C:\Users\MFI\Desktop\ScaryKalista\ScaryKalista\ScaryKalista\bin\Release\ScaryKalista.exe.config
-C:\Users\MFI\Desktop\ScaryKalista\ScaryKalista\ScaryKalista\obj\Debug\ScaryKalista.csprojResolveAssemblyReference.cache
