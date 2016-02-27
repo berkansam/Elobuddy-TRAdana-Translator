@@ -1,0 +1,10 @@
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\TheCheater.exe.config
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\TheCheater.exe
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\TheCheater.pdb
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\EloBuddy.dll
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\EloBuddy.SDK.dll
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\SharpDX.dll
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\Newtonsoft.Json.dll
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\obj\Release\TheCheater.exe
+C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\obj\Release\TheCheater.pdb
