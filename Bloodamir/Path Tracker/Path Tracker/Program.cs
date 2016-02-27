@@ -1,0 +1,182 @@
+﻿using EloBuddy;
+using EloBuddy.SDK;
+using EloBuddy.SDK.Events;
+using EloBuddy.SDK.Menu;
+using EloBuddy.SDK.Menu.Values;
+using SharpDX;
+using System;
+using System.Linq;
+using Color = System.Drawing.Color;
+
+namespace Path_Tracker
+{
+    public class UnitData
+    {
+        public static string Name;
+
+        public static int StartTime;
+
+        public static void GetName(AIHeroClient unit)
+        {
+            Name = unit.BaseSkinName;
+        }
+
+        public static void GetStartTime(int time)
+        {
+            StartTime = time;
+        }
+    }
+
+    public class Program
+    {
+        public static Menu Menu;
+        public static int start = 0;
+
+        static void Main(string[] args)
+        {
+            Loading.OnLoadingComplete += Loading_OnLoadingComplete;
+        }
+
+        private static void Loading_OnLoadingComplete(EventArgs args)
+        {
+            Menu = MainMenu.AddMenu("Yol Gösterici", "Path Tracker");
+            Menu.AddGroupLabel("Gösterge");
+            Menu.Add("me", new CheckBox("Benim Yolum", true));
+            Menu.Add("ally", new CheckBox("Dostların Yolu", false));
+            Menu.Add("enemy", new CheckBox("Düşmanın Yolu", true));
+            Menu.AddLabel("Misc");
+            Menu.Add("toggle", new KeyBind("Kapat/Aç Tuş", true, KeyBind.BindTypes.PressToggle, 'G'));
+            Menu.Add("eta", new CheckBox("Tahmini Varış Zamanı (Sadece Ben)", true));
+            Menu.Add("name", new CheckBox("Şampiyon Adı", true));
+            Menu.Add("thick", new Slider("Çizgi Kalınlığı", 2, 1, 5));
+            Menu.AddGroupLabel("Orbwalkerdayken Kapalı");
+            Menu.Add("combo", new CheckBox("Kombo", true));
+            Menu.Add("harass", new CheckBox("Dürtme", true));
+            Menu.Add("laneclear", new CheckBox("LaneClear", true));
+            Menu.Add("lasthit", new CheckBox("LastHit", true));
+            Menu.Add("flee", new CheckBox("Flee(Kaçma)", false));
+
+            Drawing.OnDraw += Drawing_OnDraw;
+            Obj_AI_Base.OnNewPath += Obj_AI_Base_OnNewPath;
+        }
+
+        private static void Obj_AI_Base_OnNewPath(Obj_AI_Base sender, GameObjectNewPathEventArgs args)
+        {
+            if (!sender.IsMe)
+                return;
+
+            start = TickCount;
+        }
+
+        public static int TickCount
+        {
+            get
+            {
+                return Environment.TickCount & int.MaxValue;
+            }
+        }
+
+        private static void Drawing_OnDraw(EventArgs args)
+        {
+            if (!Menu["toggle"].Cast<KeyBind>().CurrentValue || !Enable())
+                return;
+
+            var ETA = Menu["eta"].Cast<CheckBox>().CurrentValue;
+            var Name = Menu["name"].Cast<CheckBox>().CurrentValue;
+            var Thickness = Menu["thick"].Cast<Slider>().CurrentValue;
+
+            foreach (var hero in EntityManager.Heroes.AllHeroes.Where(h => h.IsValid))
+            {
+                if (Menu["me"].Cast<CheckBox>().CurrentValue && hero.IsMe)
+                {
+                    DrawPath(Player.Instance, Thickness, Color.LawnGreen);
+
+                    if (ETA && Player.Instance.Path.Length > 1 && Player.Instance.IsMoving)
+                        Drawing.DrawText(Player.Instance.Path[Player.Instance.Path.Length - 1].WorldToScreen(), Color.NavajoWhite, GetETA(Player.Instance), 10);
+
+                    continue;
+                }
+                if (Menu["ally"].Cast<CheckBox>().CurrentValue && hero.IsAlly && !hero.IsMe)
+                {
+                    DrawPath(hero, Thickness, Color.Orange);
+
+                    if (hero.Path.Length > 1 && hero.IsMoving)
+                    {
+                        if (Name)
+                            Drawing.DrawText(hero.Path[hero.Path.Length - 1].WorldToScreen(), Color.LightSkyBlue, hero.BaseSkinName, 10);
+
+                        if (ETA && false)
+                            Drawing.DrawText(hero.Path[hero.Path.Length - 1].WorldToScreen() + new Vector2(0, 20), Color.NavajoWhite, GetETA(hero), 10);
+                    }
+
+                    continue;
+                }
+
+                if (Menu["enemy"].Cast<CheckBox>().CurrentValue && hero.IsEnemy)
+                {
+                    DrawPath(hero, Thickness, Color.Red);
+
+                    if (hero.Path.Length > 1 && hero.IsMoving)
+                    {
+                        if (Name)
+                            Drawing.DrawText(hero.Path[hero.Path.Length - 1].WorldToScreen(), Color.LightSkyBlue, hero.BaseSkinName, 10);
+
+                        if (ETA && false)
+                            Drawing.DrawText(hero.Path[hero.Path.Length - 1].WorldToScreen() + new Vector2(0, 20), Color.NavajoWhite, GetETA(hero), 10);
+                    }
+
+                    continue;
+                }
+            }
+        }
+
+        public static void DrawPath(AIHeroClient unit, int thickness, Color color)
+        {
+            if (!unit.IsMoving)
+                return;
+
+            for (var i = 1; unit.Path.Length > i; i++)
+            {
+                if (unit.Path[i - 1].IsValid() && unit.Path[i].IsValid() && (unit.Path[i - 1].IsOnScreen() || unit.Path[i].IsOnScreen()))
+                {
+                    Drawing.DrawLine(Drawing.WorldToScreen(unit.Path[i - 1]), Drawing.WorldToScreen(unit.Path[i]), thickness, color);
+                }
+            }
+        }
+
+        public static string GetETA(AIHeroClient unit)
+        {
+            float Distance = 0;
+            
+            if (unit.Path.Length > 1)
+            {
+                for (var i = 1; unit.Path.Length > i; i++)
+                {
+                    Distance += unit.Path[i - 1].Distance(unit.Path[i]);
+                }
+            }
+
+            var ETA = (start + Distance / unit.MoveSpeed * 1000 - TickCount) / 1000;
+
+            if (ETA <= 0)
+                ETA = 0;
+            
+            return ETA.ToString("F2");
+        }
+
+        public static bool Enable()
+        {
+            if (Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.Combo && Menu["combo"].Cast<CheckBox>().CurrentValue)
+                return false;
+            if (Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.Harass && Menu["harass"].Cast<CheckBox>().CurrentValue)
+                return false;
+            if ((Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.LaneClear || Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.JungleClear) && Menu["laneclear"].Cast<CheckBox>().CurrentValue)
+                return false;
+            if (Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.LastHit && Menu["lasthit"].Cast<CheckBox>().CurrentValue)
+                return false;
+            if (Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.Flee && Menu["flee"].Cast<CheckBox>().CurrentValue)
+                return false;
+            return true;
+        }
+    }
+}
