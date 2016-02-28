@@ -57,7 +57,7 @@ namespace JokerFioraBuddy
                     else
                     {
                         TextKillable.Position = new Vector2((int)barPos.X, (int)barPos.Y + yOffset + 20);
-                        TextKillable.TextValue = "Öldürülemez!";
+                        TextKillable.TextValue = ("Öldürülemez!");
                         TextKillable.Color = System.Drawing.Color.Red;
                     }
 

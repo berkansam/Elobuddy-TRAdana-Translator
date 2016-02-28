@@ -32,7 +32,6 @@ namespace JokerFioraBuddy
             Menu.AddLabel("- Şampiyon 1 vurmada öldürme");
             Menu.AddLabel("Tamamen Özelleştirilebilir! Youumu / Hydra / Mahvolmuş Kılıç");
             Menu.AddLabel("Emeği geçenler to: Danny - Main Coder / Trees - Shield Block / Fluxy - Target Selector 2");
-            Menu.AddLabel("Ceviri tradanaya aittir iyi oyunlar");
 
             Modes.Initialize();
             ShieldBlock.Initialize();
@@ -68,9 +67,9 @@ namespace JokerFioraBuddy
             {
                 Menu = Config.Menu.AddSubMenu("Göstergeler");
                 Menu.AddGroupLabel("Göstergeler");
-                Menu.Add("drawingKillable", new CheckBox("Öldürülebilir şampiyon olduğunda yaz");
-                Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster");
-                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster");
+                Menu.Add("drawingKillable", new CheckBox("Öldürülebilir şampiyon olduğunda yaz"));
+                Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster"));
+                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster"));
             }
 
             public static void Initialize()
