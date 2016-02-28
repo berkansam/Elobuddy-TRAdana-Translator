@@ -69,7 +69,7 @@ namespace JokerFioraBuddy
                 Menu = Config.Menu.AddSubMenu("Göstergeler");
                 Menu.AddGroupLabel("Göstergeler");
                 Menu.Add("drawingKillable", new CheckBox("Öldürülebilir şampiyon olduğunda yaz");
-                Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster";
+                Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster");
                 Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster");
             }
 
