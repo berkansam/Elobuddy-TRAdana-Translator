@@ -36,9 +36,10 @@ namespace MasterMind
 
             Menu.AddGroupLabel("MasterMind'e hoşgeldin, iyi vakit geçirmen dileğiyle");
             Menu.AddLabel("Bu addon sizin oyun deneyiminizi geliştirecek bazı özellikler sunuyor");
-            Menu.AddLabel("FPS drop yapmadan eğlenebilirsiniz");
+            Menu.AddLabel("FPS drop yapmadan eğlenebilirsiniz.");
             Menu.AddSeparator();
             Menu.AddLabel("Alt Menulere göz atin, kendinize göre düzenleyin, gerek yok bildiğin ayarlar işte onu göster bunu göster");
+            Menu.AddLabel("Çeviri-TRAdana");
 
             // Initialize properties
             IsSpectatorMode = Bootstrap.IsSpectatorMode;

@@ -14,7 +14,7 @@ namespace Xerath
         static Config()
         {
             // Initialize menu
-            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing-çeviri tradana iyi oyunlar");
+            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing");
 
             // Initialize sub menus
             Modes.Initialize();
@@ -29,7 +29,7 @@ namespace Xerath
 
         public static class Modes
         {
-            public const string MenuName = "Modlar";
+            public const string MenuName = "Modes";
             private static readonly Menu Menu;
 
             static Modes()
@@ -55,7 +55,7 @@ namespace Xerath
 
             public static class Combo
             {
-                public const string GroupName = "Kombo";
+                public const string GroupName = "Combo";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
@@ -108,7 +108,7 @@ namespace Xerath
 
             public static class Harass
             {
-                public const string GroupName = "Dürtme";
+                public const string GroupName = "Harass";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
@@ -148,7 +148,7 @@ namespace Xerath
                     _useW = Menu.Add("harassUseW", new CheckBox("Kullan W"));
                     _useE = Menu.Add("harassUseE", new CheckBox("Kullan E"));
 
-                    Menu.AddLabel("Gelişmiş Seçenekler:");
+                    Menu.AddLabel("Advanced features:");
 
                     _extraRangeQ = Menu.Add("harassExtraRangeQ", new Slider("Ekstra Q Menzili", 200, 0, 200));
                     _mana = Menu.Add("harassMana", new Slider("Mana Kullanımı (%)", 30));
@@ -161,7 +161,7 @@ namespace Xerath
 
             public static class LaneClear
             {
-                public const string GroupName = "Lane Temizleme";
+                public const string GroupName = "LaneClear";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
@@ -197,8 +197,8 @@ namespace Xerath
                     // Initialize group
                     Menu.AddGroupLabel(GroupName);
 
-                    _useQ = Menu.Add("laneUseQ", new CheckBox("Q Kullan"));
-                    _useW = Menu.Add("laneUseW", new CheckBox("W Kullan"));
+                    _useQ = Menu.Add("laneUseQ", new CheckBox("Kullan Q"));
+                    _useW = Menu.Add("laneUseW", new CheckBox("Kullan W"));
 
                     Menu.AddLabel("Gelişmiş Seçenekler:");
 
@@ -214,7 +214,7 @@ namespace Xerath
 
             public static class JungleClear
             {
-                public const string GroupName = "Orman Temizleme";
+                public const string GroupName = "LaneClear";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
@@ -238,9 +238,9 @@ namespace Xerath
                     // Initialize group
                     Menu.AddGroupLabel(GroupName);
 
-                    _useQ = Menu.Add("jungleUseQ", new CheckBox("Q Kullan"));
-                    _useW = Menu.Add("jungleUseW", new CheckBox("W Kullan"));
-                    _useE = Menu.Add("jungleUseE", new CheckBox("E Kullan"));
+                    _useQ = Menu.Add("jungleUseQ", new CheckBox("Kullan Q"));
+                    _useW = Menu.Add("jungleUseW", new CheckBox("Kullan W"));
+                    _useE = Menu.Add("jungleUseE", new CheckBox("Kullan E"));
                 }
 
                 public static void Initialize()
@@ -262,16 +262,16 @@ namespace Xerath
 
         public static class Ultimate
         {
-            public const string MenuName = "Ulti";
+            public const string MenuName = "Ultimate";
             private static readonly Menu Menu;
 
             public static readonly string[] AvailableModes =
             {
-                "Basit Hedefleme(önerilen)",
-                "Ben scriptim diye bağır",
-                "Fareye Yakın Hedef",
-                "Sen Tuşla o Atsın (auto)",
-                "Sen Tuşla o fare yakınına atsın (near mouse)"
+                "Smart targetting",
+                "Obvious scripting",
+                "Near mouse",
+                "On key press (auto)",
+                "On key press (near mouse)"
             };
 
             private static readonly CheckBox _enabled;
@@ -307,7 +307,7 @@ namespace Xerath
                     Menu.AddLabel(string.Format("  - {0}: {1}", i, AvailableModes[i]));
                 }
 
-                _shootKey = Menu.Add("keyPress", new KeyBind("Shoot charge on press", false, KeyBind.BindTypes.HoldActive, 'T'));
+                _shootKey = Menu.Add("keyPress", new KeyBind("Şarz için Bas(OTOR Ayaridir R açınca one key modunda bastıkça atar)", false, KeyBind.BindTypes.HoldActive, 'T'));
             }
 
             public static void Initialize()
@@ -317,7 +317,7 @@ namespace Xerath
 
         public static class Misc
         {
-            public const string MenuName = "Ek Özellikler";
+            public const string MenuName = "Miscellaneous";
             private static readonly Menu Menu;
 
             private static readonly CheckBox _gapcloser;
@@ -395,15 +395,15 @@ namespace Xerath
                 // Initialize menu
                 Menu = Config.Menu.AddSubMenu(MenuName);
 
-                Menu.AddGroupLabel("Spell ranges");
-                _drawQ = Menu.Add("drawQ", new CheckBox("Q range"));
-                _drawW = Menu.Add("drawW", new CheckBox("W range"));
-                _drawE = Menu.Add("drawE", new CheckBox("E range"));
-                _drawR = Menu.Add("drawR", new CheckBox("R range", false));
+                Menu.AddGroupLabel("Büyü Menzili");
+                _drawQ = Menu.Add("drawQ", new CheckBox("Q Menzili"));
+                _drawW = Menu.Add("drawW", new CheckBox("W Menzili"));
+                _drawE = Menu.Add("drawE", new CheckBox("E Menzili"));
+                _drawR = Menu.Add("drawR", new CheckBox("R Menzili", false));
 
-                Menu.AddGroupLabel("Damage indicators");
-                _healthbar = Menu.Add("healthbar", new CheckBox("Healthbar overlay"));
-                _percent = Menu.Add("percent", new CheckBox("Damage percent info"));
+                Menu.AddGroupLabel("Hasar Tespitçisi");
+                _healthbar = Menu.Add("healthbar", new CheckBox("Canbarını Göster"));
+                _percent = Menu.Add("percent", new CheckBox("Yüzde olarak göster"));
             }
 
             public static void Initialize()

@@ -55,14 +55,15 @@ namespace MasterMind.Components
             // Initialize menu
             Menu = MasterMind.Menu.AddSubMenu("Ward Tracker", longTitle: "Ward Presence Tracker");
 
-            Menu.AddGroupLabel("Information");
-            Menu.AddLabel("A ward presence tracker helps you in various ways ingame.");
-            Menu.AddLabel("It lets you visually see where different ward types have been placed,");
+            Menu.AddGroupLabel("Bilgiler");
+            Menu.AddLabel("Bu Ward Gösterme Sana Oyunda Yardımcı Olacak.");
+            Menu.AddLabel("Senin Farklı Totemleri Görmeni Sağlıyacak,");
             Menu.AddLabel("even when you were not inrage or didn't see the ward on creation.");
+            Menu.AddLabel("Çeviri-TRAdana");
 
             // Add all known ward types to the menu
             Menu.AddSeparator();
-            Menu.AddLabel("You can enable ward tracking for the following ward types:");
+            Menu.AddLabel("Totem gösterici aktif etmelisin totem tiplerini görmek için");
             EnabledWards = new Dictionary<Ward.Type, CheckBox>();
             foreach (var wardType in Enum.GetValues(typeof (Ward.Type)).Cast<Ward.Type>())
             {
@@ -71,15 +72,15 @@ namespace MasterMind.Components
 
             // World options
             Menu.AddSeparator();
-            Menu.AddLabel("World options:");
-            RenderWard = Menu.Add("renderWard", new CheckBox("Render ward on map (circle)"));
-            DrawHealth = Menu.Add("drawHealth", new CheckBox("Draw remaining ward health"));
-            DrawTime = Menu.Add("drawTime", new CheckBox("Draw remaining ward time"));
+            Menu.AddLabel("Dünya Ayarları:");
+            RenderWard = Menu.Add("renderWard", new CheckBox("Totemleri Göster (Daire)"));
+            DrawHealth = Menu.Add("drawHealth", new CheckBox("Totemin Kalan Canını Göster"));
+            DrawTime = Menu.Add("drawTime", new CheckBox("Totemin Kalan Süresini Göster"));
 
             // Minimap options
             Menu.AddSeparator();
-            Menu.AddLabel("Minimap options:");
-            DrawMinimap = Menu.Add("drawMinimap", new CheckBox("Draw ward icon"));
+            Menu.AddLabel("Minimap Ayarları:");
+            DrawMinimap = Menu.Add("drawMinimap", new CheckBox("Totem ikonu göster"));
             if (!MasterMind.IsSpectatorMode)
             {
                 var pinkColor = new ComboBox("Pink ward color", Enum.GetValues(typeof (Ward.PinkColors)).Cast<Ward.PinkColors>().Select(o => o.ToString()));
@@ -91,10 +92,10 @@ namespace MasterMind.Components
             {
                 // Notification options
                 Menu.AddSeparator();
-                Menu.AddLabel("Notification options:");
-                NotifyPlace = Menu.Add("notifyPlaceNear", new CheckBox("Notify when enemy nearby places a ward"));
-                NotifyPlacePing = Menu.Add("notifyPlaceNearPing", new CheckBox("Notify with local ping", false));
-                NotifyRange = Menu.Add("notifyPlaceNearRange", new Slider("Notification altert range", 2000, 500, 5000));
+                Menu.AddLabel("Bildirim Ayarları:");
+                NotifyPlace = Menu.Add("notifyPlaceNear", new CheckBox("Düşman Totem Yerleştirdiğinde"));
+                NotifyPlacePing = Menu.Add("notifyPlaceNearPing", new CheckBox("Ping Kullan", false));
+                NotifyRange = Menu.Add("notifyPlaceNearRange", new Slider("Bildirim Alarm Menzili", 2000, 500, 5000));
             }
 
             // Initialize properties

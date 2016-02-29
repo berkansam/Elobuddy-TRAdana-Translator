@@ -124,17 +124,17 @@ namespace MasterMind.Components
             // Initialize menu
             Menu = MasterMind.Menu.AddSubMenu("Cooldown Tracker", longTitle: "Spell Cooldown Tracker");
 
-            Menu.AddGroupLabel("Information");
-            Menu.AddLabel("A spell cooldown tracker helps you in various ways ingame.");
+            Menu.AddGroupLabel("Bilgiler");
+            Menu.AddLabel("Büyülerin Kalan Süresini Gösterecek(Rakip ve Dost)");
             Menu.AddLabel("It lets you visually see the remaining time the spells are on cooldown.");
-            Menu.AddLabel(string.Format("You can enable cooldown tracking for both, {0} and {1}.",
+            Menu.AddLabel(string.Format("İkisinide aktif yapmalısın, {0} ve {1}.",
                 MasterMind.IsSpectatorMode ? "blue" : "allies", MasterMind.IsSpectatorMode ? "red team" : "enemies"));
             Menu.AddSeparator();
 
             TrackAllies = Menu.Add("allies", new CheckBox(string.Format("Track {0}", MasterMind.IsSpectatorMode ? "blue team" : "allies")));
             TrackEnemies = Menu.Add("enemies", new CheckBox(string.Format("Track {0}", MasterMind.IsSpectatorMode ? "red team" : "enemies")));
-            DrawSummoners = Menu.Add("summoners", new CheckBox("Draw summoner spells"));
-            DrawText = Menu.Add("cooldownText", new CheckBox("Draw cooldown time below spell indicator"));
+            DrawSummoners = Menu.Add("summoners", new CheckBox("Göster Sihirdar Büyüleri"));
+            DrawText = Menu.Add("cooldownText", new CheckBox("Süresi Az kalan büyüleri göster"));
 
             // Initialize properties
             SpellOverlaySprite = new EloBuddy.SDK.Rendering.Sprite(() => SpellOverlayTexture);

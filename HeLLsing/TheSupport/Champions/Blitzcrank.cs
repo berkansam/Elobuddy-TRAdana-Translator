@@ -30,7 +30,7 @@ namespace TheSupport.Champions
             handler.SetManaModes(Modes.Harass | Modes.LaneClear, 40);
 
             // Register always active spell usages
-            handler.RegisterSpellUsage(R, Modes.None, DamageType.Magical, () => CheckKillsteal(R.Slot), customName: "R ile Kill Çal", checkTarget: false);
+            handler.RegisterSpellUsage(R, Modes.None, DamageType.Magical, () => CheckKillsteal(R.Slot), customName: "Killsteal with R", checkTarget: false);
 
             // Q in Combo with the overriden hitchance high
             handler.RegisterSpellUsage(Q,Modes.Combo, DamageType.Magical, heroCondition: target => !target.HasBuffOfType(BuffType.SpellShield), hitChance: HitChance.High);

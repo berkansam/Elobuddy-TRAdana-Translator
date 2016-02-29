@@ -16,7 +16,7 @@ namespace Kindred
         static Config()
         {
             // Initialize menu
-            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing-çeviri tradana");
+            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing");
 
             // Initialize sub menus
             Modes.Initialize();
@@ -29,7 +29,7 @@ namespace Kindred
 
         public static class Modes
         {
-            public const string MenuName = "Modlar";
+            public const string MenuName = "Modes";
             private static readonly Menu Menu;
 
             static Modes()
@@ -55,7 +55,7 @@ namespace Kindred
 
             public static class Combo
             {
-                public const string GroupName = "Kombo";
+                public const string GroupName = "Combo";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
@@ -108,7 +108,7 @@ namespace Kindred
                     _useE = Menu.Add("comboUseE", new CheckBox("Kullan E"));
                     _useItems = Menu.Add("comboUseItems", new CheckBox("İtemleri Kullan"));
 
-                    Menu.AddLabel("Gelişmiş Seçenekler:");
+                    Menu.AddLabel("Advanced features:");
 
                     _advancedE = Menu.Add("comboAdvancedE", new CheckBox("3 kişiyi etkileyeceğinde kullan"));
                     _gapcloseQ = Menu.Add("comboGapcloseQ", new CheckBox("Q kullanmadan önce W kullan"));
@@ -125,7 +125,7 @@ namespace Kindred
 
             public static class Harass
             {
-                public const string GroupName = "Dürtme";
+                public const string GroupName = "Harass";
 
                 private static readonly CheckBox _useW;
 
@@ -183,7 +183,7 @@ namespace Kindred
 
         public static class Misc
         {
-            public const string MenuName = "Ek Özellikler";
+            public const string MenuName = "Miscellaneous";
             private static readonly Menu Menu;
 
             private static readonly Slider _directionQ;

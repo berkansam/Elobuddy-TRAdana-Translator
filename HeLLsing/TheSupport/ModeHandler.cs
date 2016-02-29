@@ -87,15 +87,15 @@ namespace TheSupport
                 }
 
                 var predictionMenu = Support.Menu.AddSubMenu("HitChances");
-                predictionMenu.AddGroupLabel("Skillerin Tutma Oranı");
-                predictionMenu.AddLabel("Buradan istediğiniz büyülerin tutma oranlarını ayarlayabilirsiniz.");
+                predictionMenu.AddGroupLabel("Büyülerin İsabet Oranı");
+                predictionMenu.AddLabel("Burada Sen büyülerin oranını ayarlamalısın");
                 predictionMenu.AddSeparator();
                 foreach (var spellEntry in spells.OrderBy(o => o.Key))
                 {
                     var entry = spellEntry;
                     var slot = entry.Key;
 
-                    var comboBox = new ComboBox(slot + " minimum tutma oranı", HitChances.Select(o => o.ToString()), 1);
+                    var comboBox = new ComboBox(slot + " minimum HitChance value", HitChances.Select(o => o.ToString()), 1);
                     comboBox.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                     {
                         var newValue = (HitChance) Enum.Parse(typeof (HitChance), ((ComboBox) sender).SelectedText);
@@ -128,8 +128,8 @@ namespace TheSupport
                 if (ManaModes.ContainsKey(entry.Key))
                 {
                     menu.AddSeparator();
-                    menu.AddGroupLabel("Mana Limitleyici");
-                    var manaSlider = new Slider("0 ayarlarsan devrede olmaz", ManaModes[entry.Key]);
+                    menu.AddGroupLabel("Mana Yardımcısı");
+                    var manaSlider = new Slider("Set to 0 to ingore mana usage", ManaModes[entry.Key]);
                     menu.Add("manaLimiter", manaSlider);
                     foreach (var spellUsage in entry.Value)
                     {

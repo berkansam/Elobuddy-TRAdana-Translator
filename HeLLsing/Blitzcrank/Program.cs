@@ -27,7 +27,7 @@ namespace Blitzcrank
 
                 var menu = MainMenu.AddMenu("Blitzcrank", "blitziii");
 
-                menu.AddGroupLabel("Hitchance");
+                menu.AddGroupLabel("İsabet Oranı");
                 var hitchances = new List<HitChance>();
                 for (var i = (int) HitChance.Medium; i <= (int) HitChance.Immobile; i++)
                 {
@@ -40,7 +40,7 @@ namespace Blitzcrank
                 if (EntityManager.Heroes.Enemies.Count > 0)
                 {
                     menu.AddSeparator();
-                    menu.AddGroupLabel("Enabled targets");
+                    menu.AddGroupLabel("Aktif Hedefler");
                     var addedChamps = new List<string>();
                     foreach (var enemy in EntityManager.Heroes.Enemies.Where(enemy => !addedChamps.Contains(enemy.ChampionName)))
                     {
@@ -50,9 +50,9 @@ namespace Blitzcrank
                 }
 
                 menu.AddSeparator();
-                menu.AddGroupLabel("Drawings");
-                var qRange = menu.Add("rangeQ", new CheckBox("Q range"));
-                var predictions = menu.Add("predictions", new CheckBox("Visualize prediction"));
+                menu.AddGroupLabel("Göstergeler");
+                var qRange = menu.Add("rangeQ", new CheckBox("Q Menzili"));
+                var predictions = menu.Add("predictions", new CheckBox("Görsel İsabetGörünümü"));
 
                 #endregion
 
@@ -109,7 +109,7 @@ namespace Blitzcrank
                         Line.DrawLine(System.Drawing.Color.GreenYellow, Player.Instance.Position, prediction.Value.Item2.CastPosition);
                         Line.DrawLine(System.Drawing.Color.CornflowerBlue, EntityManager.Heroes.Enemies.Find(o => o.NetworkId == prediction.Key).Position, prediction.Value.Item2.CastPosition);
                         Drawing.DrawText(prediction.Value.Item2.CastPosition.WorldToScreen() + new Vector2(0, -20), System.Drawing.Color.LimeGreen,
-                            string.Format("Tutma Oranı: {0}%", Math.Ceiling(prediction.Value.Item2.HitChancePercent)), 10);
+                            string.Format("Hitchance: {0}%", Math.Ceiling(prediction.Value.Item2.HitChancePercent)), 10);
                     }
                 };
             };

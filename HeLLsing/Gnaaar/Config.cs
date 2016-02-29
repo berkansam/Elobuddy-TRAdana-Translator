@@ -15,7 +15,7 @@ namespace Gnaaar
         static Config()
         {
             // Initialize menu
-            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing-çeviri tradana", LongMenuName);
+            Menu = MainMenu.AddMenu(MenuName, MenuName + "_hellsing", LongMenuName);
 
             // Initialize sub menus
             Modes.Initialize();
@@ -27,7 +27,7 @@ namespace Gnaaar
 
         public static class Modes
         {
-            public const string MenuName = "Modlar";
+            public const string MenuName = "Modes";
             private static readonly Menu Menu;
 
             static Modes()
@@ -53,7 +53,7 @@ namespace Gnaaar
 
             public static class Combo
             {
-                public const string GroupName = "Kombo";
+                public const string GroupName = "Combo";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useE;
@@ -115,8 +115,8 @@ namespace Gnaaar
 
                     Menu.AddLabel("Gelişmiş Seçenekler:");
 
-                    _useItems = Menu.Add("comboUseItems", new CheckBox("İtemleri Kullan"));
-                    _useIgnite = Menu.Add("comboUseIgnite", new CheckBox("Tutuştur Kullan"));
+                    _useItems = Menu.Add("comboUseItems", new CheckBox("Use items"));
+                    _useIgnite = Menu.Add("comboUseIgnite", new CheckBox("Use Ignite"));
                 }
 
                 public static void Initialize()
@@ -126,7 +126,7 @@ namespace Gnaaar
 
             public static class Harass
             {
-                public const string GroupName = "Dürtme";
+                public const string GroupName = "Harass";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useQMega;
@@ -207,7 +207,7 @@ namespace Gnaaar
                     _useWMega = Menu.Add("waveUseWMega", new CheckBox("W Kullan"));
                     _useEMega = Menu.Add("waveUseEMega", new CheckBox("E Kullan"));
 
-                    Menu.AddLabel("Gelişmiş Seçenekler:");
+                    Menu.AddLabel("Advanced features:");
 
                     _useItems = Menu.Add("waveUseItems", new CheckBox("İtemleri Kullan"));
                 }
@@ -219,7 +219,7 @@ namespace Gnaaar
 
             public static class JungleClear
             {
-                public const string GroupName = "Orman Temizleme";
+                public const string GroupName = "JungleClear";
 
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useQMega;
@@ -290,7 +290,7 @@ namespace Gnaaar
 
         public static class Items
         {
-            public const string MenuName = "İtemler";
+            public const string MenuName = "Items";
             private static readonly Menu Menu;
 
             private static readonly CheckBox _useTiamat;
@@ -336,7 +336,7 @@ namespace Gnaaar
                 Menu = Config.Menu.AddSubMenu(MenuName);
 
                 _useTiamat = Menu.Add("itemsTiamat", new CheckBox("Kullan Tiamat"));
-                _useHydra = Menu.Add("itemsHydra", new CheckBox("Kullan  Hydra"));
+                _useHydra = Menu.Add("itemsHydra", new CheckBox("Kullan Hydra"));
                 _useCutlass = Menu.Add("itemsCutlass", new CheckBox("Kullan Bilgewater Palası"));
                 _useBotrk = Menu.Add("itemsBotrk", new CheckBox("Kullan Mahvolmuş Kılıcı"));
                 _useYoumuu = Menu.Add("itemsYoumuu", new CheckBox("Kullan Yuumo"));
@@ -403,19 +403,19 @@ namespace Gnaaar
                 // Initialize menu
                 Menu = Config.Menu.AddSubMenu(MenuName);
 
-                Menu.AddGroupLabel("Spell ranges");
-                Menu.AddLabel("Mini");
-                _drawQ = Menu.Add("drawQ", new CheckBox("Q range"));
-                _drawE = Menu.Add("drawE", new CheckBox("E range"));
-                Menu.AddLabel("Mega");
-                _drawQMega = Menu.Add("drawQMega", new CheckBox("Q range"));
-                _drawWMega = Menu.Add("drawWMega", new CheckBox("W range"));
-                _drawEMega = Menu.Add("drawEMega", new CheckBox("E range"));
-                _drawRMega = Menu.Add("drawRMega", new CheckBox("R range", false));
+                Menu.AddGroupLabel("Büyü Menzilleri");
+                Menu.AddLabel("Küçükken");
+                _drawQ = Menu.Add("drawQ", new CheckBox("Q Menzili"));
+                _drawE = Menu.Add("drawE", new CheckBox("E Menzili"));
+                Menu.AddLabel("Kocaman");
+                _drawQMega = Menu.Add("drawQMega", new CheckBox("Q Menzili"));
+                _drawWMega = Menu.Add("drawWMega", new CheckBox("W Menzili"));
+                _drawEMega = Menu.Add("drawEMega", new CheckBox("E Menzili"));
+                _drawRMega = Menu.Add("drawRMega", new CheckBox("R Menzili", false));
 
-                Menu.AddGroupLabel("Damage indicators");
-                _healthbar = Menu.Add("healthbar", new CheckBox("Healthbar overlay"));
-                _percent = Menu.Add("percent", new CheckBox("Damage percent info"));
+                Menu.AddGroupLabel("Hasar Tespitçisi");
+                _healthbar = Menu.Add("healthbar", new CheckBox("Canbarı Görünümü"));
+                _percent = Menu.Add("percent", new CheckBox("Hasar bilgisi yüzde"));
             }
 
             public static void Initialize()

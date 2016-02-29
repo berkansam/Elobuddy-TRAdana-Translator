@@ -92,8 +92,8 @@ namespace TheSupport
 
             // Notify successfull loading
             Notifications.Show(new SimpleNotification(
-                "TheSupport by Hellsing",
-                string.Format("TheSupport başarıyla yüklendi '{0}' İyi oyunlar !çevirmen tradana", Player.Instance.ChampionName)),
+                "TheSupport Yapim Hellsing",
+                string.Format("TheSupport Yuklendi '{0}' TRAdana iyi oyunlar diler!", Player.Instance.ChampionName)),
                 15000);
         }
 
