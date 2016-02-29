@@ -26,7 +26,6 @@ namespace AddonTemplate
             Menu.AddLabel("Modlara Tıkla :)");
             Menu.AddLabel("Yapım Aka's");
             Menu.AddLabel("Çeviri TRAdana");
-
             // Initialize the modes
             Modes.Initialize();
         }
@@ -177,7 +176,7 @@ namespace AddonTemplate
                 static Flee()
                 {
                     // Initialize the menu values
-                    Menu.AddGroupLabel("Flee(Kaçma)");
+                    Menu.AddGroupLabel("Flee");
                     _useQ = Menu.Add("fleeUseQ", new CheckBox("Kullan Q"));
                     _useW = Menu.Add("fleeUseW", new CheckBox("Kullan W"));
                     _useE = Menu.Add("fleeUseE", new CheckBox("Kullan E"));
@@ -435,7 +434,7 @@ namespace AddonTemplate
                 static Items()
                 {
                     Menu.AddGroupLabel("İtemler");
-                    _Items = Menu.Add("Items", new CheckBox("Kullan Items"));
+                    _Items = Menu.Add("Items", new CheckBox("İtemleri Kullan"));
                     _myHp = Menu.Add("myhp", new Slider("Kullan MahvolmuşKılıç Benim canım şundan azsa <=", 70, 0, 101));
                     Menu.AddSeparator();
                     _Qss = Menu.Add("use", new KeyBind("Kullan QSS", true, KeyBind.BindTypes.PressToggle, 'K'));
