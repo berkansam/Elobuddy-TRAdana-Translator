@@ -18,8 +18,9 @@ namespace Hellsing.Kalista
         static Config()
         {
             Menu = MainMenu.AddMenu(MenuName, "kalistaMenu");
-            Menu.AddGroupLabel("Tanıtım");
-            Menu.AddLabel("Benim İlk Addonuma Hoşgeldin!--çeviri tradana");
+            Menu.AddGroupLabel("Ayrıntılar");
+            Menu.AddLabel("Benim ilk kalista addonuma hoşgeldin!");
+            Menu.AddLabel("Çeviri TRAdana");
 
             // All modes
             Modes.Initialize();
@@ -48,7 +49,7 @@ namespace Hellsing.Kalista
             static Modes()
             {
                 // Initialize modes menu
-                Menu = Config.Menu.AddSubMenu("Modes", "Modlar");
+                Menu = Config.Menu.AddSubMenu("Modes", "modes");
 
                 // Combo
                 Combo.Initialize();
@@ -124,13 +125,13 @@ namespace Hellsing.Kalista
                     Menu.AddGroupLabel("Kombo");
 
                     _useQ = Menu.Add("comboUseQ", new CheckBox("Q Kullan"));
-                    _useQAA = Menu.Add("comboUseQAA", new CheckBox("Q düz vuruştan sonra kullan"));
+                    _useQAA = Menu.Add("comboUseQAA", new CheckBox("Otomatik vuruştan sonra Q kullan"));
                     _useE = Menu.Add("comboUseE", new CheckBox("E Kullan"));
                     _useEslow = Menu.Add("comboUseEslow", new CheckBox("Minyonları E ile öldürerek düşmanı yavaşlat"));
                     _useAA = Menu.Add("comboUseAA", new CheckBox("minyona vura vura rakibe ilerleme"));
                     _useItems = Menu.Add("comboUseItems", new CheckBox("Kullan item"));
-                    _numE = Menu.Add("comboNumE", new Slider("Mininum stacks to use E", 5, 1, 50));
-                    _mana = Menu.Add("comboMana", new Slider("Addon Yüzde Kaçtan Sonra Q Kullanabilir ({0}%)", 30));
+                    _numE = Menu.Add("comboNumE", new Slider("E kullanmak için en az yük", 5, 1, 50));
+                    _mana = Menu.Add("comboMana", new Slider("Mana kaçın üstündeyse Q kullanabilir ({0}%)", 30));
                 }
 
                 public static void Initialize()
@@ -157,7 +158,7 @@ namespace Hellsing.Kalista
                     Menu.AddGroupLabel("Dürtme");
 
                     _useQ = Menu.Add("harassUseQ", new CheckBox("Q Kullan"));
-                    _mana = Menu.Add("harassMana", new Slider("En az şu kadar manam %", 30));
+                    _mana = Menu.Add("harassMana", new Slider("En az mana %", 30));
                 }
 
                 public static void Initialize()
@@ -196,14 +197,14 @@ namespace Hellsing.Kalista
 
                 static LaneClear()
                 {
-                    Menu.AddGroupLabel("Lane Temizleme");
+                    Menu.AddGroupLabel("Lanetemizleme");
 
-                    _useQ = Menu.Add("laneUseQ", new CheckBox("Q Kullan"));
-                    _useE = Menu.Add("laneUseE", new CheckBox("E Kullan"));
-                    _numQ = Menu.Add("laneNumQ", new Slider("Q atıldığında şu kadar minyon ölecekse", 3, 1, 10));
-                    _numE = Menu.Add("laneNumE", new Slider("E çektiğimde şu kadar minyon ölecekse", 2, 1, 10));
+                    _useQ = Menu.Add("laneUseQ", new CheckBox("Q kullan"));
+                    _useE = Menu.Add("laneUseE", new CheckBox("E kullan"));
+                    _numQ = Menu.Add("laneNumQ", new Slider("Q için gereken minyon sayısı", 3, 1, 10));
+                    _numE = Menu.Add("laneNumE", new Slider("E için gereken minyon sayısı", 2, 1, 10));
                     Menu.AddSeparator();
-                    _mana = Menu.Add("laneMana", new Slider("En az şu kadar manam %", 30));
+                    _mana = Menu.Add("laneMana", new Slider("en az mana %", 30));
                 }
 
                 public static void Initialize()
@@ -222,9 +223,9 @@ namespace Hellsing.Kalista
 
                 static JungleClear()
                 {
-                    Menu.AddGroupLabel("JungleClear");
+                    Menu.AddGroupLabel("Orman Temizleyici");
 
-                    _useE = Menu.Add("jungleUseE", new CheckBox("E kullan"));
+                    _useE = Menu.Add("jungleUseE", new CheckBox("Kullan E"));
                 }
 
                 public static void Initialize()
@@ -250,8 +251,8 @@ namespace Hellsing.Kalista
                 {
                     Menu.AddGroupLabel("Flee");
 
-                    _walljump = Menu.Add("fleeWalljump", new CheckBox("Kaçma tuşuyla duvardan atla"));
-                    _autoAttack = Menu.Add("fleeAutoattack", new CheckBox("Kaçarken düz vuruş kullan"));
+                    _walljump = Menu.Add("fleeWalljump", new CheckBox("Duvardan Atla"));
+                    _autoAttack = Menu.Add("fleeAutoattack", new CheckBox("AA Kullan"));
                 }
 
                 public static void Initialize()
@@ -303,14 +304,14 @@ namespace Hellsing.Kalista
 
             static Misc()
             {
-                Menu = Config.Menu.AddSubMenu("Ek");
+                Menu = Config.Menu.AddSubMenu("Misc");
 
-                Menu.AddGroupLabel("Misc features");
+                Menu.AddGroupLabel("Ek Ayarlar");
                 _killsteal = Menu.Add("killsteal", new CheckBox("E ile kill çal"));
                 _bigE = Menu.Add("bigE", new CheckBox("Büyük minyon ölecekse her zaman e kullan"));
                 _saveSoulbound = Menu.Add("saveSoulbound", new CheckBox("R kullanarak Arkadaş koru"));
                 _secureE = Menu.Add("secureE", new CheckBox("Düz vuruşla ölmeyecek minyonlarda e kullan"));
-                _harassPlus = Menu.Add("harassPlus", new CheckBox("Auto E when a minion can die and enemies have 1+ stacks"));
+                _harassPlus = Menu.Add("harassPlus", new CheckBox("Minyon ölecekse ve rakipte 1den fazla yük varsa E kullan"));
                 _autoBelowHealthE = Menu.Add("autoBelowHealthE", new Slider("Sağlığım şunun altındaysa otomatik E çek ({0}%) percent", 10));
                 _reductionE = Menu.Add("reductionE", new Slider("Reduce E damage by {0} points", 20));
 
@@ -379,7 +380,7 @@ namespace Hellsing.Kalista
 
                     if (Game.MapId != GameMapId.SummonersRift)
                     {
-                        Menu.AddLabel("Only on Summoners Rift, sorry.");
+                        Menu.AddLabel("Sadece Sihirdar Vadisinde Üzgünüz");
                     }
                     else
                     {
@@ -388,12 +389,12 @@ namespace Hellsing.Kalista
                         _alert = Menu.Add("alert", new CheckBox("Gözcü Hasar alırsa ping ver"));
                         _mana = Menu.Add("mana", new Slider("W kullanmak için şu kadar mana gerekli ({0}%)", 40));
 
-                        Menu.AddLabel("Send to the following locations (no specific order):");
+                        Menu.AddLabel("Gönderdiğin yerleri kontrol et (no specific order):");
                         (_baron = Menu.Add("baron", new CheckBox("Baron (stuck bug usage)"))).OnValueChange += OnValueChange;
                         (_dragon = Menu.Add("dragon", new CheckBox("Ejder (stuck bug usage)"))).OnValueChange += OnValueChange;
-                        (_mid = Menu.Add("mid", new CheckBox("Mide yolla"))).OnValueChange += OnValueChange;
-                        (_blue = Menu.Add("blue", new CheckBox("Blue Güçlendirme"))).OnValueChange += OnValueChange;
-                        (_red = Menu.Add("red", new CheckBox("Red Güçlendirme"))).OnValueChange += OnValueChange;
+                        (_mid = Menu.Add("mid", new CheckBox("Mide Yolla"))).OnValueChange += OnValueChange;
+                        (_blue = Menu.Add("blue", new CheckBox("Blue Yolla"))).OnValueChange += OnValueChange;
+                        (_red = Menu.Add("red", new CheckBox("Red Yolla"))).OnValueChange += OnValueChange;
                         SentinelManager.RecalculateOpenLocations();
                     }
                 }
@@ -434,9 +435,9 @@ namespace Hellsing.Kalista
             {
                 Menu = Config.Menu.AddSubMenu("Items");
 
-                _cutlass = Menu.Add("cutlass", new CheckBox("Use Bilgewater Cutlass"));
-                _botrk = Menu.Add("botrk", new CheckBox("Use Blade of the Ruined King"));
-                _ghostblade = Menu.Add("ghostblade", new CheckBox("Use Youmuu's Ghostblade"));
+                _cutlass = Menu.Add("cutlass", new CheckBox("BilgeWater Palası Kullan"));
+                _botrk = Menu.Add("botrk", new CheckBox("Mahvolmuş Kılıç Kullan"));
+                _ghostblade = Menu.Add("ghostblade", new CheckBox("Youmuu Kullan"));
             }
 
             public static void Initialize()
@@ -490,16 +491,16 @@ namespace Hellsing.Kalista
             {
                 Menu = Config.Menu.AddSubMenu("Drawing");
 
-                Menu.AddGroupLabel("Spell ranges");
-                _drawQ = Menu.Add("drawQ", new CheckBox("Q range"));
-                _drawW = Menu.Add("drawW", new CheckBox("W range"));
-                _drawE = Menu.Add("drawE", new CheckBox("E range"));
-                _drawEleaving = Menu.Add("drawEleaving", new CheckBox("E trigger range (see combo)", false));
-                _drawR = Menu.Add("drawR", new CheckBox("R range", false));
+                Menu.AddGroupLabel("Büyü Menzilleri");
+                _drawQ = Menu.Add("drawQ", new CheckBox("Q Menzili"));
+                _drawW = Menu.Add("drawW", new CheckBox("W Menzili"));
+                _drawE = Menu.Add("drawE", new CheckBox("E Menzili"));
+                _drawEleaving = Menu.Add("drawEleaving", new CheckBox("E çekme Menzili (Gör Komboda)", false));
+                _drawR = Menu.Add("drawR", new CheckBox("R Menzili", false));
 
-                Menu.AddGroupLabel("Damage indicators (Rend - E)");
-                _healthbar = Menu.Add("healthbar", new CheckBox("Healthbar overlay"));
-                _percent = Menu.Add("percent", new CheckBox("Damage percent info"));
+                Menu.AddGroupLabel("Hasar Tespiti (Çek - E)");
+                _healthbar = Menu.Add("healthbar", new CheckBox("Cançubuğu görünümü"));
+                _percent = Menu.Add("percent", new CheckBox("Hasar Yüzde Bilgisi"));
             }
 
             public static void Initialize()
@@ -540,12 +541,12 @@ namespace Hellsing.Kalista
                 Menu.AddGroupLabel("Balista");
                 if (EntityManager.Heroes.Allies.Any(o => o.ChampionName == "Blitzcrank"))
                 {
-                    Menu.Add("infoLabel", new Label("You have no soul bound yet!"));
+                    Menu.Add("infoLabel", new Label("Bağa Sahip Olamlısın!"));
                     Game.OnTick += BalistaCheckSoulBound;
                 }
                 else
                 {
-                    Menu.AddLabel("Üzgünüm ama takımında Blitzshark olmadığından Balista kullanamazsın :(");
+                    Menu.AddLabel("Takımında blitz yok üzgünüm :(");
                 }
             }
 
@@ -558,15 +559,15 @@ namespace Hellsing.Kalista
 
                     if (SoulBoundSaver.SoulBound.ChampionName != "Blitzcrank")
                     {
-                        Menu.AddLabel("You are not bound to Blitzcrank!");
-                        Menu.AddLabel("If you decided to rebind, please reload the addon to make sure");
+                        Menu.AddLabel("Blitzcahrka bağlı değilsin!");
+                        Menu.AddLabel("Eğer çalışmıyorsa F5 kullan");
                         Menu.AddLabel("it recognizes your new bind! Now have fun playing!");
                         return;
                     }
 
-                    _useBalista = Menu.Add("useBalista", new CheckBox("Enabled"));
+                    _useBalista = Menu.Add("useBalista", new CheckBox("Aktif"));
                     Menu.AddSeparator(0);
-                    _balistaComboOnly = Menu.Add("balistaComboOnly", new CheckBox("Combo mode only", false));
+                    _balistaComboOnly = Menu.Add("balistaComboOnly", new CheckBox("Sadece Kombo Modu", false));
                     _balistaMoreHealth = Menu.Add("moreHealth", new CheckBox("Only if I have more health"));
 
                     const int blitzcrankQrange = 925;
