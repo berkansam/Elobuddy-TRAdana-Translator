@@ -1,0 +1,31 @@
+﻿using System.Net.Configuration;
+using EloBuddy;
+using EloBuddy.SDK;
+using Settings = AddonTemplate.Config.Modes.Misc;
+
+namespace AddonTemplate.Modes
+{
+    public sealed class Flee : ModeBase
+    {
+        public override bool ShouldBeExecuted()
+        {
+            return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee);
+        }
+
+        public override void Execute()
+        {
+            if (SpellManager.E.IsReady() && Settings.EFlee)
+            {
+                var tempPos = Game.CursorPos;
+                if (tempPos.IsInRange(Player.Instance.Position, SpellManager.E.Range))
+                {
+                    SpellManager.E.Cast(tempPos);
+                }
+                else
+                {
+                    SpellManager.E.Cast(Player.Instance.Position.Extend(tempPos, 450).To3DWorld());
+                }
+            }
+        }
+    }
+}
