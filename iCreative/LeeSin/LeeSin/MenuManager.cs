@@ -29,13 +29,13 @@ namespace LeeSin
             SubMenu["Prediction"].Add("QHarass", new Slider("Dürtme İsabet Oranı", 83, 0, 100));
 
             //Combo
-            SubMenu["Combo"] = AddonMenu.AddSubMenu("Combo", "Combo");
-            SubMenu["Combo"].Add("Q", new CheckBox("Use Q", true));
-            SubMenu["Combo"].Add("W", new CheckBox("Use W to GapClose", true));
-            SubMenu["Combo"].Add("E", new CheckBox("Use E", true));
-            SubMenu["Combo"].Add("Smite", new CheckBox("Use Smite", false));
-            SubMenu["Combo"].Add("Items", new CheckBox("Use Offensive Items", true));
-            var switcher = SubMenu["Combo"].Add("Switcher", new KeyBind("Combo Switcher", false, KeyBind.BindTypes.HoldActive, (uint)'K'));
+            SubMenu["Combo"] = AddonMenu.AddSubMenu("Kombo", "Combo");
+            SubMenu["Combo"].Add("Q", new CheckBox("Kullan Q", true));
+            SubMenu["Combo"].Add("W", new CheckBox("Kullan W to GapClose", true));
+            SubMenu["Combo"].Add("E", new CheckBox("Kullan E", true));
+            SubMenu["Combo"].Add("Smite", new CheckBox("Tutuştur Kullan", false));
+            SubMenu["Combo"].Add("Items", new CheckBox("Ofansif İtemleri Kullan", true));
+            var switcher = SubMenu["Combo"].Add("Switcher", new KeyBind("Kombo Mod Değiştirme Tuşu", false, KeyBind.BindTypes.HoldActive, (uint)'K'));
             switcher.OnValueChange += delegate (ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
             {
                 if (args.NewValue == true)
@@ -51,7 +51,7 @@ namespace LeeSin
                     }
                 }
             };
-            SubMenu["Combo"].AddStringList("Mode", "Combo Mode", new[] { "Normal Combo", "Star Combo", "Gank Combo" }, 0);
+            SubMenu["Combo"].AddStringList("Mode", "Combo Modu", new[] { "Normal Combo", "Star Combo", "Gank Combo" }, 0);
             SubMenu["Combo"]["Mode"].Cast<Slider>().CurrentValue = 0; //E L I M I N A R
 
             SubMenu["Combo"].AddGroupLabel("Normal Combo");
@@ -66,7 +66,7 @@ namespace LeeSin
             SubMenu["Combo"].AddGroupLabel("Star Combo");
             SubMenu["Combo"].Add("Star.Ward", new CheckBox("Totem Kullan", true));
             SubMenu["Combo"].Add("Star.Stack", new Slider("Pasiften önce diğer büyüleri Kullan", 0, 0, 2));
-            SubMenu["Combo"].AddStringList("Star.Mode", "Star Combo Mode", new[] { "Q1 R Q2", "R Q1 Q2" }, 0);
+            SubMenu["Combo"].AddStringList("Star.Mode", "Star Combo Modu", new[] { "Q1 R Q2", "R Q1 Q2" }, 0);
 
             SubMenu["Combo"].AddSeparator();
 
@@ -78,16 +78,16 @@ namespace LeeSin
             //Insec
             SubMenu["Insec"] = AddonMenu.AddSubMenu("Insec", "Insec");
             SubMenu["Insec"].Add("Key", new KeyBind("Insec Tuşu (Bu tuşu Kendine göre ayarlamalısın)", false, KeyBind.BindTypes.HoldActive, (uint)'R'));
-            SubMenu["Insec"].Add("Object", new CheckBox("Use q on enemy hero/minion if can't hit target", true));
+            SubMenu["Insec"].Add("Object", new CheckBox("Eğer hedefe çarpmayacaksa Düşman minyona Q kullan", true));
             SubMenu["Insec"].AddSeparator(0);
             SubMenu["Insec"].Add("Flash.Return", new CheckBox("Flash Kullanıp Dön", false));
-            SubMenu["Insec"].AddStringList("Priority", "Priority", new[] { "WardJump > Flash", "Flash > WardJump" }, 0);
-            SubMenu["Insec"].AddStringList("Flash.Priority", "Flash Priority", new[] { "Only R -> Flash", "Only Flash -> R", "R -> Flash and Flash -> R" }, 2);
-            SubMenu["Insec"].AddStringList("Position", "Insec End Position", new[] { "Ally Selected > Position Selected > Turret > Ally Near > Current Position", "Mouse Position", "Current Position" }, 0);
-            SubMenu["Insec"].Add("DistanceBetweenPercent", new Slider("% of distance between ward and target", 20, 0, 100));
-            SubMenu["Insec"].AddGroupLabel("Tips");
-            SubMenu["Insec"].AddLabel("To select an ally just use left click on that ally.");
-            SubMenu["Insec"].AddLabel("To select a target just use left click on that target.");
+            SubMenu["Insec"].AddStringList("Priority", "Öncelik", new[] { "WardJump > Flash", "Flash > WardJump" }, 0);
+            SubMenu["Insec"].AddStringList("Flash.Priority", "Flash Önceliği", new[] { "Sadece R -> Flash", "Sadece Flash -> R", "R -> den sonra Flash veya Flash -> sonra R" }, 2);
+            SubMenu["Insec"].AddStringList("Position", "İnsec Sonlandırma Pozisyonu", new[] { "Dostlar Seçildi > Pozisyon Seçildi > Kule > Dost Yakını > Mevcut Pozisyon", "Fare Pozisyonu", "Mevcut Pozisyon" }, 0);
+            SubMenu["Insec"].Add("DistanceBetweenPercent", new Slider("Ward ve hedef arasında mesafe yüzde (çevirmen notu elleme)", 20, 0, 100));
+            SubMenu["Insec"].AddGroupLabel("Tipler");
+            SubMenu["Insec"].AddLabel("Dostlara ise dostu sol tıkla tıklıyacaksın");
+            SubMenu["Insec"].AddLabel("Hedef Düşmansa Hedefi sol tıkla belirliceksin");
             SubMenu["Insec"].AddLabel("To select a position just use left click on that position.");
             
             SubMenu["Harass"] = AddonMenu.AddSubMenu("Dürtme", "Harass");
@@ -134,7 +134,7 @@ namespace LeeSin
             SubMenu["Misc"] = AddonMenu.AddSubMenu("Ek", "Misc");
             SubMenu["Misc"].Add("Interrupter", new CheckBox("Use R to interrupt channeling spells", true));
             SubMenu["Misc"].Add("Overkill", new Slider("Overkill % for damage prediction", 10, 0, 100));
-            SubMenu["Misc"].Add("R.Hit", new Slider("Use R if Hit >=", 3, 1, 5));
+            SubMenu["Misc"].Add("R.Hit", new Slider("R kullan eğer şu kadar çarpacaksa >=", 3, 1, 5));
 
         }
         
