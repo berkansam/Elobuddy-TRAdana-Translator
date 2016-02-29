@@ -68,7 +68,6 @@
     <Compile Include="Evade\Utility\SpellData.cs" />
     <Compile Include="Evade\Utility\SpellDatabase.cs" />
     <Compile Include="EventManager.cs" />
-    <Compile Include="Events\_client.cs" />
     <Compile Include="Events\_drawing.cs" />
     <Compile Include="Events\_game.cs" />
     <Compile Include="Events\_gameObject.cs" />

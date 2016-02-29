@@ -50,45 +50,6 @@ namespace Aka_s_Vayne_reworked
             EventManager.Load();
             MenuManager.Load();
 
-            // Made by KarmaPanda
-            try
-            {
-
-                var sandBox = SandboxConfig.DataDirectory + @"\AkasVayne\";
-
-                if (!Directory.Exists(sandBox))
-                {
-                    Directory.CreateDirectory(sandBox);
-                }
-
-                if (!File.Exists(sandBox + "AkasVayne.wav"))
-                {
-                    var client = new WebClient();
-                    client.DownloadFile("http://download1322.mediafire.com/sff2ed0lc86g/4uqhdtdl1q6edid/AkasVayne.wav",
-                        sandBox + "AkasVayne.wav");
-                    client.DownloadFileCompleted += Events._client.DownloadComplete;
-                }
-
-                if (File.Exists(sandBox + "AkasVayne.wav"))
-                {
-                    Variables.Welcomemsg = new SoundPlayer
-                    {
-                        SoundLocation =
-                            SandboxConfig.DataDirectory + @"\AkasVayne\" + "AkasVayne.wav"
-                    };
-                    Variables.Welcomemsg.Load();
-                }
-
-            }
-            catch (Exception e)
-            {
-                Chat.Print("Failed to load Welcomesmsg: " + e.ToString());
-            }
-
-            if (Variables.Welcomemsg != null)
-            {
-                Core.DelayAction(() => Variables.Welcomemsg.Play(), 5000);
-            }
         }
     }
 }

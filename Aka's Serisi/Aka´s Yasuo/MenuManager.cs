@@ -52,6 +52,7 @@ namespace AkaYasuo
         {
             YMenu = MainMenu.AddMenu("Aka´s Yasuo", "akasyasuo");
             YMenu.AddGroupLabel("Aka's Yasuoya Hoşgeldin Umarım Eğlenirsin! :)");
+            YMenu.AddLabel("Çevirmen TRAdana");
         }
 
         public static void Combomenu()
@@ -64,10 +65,10 @@ namespace AkaYasuo
             ComboMenu.Add("EGap", new CheckBox("Kullan E Gapcloser"));
             ComboMenu.Add("EGaps", new Slider("Kullan E-GapCloser düşman olmadında", 300, 1, 475));
             ComboMenu.Add("EGapTower", new CheckBox("Gapclose Kule?", false));
-            ComboMenu.Add("StackQ", new CheckBox("Gapcloser için Q kullan "));
+            ComboMenu.Add("StackQ", new CheckBox("Gapcloser için Q kullan"));
             ComboMenu.Add("R", new CheckBox("Kullan R"));
             ComboMenu.Add("Ignite", new CheckBox("Kullan Tutuştur"));
-            ComboMenu.AddGroupLabel("R Kombo Ayarları");
+            ComboMenu.AddGroupLabel("R Combo Ayarları");
             foreach (var hero in EntityManager.Heroes.Enemies.Where(x => x.IsEnemy))
             {
                 ComboMenu.Add(hero.ChampionName, new CheckBox("R Kullan Eğer Hedefe " + hero.ChampionName));
@@ -79,7 +80,7 @@ namespace AkaYasuo
             ComboMenu.AddGroupLabel("Otomatik R Ayarları");
             ComboMenu.Add("AutoR", new CheckBox("Otomatik R Kullan"));
             ComboMenu.Add("AutoR2", new Slider("Şu kadar Düşmana Vuracaksa", 3, 0, 5));
-            ComboMenu.Add("AutoR2HP", new Slider("ve benim canım >=", 101, 0, 101));
+            ComboMenu.Add("AutoR2HP", new Slider("ve benim canım is >=", 101, 0, 101));
             ComboMenu.Add("AutoR2Enemies", new Slider("ve şu kadar düşman menzildeyse <=", 2, 0, 5));
         }
 
@@ -93,7 +94,7 @@ namespace AkaYasuo
             HarassMenu.AddGroupLabel("Dürtme");
             HarassMenu.Add("Q", new CheckBox("Kullan Q"));
             HarassMenu.Add("Q3", new CheckBox("Kullan Q3"));
-            HarassMenu.Add("QLastHit", new CheckBox("Q Son Vuruş?"));
+            HarassMenu.Add("QLastHit", new CheckBox("Q LastHit?"));
         }
 
         public static void Fleemenu()
@@ -112,7 +113,7 @@ namespace AkaYasuo
             LaneClearMenu.Add("Q", new CheckBox("Kullan Q"));
             LaneClearMenu.Add("Q3", new CheckBox("Kullan Q3"));
             LaneClearMenu.Add("E", new CheckBox("Kullan E"));
-            LaneClearMenu.Add("Items", new CheckBox("İtemleri Kullan "));
+            LaneClearMenu.Add("Items", new CheckBox("İtemleri Kullan"));
         }
 
         public static void JungleClearmenu()
@@ -145,9 +146,9 @@ namespace AkaYasuo
         public static void Miscmenu()
         {
             MiscMenu = YMenu.AddSubMenu("Ek", "Misc");
-            MiscMenu.AddGroupLabel("Ek Ayarlar");
+            MiscMenu.AddGroupLabel("Ek");
             MiscMenu.Add("StackQ", new CheckBox("Q Yük Kas"));
-            MiscMenu.Add("InterruptQ", new CheckBox("Interrupt için Q3 Kullan "));
+            MiscMenu.Add("InterruptQ", new CheckBox("Interrupt için Q3 Kullan"));
             MiscMenu.Add("noEturret", new CheckBox("Taretlerden Atla-ma"));
             MiscMenu.AddSeparator();
             MiscMenu.AddLabel("1: Q 2: E");
@@ -200,26 +201,26 @@ namespace AkaYasuo
             ItemMenu.Add("Items", new CheckBox("İtemleri Kullan"));
             ItemMenu.Add("myhp", new Slider("Benim Canım Şundan Azken Mahvolmuş Kılıç Kullan <=", 70, 0, 101));
             ItemMenu.AddGroupLabel("Qss");
-            ItemMenu.Add("use", new KeyBind("Kullan QSS/Mercurial", true, KeyBind.BindTypes.PressToggle, 'K'));
+            ItemMenu.Add("use", new KeyBind("Kullan QSS", true, KeyBind.BindTypes.PressToggle, 'K'));
             ItemMenu.Add("delay", new Slider("Aktivasyon Gecikmesi", 1000, 0, 2000));
             ItemMenu.Add("Blind",
-                new CheckBox("Kör", false));
+                new CheckBox("Blind", false));
             ItemMenu.Add("Charm",
                 new CheckBox("Charm"));
             ItemMenu.Add("Fear",
-                new CheckBox("Korku"));
+                new CheckBox("Fear"));
             ItemMenu.Add("Polymorph",
                 new CheckBox("Polymorph"));
             ItemMenu.Add("Stun",
-                new CheckBox("Sabitleme"));
+                new CheckBox("Stun"));
             ItemMenu.Add("Snare",
-                new CheckBox("Yavaşlatma"));
+                new CheckBox("Snare"));
             ItemMenu.Add("Silence",
-                new CheckBox("Sessiz", false));
+                new CheckBox("Silence", false));
             ItemMenu.Add("Taunt",
-                new CheckBox("Dalga Geçer"));
+                new CheckBox("Taunt"));
             ItemMenu.Add("Suppression",
-                new CheckBox("Önleme"));
+                new CheckBox("Suppression"));
         }
     }
 }

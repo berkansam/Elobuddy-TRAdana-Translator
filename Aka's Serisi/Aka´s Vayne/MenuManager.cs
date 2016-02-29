@@ -112,14 +112,14 @@ namespace Aka_s_Vayne_reworked
                 }
             };
             ComboMenu.Add("Qmode2", new ComboBox("Akıllı Mod", 0, "Agresif", "Defansif"));
-            ComboMenu.Add("UseQwhen", new ComboBox("Kullan Q", 0, "After Attack", "Before Attack", "Never"));
+            ComboMenu.Add("UseQwhen", new ComboBox("Kullan Q", 0, "Ataktan Sonra", "Ataktan Önce", "Asla"));
             ComboMenu.AddGroupLabel("AA Sıfırlama");
             ComboMenu.AddLabel("AA sıfırlama tikini kaldırırsan yapman gerekir [F5]");
             ComboMenu.Add("AAReset", new CheckBox("Benim AA Sıfırlamamı Kullan"));
             ComboMenu.AddLabel("İster Bu AA Cancel Kullanırsın, veya devredışı bırakırsın.");
-            ComboMenu.Add("AACancel", new Slider("AA Sıfırlama", 0, 0, 20));
+            ComboMenu.Add("AACancel", new Slider("AA İptali", 0, 0, 20));
             ComboMenu.AddGroupLabel("W Ayarları");
-            ComboMenu.Add("focusw", new CheckBox("Focus W", false));
+            ComboMenu.Add("focusw", new CheckBox("Odaklan W", false));
             ComboMenu.AddGroupLabel("E Ayarları");
             ComboMenu.Add("Ekill", new CheckBox("Hedef Ölecekse E Kullan?"));
             ComboMenu.Add("comboUseE", new CheckBox("Kullan E"));
@@ -137,10 +137,10 @@ namespace Aka_s_Vayne_reworked
             Qsettings.AddLabel("Bursmodunda Daha Hızlı AA reset kullandırılabilir");
             Qsettings.Add("Mirin", new CheckBox("Burstmode"));
             //smart
-            Qsettings.Add("UseSafeQ", new CheckBox("Koruyucu Q ?", false)).IsVisible = true;
+            Qsettings.Add("UseSafeQ", new CheckBox("Koruyucu Q?", false)).IsVisible = true;
             Qsettings.Add("UseQE", new CheckBox("Düşmanın içine Q at-ma?", false)).IsVisible = true;
             Qsettings.Add("QE", new CheckBox("Dene QE?", false)).IsVisible = true;
-            Qsettings.Add("UseQspam", new CheckBox("Ignore checks", false)).IsVisible = true;
+            Qsettings.Add("UseQspam", new CheckBox("Kontrolü Yoksay", false)).IsVisible = true;
             //new
             Qsettings.Add("QNmode", new ComboBox("Yeni Mod", 1, "Yana", "Koruyucu Pozisyona")).IsVisible = false;
             Qsettings.Add("QNenemies", new Slider("x düşmanı Q ile Blokla", 3, 5, 0)).IsVisible = false;
@@ -161,7 +161,7 @@ namespace Aka_s_Vayne_reworked
             CondemnMenu.Add("pushDistance", new Slider("Condemn vurma mesafesi", 420, 350, 470));
             CondemnMenu.Add("noeaa", new Slider("E kullanma, Eğer Hedef x Kadar vuruşla ölecekse", 0, 0, 4));
             CondemnMenu.Add("trinket", new CheckBox("Trinket Kullan(Totem,Arayıcı Mercek)?"));
-            CondemnMenu.AddGroupLabel("Mekanik");
+            CondemnMenu.AddGroupLabel("Mechanics");
             CondemnMenu.Add("flashe", new KeyBind("Flash Condemn!", false, KeyBind.BindTypes.HoldActive, 'Y'));
             CondemnMenu.Add("insece", new KeyBind("Flash Insec!", false, KeyBind.BindTypes.HoldActive, 'Z'));
             CondemnMenu.Add("insecmodes", new ComboBox("Insec Modu", 0, "Dostlara", "Kuleye", "Mouse'a"));
@@ -213,13 +213,13 @@ namespace Aka_s_Vayne_reworked
             MiscMenu.Add("AntiPanth", new CheckBox("Anti Pantheon"));
             MiscMenu.Add("fpsdrop", new CheckBox("Anti Fps Drop", false));
             MiscMenu.Add("InterruptE", new CheckBox("Interrupt Spells using E?"));
-            MiscMenu.Add("LowLifeE", new CheckBox("Az Can E", false));
-            MiscMenu.Add("dangerLevel", new ComboBox("Interrupt E Dangerlevel ", 2, "Low", "Medium", "High"));
+            MiscMenu.Add("LowLifeE", new CheckBox("Düşük Can E Kullan", false));
+            MiscMenu.Add("dangerLevel", new ComboBox("Interrupt E Tehlike Seviyesi ", 2, "Düşük", "Normal", "Yüksek"));
             MiscMenu.AddGroupLabel("Araçlar");
             MiscMenu.Add("skinhack", new CheckBox("Skin Değiştirici Aktif"));
             MiscMenu.Add("skinId", new ComboBox("Skin Numarası", 0, "Default", "Vindicator", "Aristocrat", "Dragonslayer", "Heartseeker", "SKT T1", "Arclight", "Vayne Chroma Green", "Vayne Chroma Red", "Vayne Chroma Grey"));
             MiscMenu.Add("autolvl", new CheckBox("Otomatik Level Yükseltme"));
-            MiscMenu.Add("autolvls", new ComboBox("Level Mode", 0, "Max W", "Max Q(Benim Stilim)"));
+            MiscMenu.Add("autolvls", new ComboBox("Level modu", 0, "En Fazla W ", "En Fazla Q(my style)"));
             MiscMenu.Add("autobuy", new CheckBox("Başlangıçta Otomatik Eşya Al"));
             MiscMenu.Add("autobuyt", new CheckBox("Başlangıçta trinket(totem)otomatik al", false));
             switch (MiscMenu["autolvls"].Cast<ComboBox>().CurrentValue)
@@ -236,11 +236,11 @@ namespace Aka_s_Vayne_reworked
         public static void Itemmenu()
         {
             ItemMenu = VMenu.AddSubMenu("Activator", "Activator");
-            ItemMenu.AddGroupLabel("İtemler");
+            ItemMenu.AddGroupLabel("Items");
             ItemMenu.AddLabel("Bana Sorabilrisin Eğer senin daha fazlaya ihtiyacın varsa");
             ItemMenu.Add("botrk", new CheckBox("Kullan MahvolmuşKılıç"));
-            ItemMenu.Add("you", new CheckBox("Kullan Yoummmu"));
-            ItemMenu.Add("yous", new Slider("Eğer Mesafe >", 1000, 0, 1500));
+            ItemMenu.Add("you", new CheckBox("Kullan Yoummmus"));
+            ItemMenu.Add("yous", new Slider("Eğer Mesafee >", 1000, 0, 1500));
             ItemMenu.Add("autopotion", new CheckBox("Otomatik Can İksiri"));
             ItemMenu.Add("autopotionhp", new Slider("Can İksiri için canım şu veya daha az =>", 60));
             ItemMenu.AddGroupLabel("Sihirdar");
