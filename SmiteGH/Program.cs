@@ -46,11 +46,11 @@ namespace SmiteGH
         {
             Bootstrap.Init(null);
 
-            if (SmiteNames.Contains(ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Summoner1).Name))
+            if (SmiteNames.Contains(ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Summoner1).Name.ToLower()))
             {
                 Smite = new Spell.Targeted(SpellSlot.Summoner1, (uint)570f);
             }
-            if (SmiteNames.Contains(ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Summoner2).Name))
+            if (SmiteNames.Contains(ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Summoner2).Name.ToLower()))
             {
                 Smite = new Spell.Targeted(SpellSlot.Summoner2, (uint)570f);
             }
@@ -59,43 +59,44 @@ namespace SmiteGH
                 return;
 
             if (SupportedChampions.Contains(ObjectManager.Player.ChampionName))
-                Chat.Print("[SmiteGH Loaded] " + ObjectManager.Player.ChampionName + " Has Loaded! TRAdana çevirilerini kullandığınız için teşekkürler", Color1.Violet);
+                Chat.Print("[SmiteGH Yuklendi] " + ObjectManager.Player.ChampionName + " Yuklendi!", Color1.Violet);
             else
-                Chat.Print("[SmiteGH Loaded] " + ObjectManager.Player.ChampionName + " Şampiyon Desteklenmiyor ama Smite Çalışıyor!", Color1.Violet);
+                Chat.Print("[SmiteGH Yuklendi] " + ObjectManager.Player.ChampionName + " Carp desteklenmiyor!", Color1.Violet);
 
             SmiteGHMenu = MainMenu.AddMenu("SmiteGH", "smitegh");
             SmiteGHMenu.AddGroupLabel("SmiteGH");
             SmiteGHMenu.AddSeparator();
             SmiteGHMenu.Add("active", new CheckBox("Aktif"));
-            SmiteGHMenu.Add("activekey", new KeyBind("Aktif (Toggle Key)", true, KeyBind.BindTypes.PressToggle));
+            SmiteGHMenu.Add("activekey", new KeyBind("Aktif (Tuşu)", true, KeyBind.BindTypes.PressToggle));
             if (SupportedChampions.Contains(ObjectManager.Player.ChampionName))
-                SmiteGHMenu.Add("disable", new CheckBox("Şampiyon büyü kullanımı aktif (" + ObjectManager.Player.ChampionName + ")", true));
+                SmiteGHMenu.Add("disable", new CheckBox("Şampiyon büyü Kullanımı Aktif (" + ObjectManager.Player.ChampionName + ")", true));
             SmiteGHMenu.AddSeparator();
-            SmiteGHMenu.AddLabel("Made By GameHackerPM- Çeviri Tradana");
+            SmiteGHMenu.AddLabel("GameHackerPM Tarafından");
+            SmiteGHMenu.AddLabel("Çeviri TRAdana");
 
             MobsToSmite = SmiteGHMenu.AddSubMenu("Canavarlar", "Monsters");
-            MobsToSmite.AddGroupLabel("Canavar Ayarları");
+            MobsToSmite.AddGroupLabel("Canavar  Ayarları");
             MobsToSmite.AddSeparator();
             MobsToSmite.Add("killsmite", new CheckBox("KS için Çarp Kullan"));
             MobsToSmite.AddSeparator();
             MobsToSmite.Add("SRU_Baron", new CheckBox("Baron Aktif"));
             MobsToSmite.Add("SRU_Dragon", new CheckBox("Ejder Aktif"));
-            MobsToSmite.Add("SRU_Blue", new CheckBox("Blue Aktif"));
-            MobsToSmite.Add("SRU_Red", new CheckBox("Red Aktif"));
+            MobsToSmite.Add("SRU_Blue", new CheckBox("Mavi Aktif"));
+            MobsToSmite.Add("SRU_Red", new CheckBox("Kırmızı Aktif"));
             MobsToSmite.Add("SRU_Gromp", new CheckBox("Kurbağa Aktif"));
-            MobsToSmite.Add("SRU_Murkwolf", new CheckBox("AlacaKurtlar Aktif"));
-            MobsToSmite.Add("SRU_Krug", new CheckBox("Golemler Aktif"));
-            MobsToSmite.Add("SRU_Razorbeak", new CheckBox("Keskin Gagalar Aktif"));
+            MobsToSmite.Add("SRU_Murkwolf", new CheckBox("AlacaKurt Aktif"));
+            MobsToSmite.Add("SRU_Krug", new CheckBox("Golem Aktif"));
+            MobsToSmite.Add("SRU_Razorbeak", new CheckBox("SivriGagalar Aktif"));
             MobsToSmite.Add("Sru_Crab", new CheckBox("Yampiri Yengeç Aktif"));
 
-            DrawingMenu = SmiteGHMenu.AddSubMenu("Draw", "drawing");
-            DrawingMenu.AddGroupLabel("Draw Ayarları");
+            DrawingMenu = SmiteGHMenu.AddSubMenu("Göstergeler", "drawing");
+            DrawingMenu.AddGroupLabel("Gösterge Ayarları");
             DrawingMenu.AddSeparator();
             DrawingMenu.Add("draw", new CheckBox("Aktif"));
             DrawingMenu.AddSeparator(10);
-            DrawingMenu.Add("smite", new CheckBox("Çarp Göster"));
-            DrawingMenu.Add("drawTxt", new CheckBox("Yazı Göster"));
-            DrawingMenu.Add("killable", new CheckBox("Öldürelebilir canavarları göster"));
+            DrawingMenu.Add("smite", new CheckBox("Göster Çarp"));
+            DrawingMenu.Add("drawTxt", new CheckBox("Göster Yazı"));
+            DrawingMenu.Add("killable", new CheckBox("Göster Ölebilecek canavarları daire içinde"));
 
 
             Game.OnUpdate += Game_OnUpdate;
