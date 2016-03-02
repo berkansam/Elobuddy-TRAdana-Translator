@@ -26,7 +26,7 @@ namespace Nasus
             // Farm Menu
             FarmMenu = ConfigMenu.AddSubMenu("Farm", "Farm");
             FarmMenu.AddGroupLabel("Büyü Ayarları");
-            FarmMenu.AddLabel("Q Settings");
+            FarmMenu.AddLabel("Q Ayarları");
             FarmMenu.Add("useQ", new CheckBox("Son vuruş için Q Kullan"));
             FarmMenu.Add("disableAA", new CheckBox("Minyona düz vuruş yapma Sadece Q Kullan", false));
             FarmMenu.AddLabel("Dürtme Ayarları");
@@ -34,7 +34,7 @@ namespace Nasus
             FarmMenu.Add("useEH", new CheckBox("E Kullan", false));
             FarmMenu.Add("manaEH", new Slider("Dürtmeden önce gereken mana %", 30));
             FarmMenu.AddLabel("LaneTemizleme Ayarları");
-            FarmMenu.Add("useELC", new CheckBox("Use E in LaneClear"));
+            FarmMenu.Add("useELC", new CheckBox("E Kullan"));
             FarmMenu.Add("useELCS", new Slider("E için minyon say", 2, 1, 6));
             FarmMenu.Add("manaELC", new Slider("Lanetemizleme E için gereken mana %", 30));
 
