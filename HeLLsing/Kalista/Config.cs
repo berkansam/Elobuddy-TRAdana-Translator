@@ -312,7 +312,7 @@ namespace Hellsing.Kalista
                 _saveSoulbound = Menu.Add("saveSoulbound", new CheckBox("R kullanarak Arkadaş koru"));
                 _secureE = Menu.Add("secureE", new CheckBox("Düz vuruşla ölmeyecek minyonlarda e kullan"));
                 _harassPlus = Menu.Add("harassPlus", new CheckBox("Minyon ölecekse ve rakipte 1den fazla yük varsa E kullan"));
-                _autoBelowHealthE = Menu.Add("autoBelowHealthE", new Slider("Sağlığım şunun altındaysa otomatik E çek ({0}%) percent", 10));
+                _autoBelowHealthE = Menu.Add("autoBelowHealthE", new Slider("Sağlığım şunun altındaysa otomatik E çek ({0}%) yüzzde", 10));
                 _reductionE = Menu.Add("reductionE", new Slider("Reduce E damage by {0} points", 20));
 
                 // Initialize other misc features
@@ -385,7 +385,7 @@ namespace Hellsing.Kalista
                     else
                     {
                         _enabled = Menu.Add("enabled", new CheckBox("Aktif"));
-                        _noMode = Menu.Add("noMode", new CheckBox("Only use when no mode active"));
+                        _noMode = Menu.Add("noMode", new CheckBox("Sadece aktif mod yokken"));
                         _alert = Menu.Add("alert", new CheckBox("Gözcü Hasar alırsa ping ver"));
                         _mana = Menu.Add("mana", new Slider("W kullanmak için şu kadar mana gerekli ({0}%)", 40));
 
@@ -568,11 +568,11 @@ namespace Hellsing.Kalista
                     _useBalista = Menu.Add("useBalista", new CheckBox("Aktif"));
                     Menu.AddSeparator(0);
                     _balistaComboOnly = Menu.Add("balistaComboOnly", new CheckBox("Sadece Kombo Modu", false));
-                    _balistaMoreHealth = Menu.Add("moreHealth", new CheckBox("Only if I have more health"));
+                    _balistaMoreHealth = Menu.Add("moreHealth", new CheckBox("Sadece benim canım daha fazlaysa"));
 
                     const int blitzcrankQrange = 925;
                     _balistaTriggerRange = Menu.Add("balistaTriggerRange",
-                        new Slider("Trigger range between you and the grabbed target", (int) SpellManager.R.Range, (int) SpellManager.R.Range,
+                        new Slider("Çekilmiş hedefi senin çekmen(r basman) gecikmesi", (int) SpellManager.R.Range, (int) SpellManager.R.Range,
                             (int) (SpellManager.R.Range + blitzcrankQrange * 0.8f)));
 
                     // Handle Blitzcrank hooks in Kalista.OnTickBalistaCheck
