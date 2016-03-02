@@ -15,30 +15,30 @@ namespace LeeSin
     public static class MenuManager
     {
         public static Menu AddonMenu;
-        public static Dictionary<string, Menu> SubMenu = new Dictionary<string, Menu>() { };
+        public static Dictionary<string, Menu> SubMenu = new Dictionary<string, Menu>();
         public static void Init()
         {
             var AddonName = Champion.AddonName;
             var Author = Champion.Author;
-            AddonMenu = MainMenu.AddMenu(AddonName, AddonName + " by " + Author + " v1.1-ceviri tradana iyi oyunlar");
+            AddonMenu = MainMenu.AddMenu(AddonName, AddonName + " by " + Author + " v6.4.0-ceviri tradana iyi oyunlar");
             AddonMenu.AddLabel(AddonName + " made by " + Author);
 
             SubMenu["Prediction"] = AddonMenu.AddSubMenu("İsabet Oranı", "Prediction3");
             SubMenu["Prediction"].AddGroupLabel("Q Ayarları");
-            SubMenu["Prediction"].Add("QCombo", new Slider("Kombo İsabet Oranı", 78, 0, 100));
-            SubMenu["Prediction"].Add("QHarass", new Slider("Dürtme İsabet Oranı", 83, 0, 100));
+            SubMenu["Prediction"].Add("QCombo", new Slider("Kombo İsabet Oranı", 65));
+            SubMenu["Prediction"].Add("QHarass", new Slider("Dürtme İsabet Oranı", 70));
 
             //Combo
             SubMenu["Combo"] = AddonMenu.AddSubMenu("Kombo", "Combo");
             SubMenu["Combo"].Add("Q", new CheckBox("Kullan Q", true));
             SubMenu["Combo"].Add("W", new CheckBox("Kullan W to GapClose", true));
             SubMenu["Combo"].Add("E", new CheckBox("Kullan E", true));
-            SubMenu["Combo"].Add("Smite", new CheckBox("Tutuştur Kullan", false));
+            SubMenu["Combo"].Add("Smite", new CheckBox("Çarp Kullan", false));
             SubMenu["Combo"].Add("Items", new CheckBox("Ofansif İtemleri Kullan", true));
             var switcher = SubMenu["Combo"].Add("Switcher", new KeyBind("Kombo Mod Değiştirme Tuşu", false, KeyBind.BindTypes.HoldActive, (uint)'K'));
             switcher.OnValueChange += delegate (ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
             {
-                if (args.NewValue == true)
+                if (args.NewValue)
                 {
                     var cast = GetSubMenu("Combo")["Mode"].Cast<Slider>();
                     if (cast.CurrentValue == cast.MaxValue)
@@ -59,21 +59,21 @@ namespace LeeSin
             SubMenu["Combo"].Add("Normal.Ward", new CheckBox("Totem Kullan", false));
             SubMenu["Combo"].Add("Normal.Stack", new Slider("Pasiften önce diğer büyüleri kullan", 1, 0, 2));
             SubMenu["Combo"].Add("Normal.W", new Slider("Eğer canım şundan azsa W Kullan", 25, 0, 100));
-            SubMenu["Combo"].Add("Normal.R.Hit", new Slider("Şu kadar veya fazla birime çarpacaksa R Kullan >=", 3, 1, 5));
+            SubMenu["Combo"].Add("Normal.R.Hit", new Slider("Şu kadar veya fazla birime çarpacaksa R Kullan >= ", 3, 1, 5));
 
             SubMenu["Combo"].AddSeparator();
 
             SubMenu["Combo"].AddGroupLabel("Star Combo");
             SubMenu["Combo"].Add("Star.Ward", new CheckBox("Totem Kullan", true));
             SubMenu["Combo"].Add("Star.Stack", new Slider("Pasiften önce diğer büyüleri Kullan", 0, 0, 2));
-            SubMenu["Combo"].AddStringList("Star.Mode", "Star Combo Modu", new[] { "Q1 R Q2", "R Q1 Q2" }, 0);
+            SubMenu["Combo"].AddStringList("Star.Mode", "Star Combo Mode", new[] { "Q1 R Q2", "R Q1 Q2" }, 0);
 
             SubMenu["Combo"].AddSeparator();
 
             SubMenu["Combo"].AddGroupLabel("Gank Combo");
             SubMenu["Combo"].Add("Gank.R", new CheckBox("R Kullan", true));
             SubMenu["Combo"].Add("Gank.Ward", new CheckBox("Totem Kullan", true));
-            SubMenu["Combo"].Add("Gank.Stack", new Slider("Pasiften önce diğer büyüleri kullan", 1, 0, 2));
+            SubMenu["Combo"].Add("Gank.Stack", new Slider("Pasiften önce diğer büyüleri Kullan", 1, 0, 2));
             
             //Insec
             SubMenu["Insec"] = AddonMenu.AddSubMenu("Insec", "Insec");
@@ -81,19 +81,19 @@ namespace LeeSin
             SubMenu["Insec"].Add("Object", new CheckBox("Eğer hedefe çarpmayacaksa Düşman minyona Q kullan", true));
             SubMenu["Insec"].AddSeparator(0);
             SubMenu["Insec"].Add("Flash.Return", new CheckBox("Flash Kullanıp Dön", false));
-            SubMenu["Insec"].AddStringList("Priority", "Öncelik", new[] { "WardJump > Flash", "Flash > WardJump" }, 0);
-            SubMenu["Insec"].AddStringList("Flash.Priority", "Flash Önceliği", new[] { "Sadece R -> Flash", "Sadece Flash -> R", "R -> den sonra Flash veya Flash -> sonra R" }, 2);
-            SubMenu["Insec"].AddStringList("Position", "İnsec Sonlandırma Pozisyonu", new[] { "Dostlar Seçildi > Pozisyon Seçildi > Kule > Dost Yakını > Mevcut Pozisyon", "Fare Pozisyonu", "Mevcut Pozisyon" }, 0);
-            SubMenu["Insec"].Add("DistanceBetweenPercent", new Slider("Ward ve hedef arasında mesafe yüzde (çevirmen notu elleme)", 20, 0, 100));
+            SubMenu["Insec"].AddStringList("Priority", "Priority", new[] { "WardJump > Flash", "Flash > WardJump" }, 1);
+            SubMenu["Insec"].AddStringList("Flash.Priority", "Flash Priority", new[] { "Sadece R -> Flash", "Sadece Flash -> R", "R -> den sonra Flash veya Flash -> dan sonra R" }, 0);
+            SubMenu["Insec"].AddStringList("Position", "Insec End Position", new[] { "Dostlar Seçildi > Pozisyon Seçildi > Kule > Dost Yakını > Mevcut Pozisyon", "Fare Pozisyonu", "Mevcut Pozisyon" }, 0);
+            SubMenu["Insec"].Add("DistanceBetweenPercent", new Slider("Totem ve hedef arasında mesafe yüzde (çevirmen notu elleme)", 20, 0, 100));
             SubMenu["Insec"].AddGroupLabel("Tipler");
-            SubMenu["Insec"].AddLabel("Dostlara ise dostu sol tıkla tıklıyacaksın");
+            SubMenu["Insec"].AddLabel("Dostlara ise dostu sol tıkla tıklıyacaksın.");
             SubMenu["Insec"].AddLabel("Hedef Düşmansa Hedefi sol tıkla belirliceksin");
             SubMenu["Insec"].AddLabel("To select a position just use left click on that position.");
             
             SubMenu["Harass"] = AddonMenu.AddSubMenu("Dürtme", "Harass");
-            SubMenu["Harass"].Add("Q", new CheckBox("Q Kullan", true));
-            SubMenu["Harass"].Add("W", new CheckBox("Kaçarken W escape", true));
-            SubMenu["Harass"].Add("E", new CheckBox("E escape", true));
+            SubMenu["Harass"].Add("Q", new CheckBox("Kullan Q", true));
+            SubMenu["Harass"].Add("W", new CheckBox("Kullan W Kaçarken", true));
+            SubMenu["Harass"].Add("E", new CheckBox("Kullan E", true));
 
             SubMenu["Smite"] = AddonMenu.AddSubMenu("Çarp", "Smite");
             SubMenu["Smite"].Add("Q.Combo", new CheckBox("Q yu Çarp'la Birlikte Kullan Komboda", true));
@@ -103,19 +103,19 @@ namespace LeeSin
             //SubMenu["Smite"].Add("KillSteal", new CheckBox("Use Smite to KillSteal", true));
             
             SubMenu["JungleClear"] = AddonMenu.AddSubMenu("Orman Temizleyici", "JungleClear");
-            SubMenu["JungleClear"].Add("Q", new CheckBox("Q Kullan", true));
-            SubMenu["JungleClear"].Add("W", new CheckBox("W Kullan", true));
-            SubMenu["JungleClear"].Add("E", new CheckBox("E Kullan", true));
+            SubMenu["JungleClear"].Add("Q", new CheckBox("Kullan Q", true));
+            SubMenu["JungleClear"].Add("W", new CheckBox("Kullan W", true));
+            SubMenu["JungleClear"].Add("E", new CheckBox("Kullan E", true));
             SubMenu["JungleClear"].Add("Smite", new CheckBox("Ejder Baronda Çarp Kullan", true));
 
             SubMenu["KillSteal"] = AddonMenu.AddSubMenu("Kill Çalma", "KillSteal");
             SubMenu["KillSteal"].Add("Ward", new CheckBox("Gapclose'da totem kullan", false));
-            SubMenu["KillSteal"].Add("Q", new CheckBox("Q Kullan", false));
+            SubMenu["KillSteal"].Add("Q", new CheckBox("Kullan Q", false));
             SubMenu["KillSteal"].Add("W", new CheckBox("Gapclose'ta W Kullan", true));
-            SubMenu["KillSteal"].Add("E", new CheckBox("E Kullan", true));
-            SubMenu["KillSteal"].Add("R", new CheckBox("R Kullan", false));
-            SubMenu["KillSteal"].Add("Ignite", new CheckBox("Tutuştur Kullan", true));
-            SubMenu["KillSteal"].Add("Smite", new CheckBox("Çarp Kullan", true));
+            SubMenu["KillSteal"].Add("E", new CheckBox("Kullan E", true));
+            SubMenu["KillSteal"].Add("R", new CheckBox("Kullan R", false));
+            SubMenu["KillSteal"].Add("Ignite", new CheckBox("Kullan Ignite", true));
+            SubMenu["KillSteal"].Add("Smite", new CheckBox("Kullan Smite", true));
 
             SubMenu["Drawings"] = AddonMenu.AddSubMenu("Göstergeler", "Drawings");
             SubMenu["Drawings"].Add("Disable", new CheckBox("Tüm Göstergeleri Kapat", false));

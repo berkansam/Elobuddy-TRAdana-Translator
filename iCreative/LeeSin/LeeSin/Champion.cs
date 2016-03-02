@@ -38,7 +38,7 @@ namespace LeeSin
             AutoSmite.Init();
             DrawManager.Init();
             TargetSelector.Init(SpellManager.Q2.Range + 200, DamageType.Physical);
-            Chat.Print(AddonName + " Tarafından " + Author + " Yuklendi, iyi eglenceler!ceviri-tradana.");
+            Chat.Print(AddonName + " made by " + Author + " loaded, have fun!.");
             LoadCallbacks();
         }
         private static void LoadCallbacks()

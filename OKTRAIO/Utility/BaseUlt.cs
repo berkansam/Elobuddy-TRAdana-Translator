@@ -71,16 +71,16 @@ namespace OKTRAIO.Utility
         {
             Menu.AddGroupLabel("OKTR AIO - BaseULT for " + Player.Instance.ChampionName,
                 "baseult.grouplabel.utilitymenu");
-            Menu.AddCheckBox("baseult.use", "Base Ulti Kullan");
-            Menu.Add("baseult.advanced", new CheckBox("Gelişmiş Menüyü Göster", false)).OnValueChange +=
+            Menu.AddCheckBox("baseult.use", "Use BaseUlt");
+            Menu.Add("baseult.advanced", new CheckBox(" Göster Gelişmiş Menu", false)).OnValueChange +=
                 Value.AdvancedModeChanged;
-            Menu.AddCheckBox("baseult.recallsEnemy", "Düşmanın Geridönmesini göster", true, true);
-            Menu.AddCheckBox("baseult.recallsAlly", "Dostların Geridönüşünü göster", true, true);
-            Menu.AddSlider("baseult.x", "Geri Dönüş Yeri X", (int) (Drawing.Width * 0.4), 0, Drawing.Width, true);
-            Menu.AddSlider("baseult.y", "Geri Dönüş Yeri Y", (int) (Drawing.Height * 0.75), 0, Drawing.Height, true);
-            Menu.AddSlider("baseult.width", "Geri Dönüş Genişliği", 300, 200, 500, true);
+            Menu.AddCheckBox("baseult.recallsEnemy", "Göster Düşman Dönüşünü(b)", true, true);
+            Menu.AddCheckBox("baseult.recallsAlly", "Dostların Dönüşünü Göster(b)", true, true);
+            Menu.AddSlider("baseult.x", "Dönme Yeri X", (int) (Drawing.Width * 0.4), 0, Drawing.Width, true);
+            Menu.AddSlider("baseult.y", "Dönme Yeri Y", (int) (Drawing.Height * 0.75), 0, Drawing.Height, true);
+            Menu.AddSlider("baseult.width", "Dönüş Genişliği", 300, 200, 500, true);
             Menu.AddSeparator();
-            Menu.AddLabel("Use BaseULT for:", 25, "baseult.label", true);
+            Menu.AddLabel("Baseulti kullan:", 25, "baseult.label", true);
             foreach (var enemy in EntityManager.Heroes.Enemies)
             {
                 Menu.AddCheckBox("baseult." + enemy.ChampionName, enemy.ChampionName, true, true);
@@ -294,10 +294,10 @@ namespace OKTRAIO.Utility
                     var damage = new float[] { 250, 350, 450 }[level]
                                  + new float[] { 25, 30, 35 }[level] / 100 * (target.MaxHealth - target.Health)
                                  + 1 * Player.Instance.FlatPhysicalDamageMod;
-                    Chat.Print("Flat Damage: " + new float[] { 250, 350, 450 }[level]);
+                    /*Chat.Print("Flat Damage: " + new float[] { 250, 350, 450 }[level]);
                     Chat.Print("Bonus Damage: " + new float[] { 25, 30, 35 }[level] / 100 * (target.MaxHealth - target.Health));
                     Chat.Print("Damage On Unit: " + Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical, damage));
-                    Chat.Print("Unit Health: " + target.Health);
+                    Chat.Print("Unit Health: " + target.Health);*/
                     return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical, damage);
                 }
             }
