@@ -69,11 +69,10 @@
             ConfigMenu = MainMenu.AddMenu("Jin-XXX", "Jin-XXX");
             ConfigMenu.AddGroupLabel("Bu Addon KarmaPanda tarafından geliştirilmiştir iyi oyunlar");
             ConfigMenu.AddGroupLabel("Any unauthorized redistribution without credits will result in severe consequences.");
-            ConfigMenu.AddGroupLabel("Kullandığın için teşekkürler iyi oyunlar!");
-            ConfigMenu.AddGroupLabel("Çeviri TRAdana");
+            ConfigMenu.AddGroupLabel("Kullandığın için teşekkürler iyi oyunlar!!");
 
             ComboMenu = ConfigMenu.AddSubMenu("Combo", "Combo");
-            ComboMenu.AddLabel("Kombo");
+            ComboMenu.AddLabel("Kombo Ayarları");
             ComboMenu.Add("useQ", new CheckBox("Kullan Q"));
             ComboMenu.Add("useW", new CheckBox("Kullan W"));
             ComboMenu.Add("useE", new CheckBox("Kullan E"));
@@ -83,47 +82,47 @@
             ComboMenu.Add("manaW", new Slider("W için gereken mana %", 25));
             ComboMenu.Add("manaE", new Slider("E için gereken mana %", 25));
             ComboMenu.Add("manaR", new Slider("R için gereken mana %", 25));
-            ComboMenu.AddLabel("Lütfen bu bölümü ayarlayın kendinize göre");
+            ComboMenu.AddLabel("Hit on Champion is Prioritized first over Minion");
             ComboMenu.Add("qCountC", new Slider("Q şu kadar şampiyona çarpacaksa", 3, 1, 5));
             ComboMenu.Add("rCountC", new Slider("R şu kadar şampiyona çarpacaksa", 5, 1, 5));
-            ComboMenu.AddLabel("İsabetOranı");
-            ComboMenu.Add("wSlider", new Slider("W İsabet Oranı % {0}", 80));
+            ComboMenu.AddLabel("İsabet Oranı Ayarları");
+            ComboMenu.Add("wSlider", new Slider("W İsabet Oranı %{0}", 80));
             ComboMenu.Add("eSlider", new Slider("E İsabet Oranı % {0}", 80));
             ComboMenu.Add("rSlider", new Slider("R İsabet Oranı % {0}", 80));
-            ComboMenu.AddLabel("Extra Ayarlar");
+            ComboMenu.AddLabel("Extra Ayarları");
             ComboMenu.Add("wRange2", new Slider("W sadece hedef şu menzilden uzaktaysa{0}", 150, 0, 1500));
-            ComboMenu.Add("eRange", new Slider("E sadece hedef şu menzildeden uzaktaysa {0}", 150, 0, 900));
+            ComboMenu.Add("eRange", new Slider("E sadece hedef şu menzildeden uzaktaysa", 150, 0, 900));
             ComboMenu.Add("eRange2", new Slider("en fazla  E menzili", 900, 0, 900));
             ComboMenu.Add("rRange2", new Slider("En fazlA R Menzili", 3000, 0, 3000));
 
             LastHitMenu = ConfigMenu.AddSubMenu("LastHit", "LastHit");
-            LastHitMenu.AddGroupLabel("SonVuruş");
+            LastHitMenu.AddGroupLabel("SonVuruş Ayarları");
             LastHitMenu.Add("useQ", new CheckBox("Kullan Q"));
             LastHitMenu.Add("qCountM", new Slider("Q şu kadar minyona çarpacaksa", 3, 1, 7));
             LastHitMenu.AddLabel("ManaYardımcısı");
-            LastHitMenu.Add("manaQ", new Slider("Q için gereken mana", 25));
+            LastHitMenu.Add("manaQ", new Slider("ManaManager for Q", 25));
 
             HarassMenu = ConfigMenu.AddSubMenu("Harass", "Harass");
-            HarassMenu.AddLabel("Dürtme");
+            HarassMenu.AddLabel("Dürtme Ayarları");
             HarassMenu.Add("useQ", new CheckBox("Kullan Q"));
             HarassMenu.Add("useW", new CheckBox("Kullan W"));
             HarassMenu.AddLabel("ManaYardımcısı");
             HarassMenu.Add("manaQ", new Slider("Q için gereken mana %", 15));
             HarassMenu.Add("manaW", new Slider("W için gereken mana %", 35));
             HarassMenu.AddLabel("Bu bölümü lütfen ayarlayın kendinize göre");
-            HarassMenu.Add("qCountC", new Slider("Q İsabet Oranı { 0 } Champion(s)", 3, 1, 5));
-            HarassMenu.Add("qCountM", new Slider("Q İsabet Oranı {0} Minion(s)", 3, 1, 7));
-            HarassMenu.AddLabel("İsabet Oranı");
+            HarassMenu.Add("qCountC", new Slider("Q kaç şampiyona vursun", 3, 1, 5));
+            HarassMenu.Add("qCountM", new Slider("Q kaç minyona vursun", 3, 1, 7));
+            HarassMenu.AddLabel("Prediction Ayarları");
             HarassMenu.Add("wSlider", new Slider("W İsabet Oranı % {0}", 95));
             HarassMenu.AddLabel("Extra Ayarları");
             HarassMenu.Add("wRange2", new Slider("Hedef Menzilimdeyse Lütfen W Kullanma  {0}", 0, 0, 1450));
 
             LaneClearMenu = ConfigMenu.AddSubMenu("Lane Clear", "LaneClear");
-            LaneClearMenu.AddLabel("LaneTemizleme");
+            LaneClearMenu.AddLabel("Lane Clear Ayarları");
             LaneClearMenu.Add("useQ", new CheckBox("Kullan Q"));
             LaneClearMenu.Add("lastHit", new CheckBox("Minyon menzilden çıkarsa Son Vuruş Q", false));
             LaneClearMenu.Add("manaQ", new Slider("Q için gereken mana %", 25));
-            LaneClearMenu.Add("qCountM", new Slider("şu kadar minyona çarpacaksa", 3, 1, 7));
+            LaneClearMenu.Add("qCountM", new Slider("Q şu kadar minyona çarpacaksa", 3, 1, 7));
 
             KillStealMenu = ConfigMenu.AddSubMenu("Kill Steal", "KillSteal");
             KillStealMenu.Add("toggle", new CheckBox("Kill ÇalmaKullan"));
@@ -132,7 +131,7 @@
             KillStealMenu.AddLabel("ManaYardımcısı");
             KillStealMenu.Add("manaW", new Slider("W için gereken mana %", 25));
             KillStealMenu.Add("manaR", new Slider("R için gereken mana %", 25));
-            KillStealMenu.AddLabel("İsabet Oranı");
+            KillStealMenu.AddLabel("Prediction Ayarları");
             KillStealMenu.Add("wSlider", new Slider("W İsabet Oranı % {0}", 80));
             KillStealMenu.Add("rSlider", new Slider("R İsabet Oranı % {0}", 80));
             KillStealMenu.AddLabel("Büyü Ayarları");
@@ -140,17 +139,17 @@
             KillStealMenu.Add("rRange", new Slider("En fazla R Menzili", 3000, 0, 3000));
 
             JungleClearMenu = ConfigMenu.AddSubMenu("Jungle Clear", "JungleClear");
-            JungleClearMenu.AddLabel("OrmanTemizleme");
+            JungleClearMenu.AddLabel("Jungle Clear Ayarları");
             JungleClearMenu.Add("useQ", new CheckBox("Kullan Q"));
             JungleClearMenu.Add("useW", new CheckBox("Kullan W", false));
             JungleClearMenu.AddLabel("ManaYardımcısı");
             JungleClearMenu.Add("manaQ", new Slider("Q için gereken mana %", 25));
             JungleClearMenu.Add("manaW", new Slider("W için gereken mana %", 25));
-            JungleClearMenu.AddLabel("Ek Ayarlar");
+            JungleClearMenu.AddLabel("Ek Ayarları");
             JungleClearMenu.Add("wSlider", new Slider("W İsabet Oranı %  {0}", 85));
 
             JungleStealMenu = ConfigMenu.AddSubMenu("Jungle Steal", "JungleSteal");
-            JungleStealMenu.AddLabel("Orman Çalma");
+            JungleStealMenu.AddLabel("Jungle Steal Ayarları");
             JungleStealMenu.Add("toggle", new CheckBox("Orman Çalma Kullan", false));
             JungleStealMenu.Add("manaR", new Slider("R için gerekli mana", 25));
             JungleStealMenu.Add("rRange", new Slider("R atmak için en fazla menzil", 3000, 0, 3000));
@@ -159,10 +158,10 @@
                 JungleStealMenu.AddLabel("Epics");
                 JungleStealMenu.Add("SRU_Baron", new CheckBox("Baron"));
                 JungleStealMenu.Add("SRU_Dragon", new CheckBox("Ejder"));
-                JungleStealMenu.AddLabel("Bufflar");
+                JungleStealMenu.AddLabel("Buffs");
                 JungleStealMenu.Add("SRU_Blue", new CheckBox("Mavi", false));
                 JungleStealMenu.Add("SRU_Red", new CheckBox("Kırmızı", false));
-                JungleStealMenu.AddLabel("Küçük Kamplar");
+                JungleStealMenu.AddLabel("Small Camps");
                 JungleStealMenu.Add("SRU_Gromp", new CheckBox("Kurbağa", false));
                 JungleStealMenu.Add("SRU_Murkwolf", new CheckBox("AlacaKurt", false));
                 JungleStealMenu.Add("SRU_Krug", new CheckBox("Golem", false));
@@ -173,7 +172,7 @@
             if (Game.MapId == GameMapId.TwistedTreeline)
             {
                 JungleStealMenu.AddLabel("Epics");
-                JungleStealMenu.Add("TT_Spiderboss8.1", new CheckBox("Örümcek"));
+                JungleStealMenu.Add("TT_Spiderboss8.1", new CheckBox("Vilemaw"));
                 JungleStealMenu.AddLabel("Camps");
                 JungleStealMenu.Add("TT_NWraith1.1", new CheckBox("Wraith", false));
                 JungleStealMenu.Add("TT_NWraith4.1", new CheckBox("Wraith", false));
@@ -191,15 +190,15 @@
             FleeMenu.Add("eSlider", new Slider("E İsabet Oranı {0}", 75));
 
             DrawingMenu = ConfigMenu.AddSubMenu("Drawing", "Drawing");
-            DrawingMenu.AddLabel("Gösterge");
+            DrawingMenu.AddLabel("Drawing Ayarları");
             DrawingMenu.Add("drawQ", new CheckBox("Göster Q Menzili"));
             DrawingMenu.Add("drawW", new CheckBox("Göster W Menzili"));
             DrawingMenu.Add("drawE", new CheckBox("Göster E Menzili", false));
-            DrawingMenu.AddLabel("İsabet Oranı Gösterge");
+            DrawingMenu.AddLabel("Prediction Drawings");
             DrawingMenu.Add("predW", new CheckBox("Göster W İsabet Oranı"));
             DrawingMenu.Add("predR", new CheckBox("Göster R İsabet Oranı (In consideration of Range before R)", false));
             DrawingMenu.AddLabel("HasarTespitçisi");
-            DrawingMenu.Add("draw.Damage", new CheckBox("Göster Damage"));
+            DrawingMenu.Add("draw.Damage", new CheckBox("Göster Hasar"));
             DrawingMenu.Add("draw.Q", new CheckBox("Q Hesapla", false));
             DrawingMenu.Add("draw.W", new CheckBox("W Hesapla"));
             DrawingMenu.Add("draw.E", new CheckBox("E Hesapla", false));
@@ -229,9 +228,9 @@
             MiscMenu.Add("fearW", new CheckBox("Korkmuş Hedefe W Kullan", false));
             MiscMenu.Add("snareW", new CheckBox("Yavaşlamış hedefe W kullan", false));
             MiscMenu.Add("wRange2", new Slider("W yi sadece hedef şu menzilden çıkarsa kullan {0}", 450, 0, 1500));
-            MiscMenu.AddLabel("İsabet Oranı Ayarları");
-            MiscMenu.Add("wSlider", new Slider("W İsabet Oranı {0}", 75));
-            MiscMenu.Add("eSlider", new Slider("E İsabet Oranı {0}", 75));
+            MiscMenu.AddLabel("Prediction Ayarları");
+            MiscMenu.Add("wSlider", new Slider("W İsabet Oranı{0}", 75));
+            MiscMenu.Add("eSlider", new Slider("E İsabet Oranı{0}", 75));
             /*MiscMenu.AddLabel("Allah Akbar");
             MiscMenu.Add("allahAkbarT", new CheckBox("Play Allah Akbar after casting R", false));*/
         }
