@@ -29,7 +29,7 @@ namespace OKTRAIO.Champions
 
                 switch (Value.Get("combo.mode"))
                 {
-                        #region Mode QEWR
+                    #region Mode QEWR
 
                     case 0:
                         if (_q.IsReady() && _q.IsInRange(target) && Value.Use("combo.q".AddName()))
@@ -50,9 +50,9 @@ namespace OKTRAIO.Champions
                         }
                         break;
 
-                        #endregion
+                    #endregion
 
-                        #region Mode EQWR
+                    #region Mode EQWR
 
                     case 1:
                         if (_e.IsReady() && _e.IsInRange(target) && Value.Use("combo.e".AddName()))
@@ -145,7 +145,7 @@ namespace OKTRAIO.Champions
 
                     try
                     {
-                        if (Prediction.Health.GetPrediction(minion, _q.CastDelay + Game.Ping/4) <=
+                        if (Prediction.Health.GetPrediction(minion, _q.CastDelay + Game.Ping / 4) <=
                             Player.Instance.GetSpellDamage(minion, SpellSlot.Q))
                         {
                             if (_q.IsInRange(minion) && _q.IsReady() && Value.Use("lasthit.q"))
@@ -167,7 +167,7 @@ namespace OKTRAIO.Champions
 
                     try
                     {
-                        if (Prediction.Health.GetPrediction(minion, _w.CastDelay + Game.Ping/4) <=
+                        if (Prediction.Health.GetPrediction(minion, _w.CastDelay + Game.Ping / 4) <=
                             Player.Instance.GetSpellDamage(minion, SpellSlot.W))
                         {
                             if (_w.IsInRange(minion) && _w.IsReady() && Value.Use("lasthit.w"))
@@ -189,7 +189,7 @@ namespace OKTRAIO.Champions
 
                     try
                     {
-                        if (Prediction.Health.GetPrediction(minion, _e.CastDelay + Game.Ping/4) <=
+                        if (Prediction.Health.GetPrediction(minion, _e.CastDelay + Game.Ping / 4) <=
                             Player.Instance.GetSpellDamage(minion, SpellSlot.E))
                         {
                             if (_e.IsInRange(minion) && _e.IsReady() && Value.Use("lasthit.e"))
@@ -452,7 +452,7 @@ namespace OKTRAIO.Champions
                     #region Menu
 
                     var combo = MainMenu.Combo;
-                    string[] s = {"QEWR", "EQWR"};
+                    string[] s = { "QEWR", "EQWR" };
 
                     combo.AddStringList("combo.mode", "Mode: ", s, 1);
                     MainMenu.ComboKeys();
@@ -682,11 +682,11 @@ namespace OKTRAIO.Champions
 
         #region BaseDamages
 
-        private static readonly float[] QDamage = {0, 60, 85, 110, 135, 160};
-        private static readonly float[] BonusQDamage = {0, 15, 30, 45, 60, 75};
-        private static readonly float[] WDamage = {0, 40, 75, 110, 145, 180};
-        private static readonly float[] EDamage = {0, 40, 70, 100, 130, 160};
-        private static readonly float[] RDamage = {0, 350, 550, 750};
+        private static readonly float[] QDamage = { 0, 60, 85, 110, 135, 160 };
+        private static readonly float[] BonusQDamage = { 0, 15, 30, 45, 60, 75 };
+        private static readonly float[] WDamage = { 0, 40, 75, 110, 145, 180 };
+        private static readonly float[] EDamage = { 0, 40, 70, 100, 130, 160 };
+        private static readonly float[] RDamage = { 0, 350, 550, 750 };
 
         #endregion
 
@@ -701,20 +701,20 @@ namespace OKTRAIO.Champions
                 var ebasedamage = EDamage[_e.Level];
                 var rbasedamage = RDamage[_r.Level];
 
-                var qbonusdamage = 45f/100f*Player.Instance.FlatMagicDamageMod;
-                var wbonusdamage = 25f/100f*Player.Instance.FlatMagicDamageMod;
-                var ebonusdamage = 25f/100f*Player.Instance.FlatMagicDamageMod;
-                var rbonusdamage = 25f/100f*Player.Instance.FlatMagicDamageMod;
+                var qbonusdamage = 45f / 100f * Player.Instance.FlatMagicDamageMod;
+                var wbonusdamage = 25f / 100f * Player.Instance.FlatMagicDamageMod;
+                var ebonusdamage = 25f / 100f * Player.Instance.FlatMagicDamageMod;
+                var rbonusdamage = 25f / 100f * Player.Instance.FlatMagicDamageMod;
 
                 if (slot == SpellSlot.Q)
                     return qbasedamage + qbonusdamage +
-                           (BonusQDamage[_q.Level] + 15f/100f*Player.Instance.FlatMagicDamageMod);
+                           (BonusQDamage[_q.Level] + 15f / 100f * Player.Instance.FlatMagicDamageMod);
                 if (slot == SpellSlot.W)
-                    return wbasedamage + wbonusdamage + 60f/100f*Player.Instance.FlatPhysicalDamageMod;
+                    return wbasedamage + wbonusdamage + 60f / 100f * Player.Instance.FlatPhysicalDamageMod;
                 if (slot == SpellSlot.E)
                     return ebasedamage + ebonusdamage;
                 if (slot == SpellSlot.R)
-                    return rbasedamage + rbonusdamage + 375f/1000f*Player.Instance.FlatPhysicalDamageMod;
+                    return rbasedamage + rbonusdamage + 375f / 1000f * Player.Instance.FlatPhysicalDamageMod;
 
                 //if (raw)
                 //return Player.Instance.CalculateDamageOnUnit(target, DamageTyp_e.Magical, damage, true, true);
@@ -1063,7 +1063,7 @@ namespace OKTRAIO.Champions
                 var mode = m.Add(uniqueId, new Slider(displayName, defaultValue, 0, values.Length - 1));
                 mode.DisplayName = displayName + ": " + values[mode.CurrentValue];
                 mode.OnValueChange +=
-                    delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
+                    delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                     {
                         sender.DisplayName = displayName + ": " + values[args.NewValue];
                     };
