@@ -18,13 +18,13 @@ namespace Karthus.Modes
             SpellUsage = new Dictionary<SpellSlot, CheckBox>();
 
             // Setup menu
-            Menu.AddGroupLabel("Spell usage");
-            SpellUsage[SpellSlot.Q] = Menu.Add("Q", new CheckBox("Use Q"));
-            SpellUsage[SpellSlot.E] = Menu.Add("E", new CheckBox("Use E"));
+            Menu.AddGroupLabel("Büyü Kullanımı");
+            SpellUsage[SpellSlot.Q] = Menu.Add("Q", new CheckBox("Kullan Q"));
+            SpellUsage[SpellSlot.E] = Menu.Add("E", new CheckBox("Kullan E"));
 
             Menu.AddSeparator();
-            Menu.AddGroupLabel("Mana usage");
-            ManaUsage = Menu.Add("mana", new Slider("Only cast if mana is above {0}%", 50, 0, 99));
+            Menu.AddGroupLabel("Mana Kullanımı");
+            ManaUsage = Menu.Add("mana", new Slider("Sadece manam şundan fazlayken", 50, 0, 99));
         }
 
         public override bool ShouldBeExecuted(Orbwalker.ActiveModes activeModes)

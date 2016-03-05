@@ -74,10 +74,10 @@ namespace Karthus
             Menu.AddLabel("Sen bu addonu kendine göre düzenleyebilirsin");
             Menu.AddLabel("Genel Ayarlar altında");
             Menu.AddLabel("Çeviri TRAdana");
-            
+
             Menu.AddSeparator();
-            Menu.AddGroupLabel("Global configurations");
-            Menu.Add("ComboWhileDead", new CheckBox("Combo while dead"));
+            Menu.AddGroupLabel("Genel");
+            Menu.Add("ComboWhileDead", new CheckBox("Ölünce kombo yap"));
 
             Menu.AddSeparator();
             Menu.AddGroupLabel("Büyüler için isabet oranı");
@@ -96,11 +96,11 @@ namespace Karthus
             DrawingMenu.AddLabel("Sen büyü menzillerini isteğine göre aktif etmelisin");
 
             DrawingMenu.AddSeparator();
-            DrawingMenu.AddGroupLabel("Büyü ranges");
+            DrawingMenu.AddGroupLabel("Büyü Menzili");
             DrawingMenu.Add("Q", new CheckBox("Göster Q Menzili"));
             DrawingMenu.Add("E", new CheckBox("Göster E Menzili", false));
             DrawingMenu.Add("W", new CheckBox("Göster W Menzili"));
-            DrawingMenu.Add("W2", new CheckBox("Göster W en fazla menzili"));
+            DrawingMenu.Add("W2", new CheckBox("Göster W En fazla menzili"));
 
             DrawingMenu.AddSeparator();
             DrawingMenu.AddGroupLabel("Ulti (R) Bilgisi");

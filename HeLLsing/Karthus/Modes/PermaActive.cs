@@ -12,9 +12,9 @@ namespace Karthus.Modes
         public PermaActive(Karthus instance) : base(instance)
         {
             // Setup menu
-            Menu.AddGroupLabel("Spell usage");
-            UnkillableE = Menu.Add("unkillableE", new CheckBox("Cast E if minion is not lasthittable"));
-            Menu.AddLabel("Note: This will only trigger when in LaneClear or JungleClear mode!");
+            Menu.AddGroupLabel("Büyü Kullanımı");
+            UnkillableE = Menu.Add("unkillableE", new CheckBox("Son vuruş yapılamıyacaklarda e kullan"));
+            Menu.AddLabel("Bu ayar laneclear ve jungle clear modlarında geçerlidir");
 
             // Listen to required events
             Orbwalker.OnUnkillableMinion += OnUnkillableMinion;

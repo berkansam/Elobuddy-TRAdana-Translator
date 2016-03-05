@@ -18,14 +18,25 @@ namespace MaddeningJinx
             {
                 if (Orbwalker.ForcedTarget != null)
                 {
-                    args.Process = Orbwalker.ForcedTarget.IdEquals(target) && Champion.HasFishBonesActive;
+                    args.Process = Orbwalker.ForcedTarget.IdEquals(args.Target) && Champion.HasFishBonesActive;
                 }
             }
         }
+
+        public static bool CanUseQ = true;
+        public static bool CanUseW = true;
+        public static bool CanUseE = true;
         private static void Game_OnUpdate(EventArgs args)
         {
             if (Util.MyHero.IsDead) { return; }
             KillSteal.Execute();
+            if (Orbwalker.ForcedTarget != null && !Orbwalker.ForcedTarget.IsInFishBonesRange())
+            {
+                Orbwalker.ForcedTarget = null;
+            }
+            CanUseQ = Util.MyHero.Mana >= SpellSlot.W.Mana() + (SpellSlot.E.IsLearned() ? SpellSlot.E.Mana() : 0f) + (SpellSlot.R.IsLearned() ? SpellSlot.R.Mana() : 0f);
+            CanUseW = Util.MyHero.Mana >= (SpellSlot.W.Mana() + (SpellSlot.R.IsLearned() ? SpellSlot.R.Mana() : 0f) + 20);
+            CanUseE = Util.MyHero.Mana >= SpellSlot.E.Mana() + (SpellSlot.R.IsLearned() ? SpellSlot.R.Mana() : 0f);
             if (IsCombo)
             {
                 Combo.Execute();

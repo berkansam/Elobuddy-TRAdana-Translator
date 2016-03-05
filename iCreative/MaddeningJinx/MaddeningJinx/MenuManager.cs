@@ -46,10 +46,10 @@ namespace MaddeningJinx
 
             SubMenu["Combo"] = Menu.AddSubMenu("Kombo");
             {
-                SubMenu["Combo"].Add("Q", new CheckBox("Roket Kullan (Basit)"));
+                SubMenu["Combo"].Add("Q", new CheckBox("Roket Kullan (Akıllı)"));
                 SubMenu["Combo"].Add("Q.Aoe", new Slider("Roket Kullan isabet edecekse >= {0}", 2, 1, 5));
                 SubMenu["Combo"].Add("W", new CheckBox("W Kullan"));
-                SubMenu["Combo"].Add("E", new CheckBox("E Kullan (Basit)"));
+                SubMenu["Combo"].Add("E", new CheckBox("E Kullan (Akıllı)"));
                 SubMenu["Combo"].Add("E.Aoe", new Slider("E Kullan isabet edecekse >= {0}", 3, 0, 5));
             }
             SubMenu["Automatic"] = Menu.AddSubMenu("Otomatik");

@@ -33,13 +33,13 @@ namespace MaddeningJinx
                 return;
             }
             var t = AttackableUnits.GetBestFishBonesTarget();
-            if (t.List.Count > 1 && t.CanAutoAttack())
+            if ((t.List.Count > 1 && t.CanAutoAttack()) || (Champion.ManualSwitch && t.List.Count > 0))
             {
                 Champion.EnableFishBones(t.Target);
             }
             else
             {
-                if (Orbwalker.LastHitMinion == null && !Orbwalker.ShouldWait && MyTargetSelector.Target != null && Util.MyHero.Distance(Util.MousePos, true) >= Util.MousePos.Distance(MyTargetSelector.Target, true) && Util.MyHero.IsInRange(MyTargetSelector.Target, MyTargetSelector.AaRange) && Combo.CanUseQ)
+                if (Orbwalker.LastHitMinion == null && !Orbwalker.ShouldWait && MyTargetSelector.Target != null && Util.MyHero.Distance(Util.MousePos, true) >= Util.MousePos.Distance(MyTargetSelector.Target, true) && Util.MyHero.IsInRange(MyTargetSelector.Target, MyTargetSelector.AaRange) && ModeManager.CanUseQ)
                 {
                     Champion.EnableFishBones(MyTargetSelector.FishBonesTarget);
                 }
