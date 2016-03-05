@@ -214,6 +214,7 @@ namespace OKTRAIO.Champions
 
         #endregion
 
+       
         #region Gamerelated Logic
 
         #region Combo
@@ -265,7 +266,7 @@ namespace OKTRAIO.Champions
                     !targetBoom.IsInvulnerable &&
                     targetBoom.Health + targetBoom.AllShield + Value.Get("combo.e.r.damages") -
                     (Player.Instance.GetSpellDamage(targetBoom, SpellSlot.E) +
-                     targetBoom.Buffs.Find(a => a.Name == "tristanaecharge").Count*
+                     targetBoom.Buffs.Find(a => a.Name == "tristanaecharge").Count *
                      Player.Instance.GetSpellDamage(targetBoom, SpellSlot.E, DamageLibrary.SpellStages.Detonation)) <
                     Player.Instance.GetSpellDamage(targetBoom, SpellSlot.R))
                 {
@@ -535,9 +536,9 @@ namespace OKTRAIO.Champions
             try
             {
                 if (!sender.IsMe) return;
-                _q = new Spell.Active(SpellSlot.Q, 543 + 7*(uint) Player.Instance.Level);
-                _e = new Spell.Targeted(SpellSlot.E, 543 + 7*(uint) Player.Instance.Level);
-                _r = new Spell.Targeted(SpellSlot.R, 543 + 7*(uint) Player.Instance.Level);
+                _q = new Spell.Active(SpellSlot.Q, 543 + 7 * (uint)Player.Instance.Level);
+                _e = new Spell.Targeted(SpellSlot.E, 543 + 7 * (uint)Player.Instance.Level);
+                _r = new Spell.Targeted(SpellSlot.R, 543 + 7 * (uint)Player.Instance.Level);
             }
             catch (Exception e)
             {
@@ -566,7 +567,7 @@ namespace OKTRAIO.Champions
                 {
                     var pred = e.End;
 
-                    _w.Cast(pred + 5*(Player.Instance.Position - e.End));
+                    _w.Cast(pred + 5 * (Player.Instance.Position - e.End));
                 }
             }
             catch (Exception a)
@@ -690,10 +691,10 @@ namespace OKTRAIO.Champions
 
         #endregion
 
-                #region ComboDamage
+        #region ComboDamage
 
-            private static
-            float ComboDamage(Obj_AI_Base enemy)
+        private static
+        float ComboDamage(Obj_AI_Base enemy)
         {
             var damage = Player.Instance.GetAutoAttackDamage(enemy);
 
@@ -708,8 +709,8 @@ namespace OKTRAIO.Champions
                 if (enemy.HasBuff("tristanaecharge"))
                 {
                     damage += Player.Instance.GetSpellDamage(enemy, SpellSlot.E) +
-                              Player.Instance.GetSpellDamage(enemy, SpellSlot.E)*
-                              (enemy.GetBuffCount("tristanaecharge")*.30f);
+                              Player.Instance.GetSpellDamage(enemy, SpellSlot.E) *
+                              (enemy.GetBuffCount("tristanaecharge") * .30f);
                 }
             }
 
@@ -732,14 +733,14 @@ namespace OKTRAIO.Champions
                 foreach (var enemy in EntityManager.Heroes.Enemies.Where(a => !a.IsDead && a.IsHPBarRendered))
                 {
                     var damage = ComboDamage(enemy);
-                    var damagepercent = (enemy.TotalShieldHealth() - damage > 0 ? enemy.TotalShieldHealth() - damage : 0)/
+                    var damagepercent = (enemy.TotalShieldHealth() - damage > 0 ? enemy.TotalShieldHealth() - damage : 0) /
                                         (enemy.MaxHealth + enemy.AllShield + enemy.AttackShield + enemy.MagicShield);
-                    var hppercent = enemy.TotalShieldHealth()/
+                    var hppercent = enemy.TotalShieldHealth() /
                                     (enemy.MaxHealth + enemy.AllShield + enemy.AttackShield + enemy.MagicShield);
-                    var start = new Vector2((int) (enemy.HPBarPosition.X + Offset.X + damagepercent*104),
-                        (int) (enemy.HPBarPosition.Y + Offset.Y) - 5);
-                    var end = new Vector2((int) (enemy.HPBarPosition.X + Offset.X + hppercent*104) + 2,
-                        (int) (enemy.HPBarPosition.Y + Offset.Y) - 5);
+                    var start = new Vector2((int)(enemy.HPBarPosition.X + Offset.X + damagepercent * 104),
+                        (int)(enemy.HPBarPosition.Y + Offset.Y) - 5);
+                    var end = new Vector2((int)(enemy.HPBarPosition.X + Offset.X + hppercent * 104) + 2,
+                        (int)(enemy.HPBarPosition.Y + Offset.Y) - 5);
 
                     Drawing.DrawLine(start, end, 9, Color.Chartreuse);
                 }
@@ -776,7 +777,7 @@ namespace OKTRAIO.Champions
                         EntityManager.Turrets.Enemies.FirstOrDefault(
                             a =>
                                 !a.IsDead && a.Distance(target) <= 775 + Player.Instance.BoundingRadius +
-                                target.BoundingRadius/2 + 44.2);
+                                target.BoundingRadius / 2 + 44.2);
 
                     if (Player.Instance.ManaPercent >= Value.Get("killsteal.r.mana"))
                     {
