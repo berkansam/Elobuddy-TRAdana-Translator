@@ -33,7 +33,7 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
@@ -42,7 +42,7 @@ namespace WuAIO
                 menu.NewCheckbox("r", "R");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
                 menu.NewCheckbox("q", "Q Kullan");
                 menu.NewSlider("q.hitchance%", "Q Tutma Oranı%", 65, 1, 100);
@@ -51,7 +51,7 @@ namespace WuAIO
                 menu.NewCheckbox("r", "R Kullan");
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
                 menu.NewCheckbox("q", "Q Kullan");
                 menu.NewSlider("q.hitchance%", "Q Tutma Oranı%", 65, 1, 100);
@@ -60,7 +60,7 @@ namespace WuAIO
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
                 menu.NewCheckbox("q", "Q Kullan");
                 menu.NewCheckbox("w", "W Kullan");
@@ -73,7 +73,7 @@ namespace WuAIO
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
                 menu.NewCheckbox("q", "Q Kullan");
                 menu.NewCheckbox("w", "W Kullan");
@@ -81,7 +81,7 @@ namespace WuAIO
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
                 menu.NewCheckbox("ks.r", "KS için R ?");

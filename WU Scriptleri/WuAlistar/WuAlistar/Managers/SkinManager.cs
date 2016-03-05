@@ -13,10 +13,10 @@ namespace WuAIO.Managers
         public SkinManager(int skins)
         {
             //Creating menu
-            menu = MenuManager.AddSubMenu("Skin Değiştirici");
+            menu = MenuManager.AddSubMenu("Skin Manager");
             {
-                menu.NewCheckbox("enable", "Aktif");
-                menu.NewSlider("skinid", "Skin Numarası", 0, 0, skins, true);
+                menu.NewCheckbox("enable", "Enable");
+                menu.NewSlider("skinid", "SkinID", 0, 0, skins, true);
             }
 
             Game.OnTick += Game_OnTick;

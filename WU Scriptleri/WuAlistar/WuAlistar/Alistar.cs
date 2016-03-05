@@ -65,7 +65,7 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Gösterge");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Kapalı", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
@@ -74,18 +74,18 @@ namespace WuAIO
                 menu.NewCheckbox("e", "E");
             };
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
                 menu.NewCheckbox("r", "R Kullan");
-                menu.NewSlider("r.health%", "Can şundan azsa ulti kullan % ", 30, 1, 99);
+                menu.NewSlider("r.health%", "Can şundan azsa ulti kullan %", 30, 1, 99);
                 menu.NewSlider("r.minenemies", "Ulti için en az düşman sayısı", 2, 1, 5);
             };
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewKeybind("insec", "Alistar kafa atış oto insec", false, KeyBind.BindTypes.HoldActive, 'J');
                 menu.NewSlider("W/Q Delay", "W/Q Gecikmesi", 0, -200, 200, true);
-                menu.NewCheckbox("heal", "E Kullan", true, true);
+                menu.NewCheckbox("heal", "Kullan E", true, true);
                 menu.NewCheckbox("heal.myself", "Kendine Can bas");
                 menu.NewSlider("heal.health%", "[E]Dostların Canı şu kadarsa % is at", 50, 1, 99, true);
                 menu.NewSlider("heal.mana%", "[E]Can için en az mana%", 50, 1, 99, true);
