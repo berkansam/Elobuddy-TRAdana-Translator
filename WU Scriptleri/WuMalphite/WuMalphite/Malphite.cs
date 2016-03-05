@@ -27,66 +27,66 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("r", "R Göster");
-                menu.NewCheckbox("q", "Q Göster");
-                menu.NewCheckbox("e", "E Göster");
+                menu.NewCheckbox("r", "R");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
                 menu.NewCheckbox("ultpos&hits", "R pozisyonu çarpacak mı?");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewCheckbox("r", "R Kullan", true);
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R", true);
                 menu.NewSlider("r.minenemies", "R için en az düşman sayısı", 2, 1, 5);
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewSlider("mana%", "Min mana%", 30, 1, 99, true);
+            }
+
+            menu = MenuManager.AddSubMenu("Last Hit");
+            {
+                menu.NewCheckbox("q", "Q");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Son Vuruş");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewSlider("e.minminions", "E için en az minyon", 3, 1, 7);
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewSlider("e.minminions", "Min minions E", 3, 1, 7);
-                menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
-            }
-
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
-            {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
             menu = MenuManager.AddSubMenu("Flee");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
-                menu.NewCheckbox("interrupter", "R to interrupt spells");
-                menu.NewCheckbox("gapcloser", "Q on enemy gapcloser", true);
+                menu.NewCheckbox("interrupter", "İnterrupt için R");
+                menu.NewCheckbox("gapcloser", "Gapclose için Q", true);
                 menu.NewKeybind("ult", "Otomatik R (Düşman azsa görmezden gel)", false, KeyBind.BindTypes.HoldActive, 'J', true);
             }
         }

@@ -27,7 +27,7 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
@@ -35,46 +35,46 @@ namespace WuAIO
                 menu.NewCheckbox("r", "R");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("q.afteraa", "Q düz vuruştan sonra");
-                menu.NewCheckbox("w", "W Kullan", true, true);
-                menu.NewCheckbox("e", "E Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
+                menu.NewCheckbox("e", "E", true, true);
                 menu.NewCheckbox("e.jaq", "Q dan sonra E");
-                menu.NewCheckbox("r", "R Kullan", true, true);
+                menu.NewCheckbox("r", "R", true, true);
                 menu.NewCheckbox("r.jotmpt", "Ryi en önemli hedefe kullan");
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("q.afteraa", "Q AA'dan sonra");
-                menu.NewCheckbox("w", "W Kullan", true, true);
-                menu.NewCheckbox("e", "E Kullan", true, true);
-                menu.NewCheckbox("e.jaq", "E Q'dan Sonra");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("q.afteraa", "Q düz vuruştan sonra");
+                menu.NewCheckbox("w", "W", true, true);
+                menu.NewCheckbox("e", "E", true, true);
+                menu.NewCheckbox("e.jaq", "Q dan sonra E");
             }
 
-            menu = MenuManager.AddSubMenu("Lane temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("e", "E");
                 menu.NewSlider("e.minminions", "en az minyon E", 3, 1, 7);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Flee(kaç)");
+            menu = MenuManager.AddSubMenu("Flee");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
                 menu.NewCheckbox("ks.r.jotmpt", "[KS] R'yi en önemli hedefe at");

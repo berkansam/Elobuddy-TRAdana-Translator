@@ -30,55 +30,55 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("q", "Q Göster");
+                menu.NewCheckbox("q", "Q");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("q.smartq", "Basit Q");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("q.smartq", "Akıllı Q");
                 menu.NewCheckbox("q.saveqtododgespells", "Q ile Büyülerden Kaç", true, true);
                 menu.NewCheckbox("w.aareset", "W ile AA sıfırla", true, true);
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewCheckbox("r", "R Kullan");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R");
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("w.aareset", "W ile AA sıfırla");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("q.jimwd", "Eğer minyon ölecekse Q kullan", true, true);
                 menu.NewSlider("q.minminions", "Q için gerekli minyon sayısı", 4, 1, 4, true);
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
                 menu.NewCheckbox("dodgefireballs", "Ejderin Ateşini Dodgelemeyi dene", true, true);
                 menu.NewCheckbox("gapcloser", "Gapcloser");
             }
 
-            menu = MenuManager.AddSubMenu("Q/W Evade Ayarları");
+            menu = MenuManager.AddSubMenu("Q/W Evade Options");
             {
-                menu.NewCheckbox("q/wonlyoncombo", "Komboda dodge için skill kullan");
+                menu.NewCheckbox("q/wonlyoncombo", "Komboda Kaçmak için büyü kullan");
 
                 foreach (AIHeroClient hero in EntityManager.Heroes.Enemies)
                 {

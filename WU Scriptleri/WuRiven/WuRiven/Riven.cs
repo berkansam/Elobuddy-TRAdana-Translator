@@ -53,56 +53,56 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("w", "W Göster");
-                menu.NewCheckbox("e", "E Göster");
-                menu.NewCheckbox("r", "R Göster");
-                menu.NewCheckbox("burst", "Burst possible", true);
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R");
+                menu.NewCheckbox("burst", "Burst münkünse", true);
                 menu.NewCheckbox("flash+w", "Flash+W");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewCheckbox("r", "R Kullan");
-                menu.NewCheckbox("r.noprediction", "Prediction Kullanma En hızlı R için", true, true);
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R");
+                menu.NewCheckbox("r.noprediction", "Prediction(isabet) Kullanma En hızlı R için", true, true);
                 menu.NewSlider("r.minenemies", "R için en az düşman sayısı", 1, 1, 5, true);
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Flee(kaçma)");
+            menu = MenuManager.AddSubMenu("Flee");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("q.keepalive", "Q aktif tut");
                 menu.NewSlider("q1/q2.delay", "Q1/Q2 Animasyon İptali Gecikmesi", 250, 0, 450);
@@ -110,7 +110,7 @@ namespace WuAIO
                 menu.NewCheckbox("ks", "KS", true, true);
                 menu.NewCheckbox("ks.r.noprediction", "[KS] Prediction kullanma en hızlı R için");
                 menu.NewCheckbox("interrupter", "Interrupter", true, true);
-                menu.NewCheckbox("gapcloser", "Stun on enemy gapcloser");
+                menu.NewCheckbox("gapcloser", "Gapcloser olarak düşmanı sabitle");
                 menu.NewKeybind("burst", "Burst/FlashBurst", false, KeyBind.BindTypes.HoldActive, 'J');
             }
         }

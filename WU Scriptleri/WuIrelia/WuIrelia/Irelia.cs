@@ -28,68 +28,68 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewCheckbox("r", "R Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("q.smart", "Basit Q");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("q.smart", "Akıllı Q");
                 menu.NewCheckbox("q.gapclose", "Q on units to gapclose");
-                menu.NewCheckbox("w", "W Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
                 menu.NewCheckbox("w.beforeq", "W'yi Q'dan önce kullan");
-                menu.NewCheckbox("e", "E Kullan", true, true);
-                menu.NewCheckbox("e.jiws", "Stun atabilecekse E kullan");
-                menu.NewCheckbox("r", "R Kullan", true, true);
+                menu.NewCheckbox("e", "E", true, true);
+                menu.NewCheckbox("e.jiws", "Sabit atabilecekse E kullan");
+                menu.NewCheckbox("r", "R", true, true);
                 menu.NewCheckbox("r.jisa", "R'yi kendi kendine kullan");
                 menu.NewCheckbox("r.gapclose", "R on units to gapclose");
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan", true, true);
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W", true, true);
                 menu.NewCheckbox("w.beforeq", "W'den önce Q");
-                menu.NewCheckbox("e", "E Kullan", true, true);
+                menu.NewCheckbox("e", "E", true, true);
                 menu.NewCheckbox("e.jiws", "Stun olacaksa E kullan");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
             menu = MenuManager.AddSubMenu("Last Hit");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
             menu = MenuManager.AddSubMenu("Flee");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("e", "E Kullan");
-                menu.NewCheckbox("r", "R Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("r", "R");
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
                 menu.NewCheckbox("interrupter", "Interrupter");

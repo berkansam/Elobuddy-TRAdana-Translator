@@ -30,8 +30,8 @@ namespace WuAIO.Managers
 
                         if (CorrectVersion > AssVersion)
                         {
-                            Chat.Print("<font color='#FFFF00'>Senin Wu{0} is </font><font color='#FF0000'>Güncel Değil</font><font color='#FFFF00'>, Bu versiyon: " + CorrectVersion + "</font>", champ);
-                            Chat.Print("<font color='#FFFF00'>Senin Wu{0} is </font><font color='#FF0000'>Güncel Değil</font><font color='#FFFF00'>, Bu versiyon: " + CorrectVersion + "</font>", champ);
+                            Chat.Print("<font color='#FFFF00'>Your Wu{0} is </font><font color='#FF0000'>OUTDATED</font><font color='#FFFF00'>, The correct version is: " + CorrectVersion + "</font>", champ);
+                            Chat.Print("<font color='#FFFF00'>Your Wu{0} is </font><font color='#FF0000'>OUTDATED</font><font color='#FFFF00'>, The correct version is: " + CorrectVersion + "</font>", champ);
                         }
                     }
                 }

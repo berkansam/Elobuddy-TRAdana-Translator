@@ -29,64 +29,64 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif");
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("q", "Q Göster");
+                menu.NewCheckbox("q", "Q");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("q.aarange?qondash", "Düşman AA menzilinde ? Q kullan!");
                 menu.NewSlider("q.delay", "Q dan şu kadar mili saniye sonra E Kullan (1000ms = 1sec):", 1500, 0, 1900);
-                menu.NewCheckbox("w", "W Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
                 menu.NewCheckbox("w.aareset", "AA sıfırlama için W Kullan");
-                menu.NewCheckbox("e", "E Kullan", true, true);
+                menu.NewCheckbox("e", "E", true, true);
                 menu.NewCheckbox("e.aaj", "Eğer Stunlayabilecekse otomatik Kullan", false);
-                menu.NewCheckbox("r", "R Kullan", true, true);
+                menu.NewCheckbox("r", "R", true, true);
                 menu.NewCheckbox("r.1v1logic", "1v1 de R Kullan");
                 menu.NewSlider("r.minenemies", "R için gerekli düşman", 2, 1, 5, true);
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("q.aarange?justqondash", "Düşman AA menzilinde ? Q Kullan!");
                 menu.NewSlider("q.delay", "Q'dan şu kadar milisaniye sonra E Kullan (1000ms = 1sec):", 1500, 0, 1900, true);
-                menu.NewCheckbox("w", "W Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
                 menu.NewCheckbox("w.aareset", "AA reset için W Kullan");
-                menu.NewCheckbox("e", "E Kullan", true, true);
+                menu.NewCheckbox("e", "E", true, true);
                 menu.NewSlider("mana%", "en az mana %", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewCheckbox("q.jimwd", "Minyon ölecekse Q kullan");
-                menu.NewCheckbox("w", "W Kullan", true, true);
-                menu.NewCheckbox("e", "E Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
+                menu.NewCheckbox("e", "E", true, true);
                 menu.NewSlider("e.minminions", "E için en az minyon", 3, 1, 7);
-                menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
-            }
-
-            menu = MenuManager.AddSubMenu("Son  Vuruş");
-            {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
                 menu.NewSlider("mana%", "en az mana %", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Last Hit");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("e", "E Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("mana%", "en az mana %", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
+            {
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("e", "E");
+                menu.NewSlider("mana%", "en az mana %", 30, 1, 99, true);
+            }
+
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
                 menu.NewKeybind("wardjump", "Ward Jump", false, KeyBind.BindTypes.HoldActive, 'T');

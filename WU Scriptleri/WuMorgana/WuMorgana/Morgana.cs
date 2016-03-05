@@ -34,62 +34,62 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
-                menu.NewCheckbox("r", "R Göster");
-                menu.NewCheckbox("q", "Q Göster");
-                menu.NewCheckbox("e", "E Göster");
-                menu.NewCheckbox("w", "W Göster", false);
+                menu.NewCheckbox("r", "R");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("e", "E");
+                menu.NewCheckbox("w", "W", false);
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewSlider("q.hitchance%", "Q Tutma Oranı%", 85, 1, 100);
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("r", "R Kullan", true);
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("r", "R", true);
                 menu.NewSlider("r.minenemies", "R için en az düşman sayısı", 2, 1, 5);
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewSlider("q.hitchance%", "Q Tutma Oranı%", 85, 1, 100);
-                menu.NewCheckbox("w", "W Kullan", true, true);
-                menu.NewCheckbox("w.jitii", "Just W if target is immobile");
+                menu.NewCheckbox("w", "W", true, true);
+                menu.NewCheckbox("w.jitii", "Hedef haraketsiz kalacaksa W");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("w", "W Kullan");
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("w.minminions", "W için gerekli minyon sayısı", 3, 1, 7);
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
             menu = MenuManager.AddSubMenu("Flee");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS", false);
                 menu.NewCheckbox("aaminionswhenallynear", "AA minions when ally near?");
-                menu.NewCheckbox("autoqonimmobile", "Auto Q on immobile enemies", true);
-                menu.NewCheckbox("autoqonflash", "Auto Q on flash", true);
-                menu.NewCheckbox("autoqondash", "Auto Q on dash", true);
-                menu.NewCheckbox("autowonimmobile", "Auto W on immobile enemies", true);
-                menu.NewCheckbox("gapcloser", "Q on enemy gapcloser", true);
+                menu.NewCheckbox("autoqonimmobile", "Hareketsiz hedeflere oto Q", true);
+                menu.NewCheckbox("autoqonflash", "Flash Otomatik Q", true);
+                menu.NewCheckbox("autoqondash", "Q ile dürt", true);
+                menu.NewCheckbox("autowonimmobile", "Sabit hedeflere oto W", true);
+                menu.NewCheckbox("gapcloser", "Gapclose için Q", true);
             }
 
             //---------------------------------------||   EMenu   ||------------------------------------------
@@ -105,11 +105,11 @@ namespace WuAIO
 
             EMenu.AddSeparator();
 
-            EMenu.Add("UseShield?", new CheckBox("Use Shield?"));
+            EMenu.Add("UseShield?", new CheckBox("Kalkan Kullan"));
 
             EMenu.AddSeparator();
 
-            EMenu.AddGroupLabel("Use shield for:");
+            EMenu.AddGroupLabel("Kalkan kullan şuna:");
 
             EMenu.AddSeparator();
 

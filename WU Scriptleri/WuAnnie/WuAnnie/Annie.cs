@@ -31,7 +31,7 @@ namespace WuAIO
         {
             base.CreateMenu();
 
-            var menu = MenuManager.AddSubMenu("Göstergeler");
+            var menu = MenuManager.AddSubMenu("Drawings");
             {
                 menu.NewCheckbox("disable", "Deaktif", false);
                 menu.NewCheckbox("damageindicator", "Hasar Tespiti");
@@ -40,53 +40,53 @@ namespace WuAIO
                 menu.NewCheckbox("ultpos&hits", "Ulti pozisyonu Vuracak mı");
             }
 
-            menu = MenuManager.AddSubMenu("Kombo");
+            menu = MenuManager.AddSubMenu("Combo");
             {
                 menu.NewCheckbox("aa", "AA ?");
                 menu.NewCheckbox("aa.maxrange", "AA en fazla menzil ?", false);
-                menu.NewCheckbox("q", "Q Kullan", true, true);
-                menu.NewCheckbox("w", "W Kullan");
-                menu.NewCheckbox("r", "R Kullan", true, true);
+                menu.NewCheckbox("q", "Q", true, true);
+                menu.NewCheckbox("w", "W");
+                menu.NewCheckbox("r", "R", true, true);
                 menu.NewCheckbox("r.jiws", "Stunlanacaksa R kullan");
                 menu.NewSlider("r.minenemies", "R için gerekli düşman", 2, 1, 5, true);
             }
 
-            menu = MenuManager.AddSubMenu("Dürtme");
+            menu = MenuManager.AddSubMenu("Harass");
             {
                 menu.NewCheckbox("aa.maxrange", "AA en fazla menzil ?", false);
-                menu.NewCheckbox("q", "Q Kullan", true, true);
-                menu.NewCheckbox("w", "W Kullan");
+                menu.NewCheckbox("q", "Q", true, true);
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Lane Temizleme");
+            menu = MenuManager.AddSubMenu("Lane Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
+                menu.NewCheckbox("q", "Q");
                 menu.NewSlider("q.mode", "Q mode, 0 : Her zaman, 1 : Düşman Yakında olmadıkça, 2 : Hiç Kullanma", 1, 0, 2);
-                menu.NewCheckbox("w", "W Kullan", true, true);
+                menu.NewCheckbox("w", "W", true, true);
                 menu.NewSlider("w.minminions", "Min minions W", 3, 1, 7);
-                menu.NewSlider("mana%", "en az mana %", 30, 1, 99, true);
+                menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
             menu = MenuManager.AddSubMenu("Last Hit");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewSlider("q.mode", "Q mode, 0 : Always, 1 : Düşman Yakında olmadıkça, 2 : Hiç Kullanma", 0, 0, 2);
+                menu.NewCheckbox("q", "Q");
+                menu.NewSlider("q.mode", "Q mode, 0 : Her zaman, 1 : Düşman Yakında olmadıkça, 2 : Hiç Kullanma", 0, 0, 2);
             }
 
-            menu = MenuManager.AddSubMenu("Jungle Temizleme");
+            menu = MenuManager.AddSubMenu("Jungle Clear");
             {
-                menu.NewCheckbox("q", "Q Kullan");
-                menu.NewCheckbox("w", "W Kullan");
+                menu.NewCheckbox("q", "Q");
+                menu.NewCheckbox("w", "W");
                 menu.NewSlider("mana%", "en az mana%", 30, 1, 99, true);
             }
 
-            menu = MenuManager.AddSubMenu("Ek");
+            menu = MenuManager.AddSubMenu("Misc");
             {
                 menu.NewCheckbox("ks", "KS");
-                menu.NewCheckbox("stackstun", "Stack stun");
+                menu.NewCheckbox("stackstun", "Sabitlemek için yük kas");
                 menu.NewCheckbox("interrupter", "Interrupter");
-                menu.NewCheckbox("gapcloser", "Stun on enemy gapcloser");
+                menu.NewCheckbox("gapcloser", "Düşmanı sabitle");
                 menu.NewKeybind("autor", "Otomatik R hedefe (Az düşmana Aldırma):", false, KeyBind.BindTypes.HoldActive, 'J', true);
                 menu.NewKeybind("autoflash+r", "Auto Flash + R (Az düşman diye aldırmamazlık yapma):", false, KeyBind.BindTypes.HoldActive, 'J', true);
             }
