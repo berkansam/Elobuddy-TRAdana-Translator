@@ -105,18 +105,18 @@ namespace Gnaaar
                     Menu.AddGroupLabel(GroupName);
 
                     Menu.AddLabel("Küçükken");
-                    _useQ = Menu.Add("useQ", new CheckBox("Q Kullan"));
-                    _useE = Menu.Add("useE", new CheckBox("E Kullan"));
+                    _useQ = Menu.Add("useQ", new CheckBox("Kullan Q"));
+                    _useE = Menu.Add("useE", new CheckBox("Kullan E"));
                     Menu.AddLabel("Kocamaaaan");
-                    _useQMega = Menu.Add("useQMega", new CheckBox("Q Kullan"));
-                    _useWMega = Menu.Add("useWMega", new CheckBox("W Kullan"));
-                    _useEMega = Menu.Add("useEMega", new CheckBox("E Kullan"));
-                    _useRMega = Menu.Add("useRMega", new CheckBox("R Kullan"));
+                    _useQMega = Menu.Add("useQMega", new CheckBox("Kullan Q"));
+                    _useWMega = Menu.Add("useWMega", new CheckBox("Kullan W"));
+                    _useEMega = Menu.Add("useEMega", new CheckBox("Kullan E"));
+                    _useRMega = Menu.Add("useRMega", new CheckBox("Kullan R"));
 
                     Menu.AddLabel("Gelişmiş Seçenekler:");
 
-                    _useItems = Menu.Add("comboUseItems", new CheckBox("Use items"));
-                    _useIgnite = Menu.Add("comboUseIgnite", new CheckBox("Use Ignite"));
+                    _useItems = Menu.Add("comboUseItems", new CheckBox("İtemleri Kullan"));
+                    _useIgnite = Menu.Add("comboUseIgnite", new CheckBox("Tutuştur Kullan"));
                 }
 
                 public static void Initialize()
@@ -151,10 +151,10 @@ namespace Gnaaar
                     Menu.AddGroupLabel(GroupName);
 
                     Menu.AddLabel("Küçükken");
-                    _useQ = Menu.Add("harassUseQ", new CheckBox("Q Kullan"));
-                    Menu.AddLabel("Kocamaaan");
-                    _useQMega = Menu.Add("harassUseQMega", new CheckBox("Q Kullan"));
-                    _useWMega = Menu.Add("harassUseWMega", new CheckBox("W Kullan"));
+                    _useQ = Menu.Add("harassUseQ", new CheckBox("Kullan Q"));
+                    Menu.AddLabel("Kocamaaaan");
+                    _useQMega = Menu.Add("harassUseQMega", new CheckBox("Kullan Q"));
+                    _useWMega = Menu.Add("harassUseWMega", new CheckBox("Kullan W"));
                 }
 
                 public static void Initialize()
@@ -201,13 +201,13 @@ namespace Gnaaar
                     Menu.AddGroupLabel(GroupName);
 
                     Menu.AddLabel("Küçükken");
-                    _useQ = Menu.Add("waveUseQ", new CheckBox("Q Kullan"));
+                    _useQ = Menu.Add("waveUseQ", new CheckBox("Kullan Q"));
                     Menu.AddLabel("Kocamaaaan");
-                    _useQMega = Menu.Add("waveUseQMega", new CheckBox("Q Kullan"));
-                    _useWMega = Menu.Add("waveUseWMega", new CheckBox("W Kullan"));
-                    _useEMega = Menu.Add("waveUseEMega", new CheckBox("E Kullan"));
+                    _useQMega = Menu.Add("waveUseQMega", new CheckBox("Kullan Q"));
+                    _useWMega = Menu.Add("waveUseWMega", new CheckBox("Kullan W"));
+                    _useEMega = Menu.Add("waveUseEMega", new CheckBox("Kullan E"));
 
-                    Menu.AddLabel("Advanced features:");
+                    Menu.AddLabel("Gelişmiş Seçenekler:");
 
                     _useItems = Menu.Add("waveUseItems", new CheckBox("İtemleri Kullan"));
                 }
@@ -256,11 +256,11 @@ namespace Gnaaar
                     Menu.AddGroupLabel(GroupName);
 
                     Menu.AddLabel("Küçükken");
-                    _useQ = Menu.Add("jungleUseQ", new CheckBox("Q Kullan"));
-                    Menu.AddLabel("Kocaman");
-                    _useQMega = Menu.Add("jungleUseQMega", new CheckBox("Q Kullan"));
-                    _useWMega = Menu.Add("jungleUseWMega", new CheckBox("W Kullan"));
-                    _useEMega = Menu.Add("jungleUseEMega", new CheckBox("E Kullan"));
+                    _useQ = Menu.Add("jungleUseQ", new CheckBox("Kullan Q"));
+                    Menu.AddLabel("Kocamaaaan");
+                    _useQMega = Menu.Add("jungleUseQMega", new CheckBox("Kullan Q"));
+                    _useWMega = Menu.Add("jungleUseWMega", new CheckBox("Kullan W"));
+                    _useEMega = Menu.Add("jungleUseEMega", new CheckBox("Kullan E"));
 
                     Menu.AddLabel("Gelişmiş Seçenekler:");
 
@@ -336,11 +336,11 @@ namespace Gnaaar
                 Menu = Config.Menu.AddSubMenu(MenuName);
 
                 _useTiamat = Menu.Add("itemsTiamat", new CheckBox("Kullan Tiamat"));
-                _useHydra = Menu.Add("itemsHydra", new CheckBox("Kullan Hydra"));
+                _useHydra = Menu.Add("itemsHydra", new CheckBox("Kullan  Hydra"));
                 _useCutlass = Menu.Add("itemsCutlass", new CheckBox("Kullan Bilgewater Palası"));
                 _useBotrk = Menu.Add("itemsBotrk", new CheckBox("Kullan Mahvolmuş Kılıcı"));
-                _useYoumuu = Menu.Add("itemsYoumuu", new CheckBox("Kullan Yuumo"));
-                _useRanduin = Menu.Add("itemsRanduin", new CheckBox("Kullan Randuin Alameti"));
+                _useYoumuu = Menu.Add("itemsYoumuu", new CheckBox("Kullan Youmuu"));
+                _useRanduin = Menu.Add("itemsRanduin", new CheckBox("Kullan Randuin"));
                 _useFace = Menu.Add("itemsFace", new CheckBox("Kullan Dağın Sureti"));
             }
 

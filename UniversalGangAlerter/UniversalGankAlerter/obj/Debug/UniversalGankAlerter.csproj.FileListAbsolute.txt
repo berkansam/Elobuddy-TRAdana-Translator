@@ -1,2 +1,12 @@
 C:\Users\MFI\Desktop\UniversalGankAlerter-master\UniversalGankAlerter\bin\Release\TheCheater.exe.config
 C:\Users\MFI\Desktop\Çeviri Dünyası\Elobuddy-TRAdana\UniversalGangAlerter\UniversalGankAlerter\bin\Release\TheCheater.exe.config
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\TheCheater.exe.config
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\TheCheater.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\TheCheater.pdb
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\EloBuddy.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\EloBuddy.SDK.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\SharpDX.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\bin\Release\Newtonsoft.Json.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\obj\Debug\TheCheater.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\UniversalGangAlerter\UniversalGankAlerter\obj\Debug\TheCheater.pdb

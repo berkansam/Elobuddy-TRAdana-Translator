@@ -95,7 +95,7 @@ namespace TheSupport
                     var entry = spellEntry;
                     var slot = entry.Key;
 
-                    var comboBox = new ComboBox(slot + " minimum HitChance value", HitChances.Select(o => o.ToString()), 1);
+                    var comboBox = new ComboBox(slot + " En az isabet oranı", HitChances.Select(o => o.ToString()), 1);
                     comboBox.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                     {
                         var newValue = (HitChance) Enum.Parse(typeof (HitChance), ((ComboBox) sender).SelectedText);
@@ -129,7 +129,7 @@ namespace TheSupport
                 {
                     menu.AddSeparator();
                     menu.AddGroupLabel("Mana Yardımcısı");
-                    var manaSlider = new Slider("Set to 0 to ingore mana usage", ManaModes[entry.Key]);
+                    var manaSlider = new Slider("Mana yardımcısını umursama", ManaModes[entry.Key]);
                     menu.Add("manaLimiter", manaSlider);
                     foreach (var spellUsage in entry.Value)
                     {

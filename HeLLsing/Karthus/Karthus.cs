@@ -47,7 +47,7 @@ namespace Karthus
 
         public bool IsDead
         {
-            get { return Player.Instance.Buffs.Any(o => o.DisplayName == "KarthusDefile"); }
+            get { return Player.Instance.Buffs.Any(o => o.Name == "KarthusDeathDefiedBuff"); }
         }
 
         private readonly HitChance[] _hitchances =
@@ -61,7 +61,7 @@ namespace Karthus
         private Karthus()
         {
             // Initialize properties
-            Menu = MainMenu.AddMenu("Karthus", "karthus", "Karthus - King Killsteal");
+            Menu = MainMenu.AddMenu("Karthus 3K", "karthus", "Karthus - King Killsteal");
             SpellHandler = new SpellHandler(this,
                 new Spell.Skillshot(SpellSlot.Q, 875, SkillShotType.Circular, spellSpeed: int.MaxValue, spellWidth: 160 * 2, castDelay: 750),
                 new Spell.Skillshot(SpellSlot.W, 1000, SkillShotType.Circular, spellWidth: 100),
@@ -76,11 +76,11 @@ namespace Karthus
             Menu.AddLabel("Çeviri TRAdana");
 
             Menu.AddSeparator();
-            Menu.AddGroupLabel("Genel");
-            Menu.Add("ComboWhileDead", new CheckBox("Ölünce kombo yap"));
+            Menu.AddGroupLabel("Büyüler için isabet oranı");
+            Menu.Add("ComboWhileDead", new CheckBox("Combo while dead"));
 
             Menu.AddSeparator();
-            Menu.AddGroupLabel("Büyüler için isabet oranı");
+            Menu.AddGroupLabel("Hitchances for spells");
             Menu.AddLabel("en hızlı büyü kullanımı için minimum olsun low. varsayılan medium.");
             RegisterHitchances(Menu);
 
@@ -100,7 +100,7 @@ namespace Karthus
             DrawingMenu.Add("Q", new CheckBox("Göster Q Menzili"));
             DrawingMenu.Add("E", new CheckBox("Göster E Menzili", false));
             DrawingMenu.Add("W", new CheckBox("Göster W Menzili"));
-            DrawingMenu.Add("W2", new CheckBox("Göster W En fazla menzili"));
+            DrawingMenu.Add("W2", new CheckBox("Göster W en fazla menzili"));
 
             DrawingMenu.AddSeparator();
             DrawingMenu.AddGroupLabel("Ulti (R) Bilgisi");

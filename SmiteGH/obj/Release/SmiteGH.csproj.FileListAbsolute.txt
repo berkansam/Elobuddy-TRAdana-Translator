@@ -9,3 +9,14 @@ C:\Users\MFI\Desktop\EloBuddyAddons-master\SmiteGH\bin\Release\Newtonsoft.Json.d
 C:\Users\MFI\Desktop\EloBuddyAddons-master\SmiteGH\obj\Release\SmiteGH.csprojResolveAssemblyReference.cache
 C:\Users\MFI\Desktop\EloBuddyAddons-master\SmiteGH\obj\Release\SmiteGH.exe
 C:\Users\MFI\Desktop\EloBuddyAddons-master\SmiteGH\obj\Release\SmiteGH.pdb
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\SmiteGH.exe.config
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\SmiteGH.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\SmiteGH.pdb
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\EloBuddy.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\EloBuddy.SDK.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\SharpDX.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\bin\Release\Newtonsoft.Json.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\obj\Release\SmiteGH.csprojResolveAssemblyReference.cache
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\obj\Release\SmiteGH.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\SmiteGH\obj\Release\SmiteGH.pdb

@@ -148,7 +148,7 @@ namespace Xerath
                     _useW = Menu.Add("harassUseW", new CheckBox("Kullan W"));
                     _useE = Menu.Add("harassUseE", new CheckBox("Kullan E"));
 
-                    Menu.AddLabel("Advanced features:");
+                    Menu.AddLabel("Gelişmiş Seçenekler:");
 
                     _extraRangeQ = Menu.Add("harassExtraRangeQ", new Slider("Ekstra Q Menzili", 200, 0, 200));
                     _mana = Menu.Add("harassMana", new Slider("Mana Kullanımı (%)", 30));

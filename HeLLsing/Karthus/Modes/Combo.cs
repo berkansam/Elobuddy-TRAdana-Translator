@@ -16,11 +16,11 @@ namespace Karthus.Modes
             SpellUsage = new Dictionary<SpellSlot, CheckBox>();
 
             // Setup menu
-            Menu.AddGroupLabel("Büyü Kullanımı");
-            SpellUsage[SpellSlot.Q] = Menu.Add("Q", new CheckBox("Kullan Q"));
-            SpellUsage[SpellSlot.W] = Menu.Add("W", new CheckBox("Kullan W"));
-            SpellUsage[SpellSlot.E] = Menu.Add("E", new CheckBox("Kullan E"));
-            SpellUsage[SpellSlot.R] = Menu.Add("R", new CheckBox("Kullan R", false));
+            Menu.AddGroupLabel("Spell usage");
+            SpellUsage[SpellSlot.Q] = Menu.Add("Q", new CheckBox("Use Q"));
+            SpellUsage[SpellSlot.W] = Menu.Add("W", new CheckBox("Use W"));
+            SpellUsage[SpellSlot.E] = Menu.Add("E", new CheckBox("Use E"));
+            SpellUsage[SpellSlot.R] = Menu.Add("R", new CheckBox("Use R", false));
         }
 
         public override bool ShouldBeExecuted(Orbwalker.ActiveModes activeModes)

@@ -139,7 +139,7 @@ namespace Kindred
                     // Initialize group
                     Menu.AddGroupLabel(GroupName);
 
-                    _useW = Menu.Add("harassUseW", new CheckBox("Kullan W"));
+                    _useW = Menu.Add("harassUseW", new CheckBox("Use W"));
                 }
 
                 public static void Initialize()

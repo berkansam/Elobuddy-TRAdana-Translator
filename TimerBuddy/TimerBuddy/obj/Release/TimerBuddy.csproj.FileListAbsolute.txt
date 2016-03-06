@@ -11,3 +11,16 @@ C:\Users\MFI\Desktop\EloBuddy-master\TimerBuddy\TimerBuddy\bin\Release\SharpDX.d
 C:\Users\MFI\Desktop\EloBuddy-master\TimerBuddy\TimerBuddy\bin\Release\Newtonsoft.Json.dll
 C:\Users\MFI\Desktop\EloBuddy-master\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.exe
 C:\Users\MFI\Desktop\EloBuddy-master\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.pdb
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\TimerBuddy.exe.config
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\TimerBuddy.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\TimerBuddy.pdb
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\EloBuddy.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\EloBuddy.SDK.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\SharpDX.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\bin\Release\Newtonsoft.Json.dll
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.csprojResolveAssemblyReference.cache
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.Properties.Resources.resources
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.csproj.GenerateResource.Cache
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.exe
+C:\Users\MFI\Documents\GitHub\Elobuddy-TRAdana-Translator\TimerBuddy\TimerBuddy\obj\Release\TimerBuddy.pdb

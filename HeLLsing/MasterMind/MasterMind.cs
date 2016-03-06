@@ -39,7 +39,6 @@ namespace MasterMind
             Menu.AddLabel("FPS drop yapmadan eğlenebilirsiniz.");
             Menu.AddSeparator();
             Menu.AddLabel("Alt Menulere göz atin, kendinize göre düzenleyin, gerek yok bildiğin ayarlar işte onu göster bunu göster");
-            Menu.AddLabel("Çeviri-TRAdana");
 
             // Initialize properties
             IsSpectatorMode = Bootstrap.IsSpectatorMode;
