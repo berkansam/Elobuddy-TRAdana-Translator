@@ -9,13 +9,13 @@ namespace Aka_s_Vayne_reworked.Logic
     {
         public static void OnExecute()
         {
-            if (!MenuManager.CondemnMenu["UseEauto"].Cast<CheckBox>().CurrentValue && !Program.E.IsReady())
+            if (!MenuManager.CondemnMenu["UseEauto"].Cast<CheckBox>().CurrentValue)
             {
                 return;
             }
 
             var CondemnTarget = NewELogic.GetCondemnTarget(Variables._Player.ServerPosition);
-            if (CondemnTarget.IsValidTarget())
+            if (CondemnTarget.IsValidTarget() && Program.E.IsReady())
             {
                 Program.E.Cast(CondemnTarget);
             }
