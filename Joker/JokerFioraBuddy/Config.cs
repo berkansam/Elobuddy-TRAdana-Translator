@@ -18,16 +18,16 @@ namespace JokerFioraBuddy
         static Config() 
         {
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("Joker Fiora addonuna hoşgeldin ceviri tradana!");
+            Menu.AddGroupLabel("Joker Fiora addonuna hoşgeldin ceviri tradana");
             Menu.AddLabel("Özellikler:");
             Menu.AddLabel("- Epic Combo! 100-0 in 2 seconds.");
-            Menu.AddLabel("- Otomatik Blok (W).");
+            Menu.AddLabel("- Otomatik Blok (W.");
             Menu.AddLabel("- Otomatik Engelleme Büyü Dışındaki Hasarlar (W).");
             Menu.AddLabel("- Dürtme Modunda Her büyüyü kullan.");
-            Menu.AddLabel("- Q ile Son vuruş yap.");
+            Menu.AddLabel("-  Q ile Son vuruş yap");
             Menu.AddLabel("- Lane Temizleme Modunda Kullan Q/E.");
-            Menu.AddLabel("- Flee Kaçma Modunda Kullan Q.");
-            Menu.AddLabel("- Basir Target Selector.");
+            Menu.AddLabel("-  Flee Kaçma Modunda Kullan Q.");
+            Menu.AddLabel("- Akıllı Hedef Seçme.");
             Menu.AddLabel("- Otomatik Tutuştur!");
             Menu.AddLabel("- Şampiyon 1 vurmada öldürme");
             Menu.AddLabel("Tamamen Özelleştirilebilir! Youumu / Hydra / Mahvolmuş Kılıç");
@@ -65,11 +65,11 @@ namespace JokerFioraBuddy
 
             static Drawings()
             {
-                Menu = Config.Menu.AddSubMenu("Göstergeler");
-                Menu.AddGroupLabel("Göstergeler");
+                Menu = Config.Menu.AddSubMenu("Drawings");
+                Menu.AddGroupLabel("Drawings");
                 Menu.Add("drawingKillable", new CheckBox("Öldürülebilir şampiyon olduğunda yaz"));
                 Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster"));
-                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster"));
+                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster"));      
             }
 
             public static void Initialize()
@@ -94,7 +94,7 @@ namespace JokerFioraBuddy
 
             static ShieldBlock()
             {
-                Menu = Config.Menu.AddSubMenu("Büyü Engelleme");
+                Menu = Config.Menu.AddSubMenu("Spell Block");
                 Menu.AddGroupLabel("Çekirdek Ayarları");
                 Menu.Add("blockSpellsW", new CheckBox("Otomatik Engelleme (W)"));
                 Menu.Add("evade", new CheckBox("Evade İle Uyumlu Çalışma"));
@@ -120,7 +120,7 @@ namespace JokerFioraBuddy
 
             static Dispell()
             {
-                Menu = Config.Menu.AddSubMenu("Büyü olmayanları engelle");
+                Menu = Config.Menu.AddSubMenu("Dispeller");
                 Menu.AddGroupLabel("Çekirdek Ayarları");
                 Menu.Add("dispellSpellsW", new CheckBox("Otomatik Engelleme Büyü dışındaki hasarlar (W)"));
                Menu.AddSeparator();
@@ -174,7 +174,7 @@ namespace JokerFioraBuddy
             }
 
 
-            public static Slider SkinSlider = new Slider("Skin Numarası : ({0})", 0, 0, 4);
+            public static Slider SkinSlider = new Slider("SkinNumarası : ({0})", 0, 0, 4);
             public static CheckBox SkinEnable = new CheckBox("Aktif");
             public static CheckBox EvolveEnable = new CheckBox("Aktif");
             public static CheckBox qdraw = new CheckBox("Göster Q", false);
@@ -182,11 +182,11 @@ namespace JokerFioraBuddy
             public static CheckBox edraw = new CheckBox("Göster E", false);
             public static CheckBox rdraw = new CheckBox("Göster R", false);
             static Color[] colorlist = {Color.Green,Color.Aqua,Color.Black,Color.Blue,Color.Firebrick,Color.Gold,Color.Pink,Color.Violet,Color.White,Color.Lime,Color.LimeGreen,Color.Yellow,Color.Magenta};
-            static Slider masterColorSlider = new Slider("Color Slider",0,0,colorlist.Length-1);
+            static Slider masterColorSlider = new Slider("Renk Değiştrici",0,0,colorlist.Length-1);
 
             static Misc()
             {
-                Menu = Config.Menu.AddSubMenu("Ek");
+                Menu = Config.Menu.AddSubMenu("Misc");
                 Menu.AddGroupLabel("Skin Değiştirici");
                 Menu.Add("skinhack", SkinEnable);
                 Menu.Add("skinid", SkinSlider);
@@ -308,13 +308,13 @@ namespace JokerFioraBuddy
                 static Combo()
                 {
                     Menu.AddGroupLabel("Combo");
-                    Menu.Add("comboUseQ", new CheckBox("Q Kullan"));
-                    Menu.Add("comboUseE", new CheckBox("E Kullan"));
-                    Menu.Add("comboUseR", new CheckBox("R Kullan"));
+                    Menu.Add("comboUseQ", new CheckBox("Kullan Q"));
+                    Menu.Add("comboUseE", new CheckBox("Kullan E"));
+                    Menu.Add("comboUseR", new CheckBox("Kullan R"));
                     Menu.Add("useRSlider", new Slider("R kullanmak için şu kadar can  ({0}%)", 70));
                     Menu.Add("comboUseTiamatHydra", new CheckBox("Kullan Tiamat / Hydra"));
                     Menu.Add("comboUseCutlassBOTRK", new CheckBox("Kullan Bilgewater Cutlass / Mahbolmuş Kılıç"));
-                    Menu.Add("comboUseYomuus", new CheckBox("Kullan Youmuu's Ghostblade"));
+                    Menu.Add("comboUseYomuus", new CheckBox("Kullan Youmuu"));
                     Menu.AddSeparator();
                 }
 
@@ -357,12 +357,12 @@ namespace JokerFioraBuddy
 
                 static Harass()
                 {
-                    Menu.AddGroupLabel("Dürtme");
-                    Menu.Add("harassUseQ", new CheckBox("Q Kullan"));
-                    Menu.Add("harassUseE", new CheckBox("E Kullan"));
-                    Menu.Add("harassUseR", new CheckBox("R Kullan", false));
-                    Menu.Add("harassUseTiamatHydra", new CheckBox("Kullan Tiamat / Hydra"));
-                    Menu.Add("harassMana", new Slider("En Fazla Mana Kullanımı yüzde ({0}%)", 40));
+                    Menu.AddGroupLabel("Harrass");
+                    Menu.Add("harassUseQ", new CheckBox("Kullan Q"));
+                    Menu.Add("harassUseE", new CheckBox("Kullan E"));
+                    Menu.Add("harassUseR", new CheckBox("Kullan R", false));
+                    Menu.Add("harassUseTiamatHydra", new CheckBox("Use Tiamat / Hydra"));
+                    Menu.Add("harassMana", new Slider("Maximum mana usage in percent ({0}%)", 40));
                 }
 
                 public static void Initialize()
@@ -395,9 +395,9 @@ namespace JokerFioraBuddy
 
                 static LaneClear()
                 {
-                    Menu.AddGroupLabel("Lane Temizleme");
-                    Menu.Add("lcUseQ", new CheckBox("Q Kullan"));
-                    Menu.Add("lcUseE", new CheckBox("E Kullan"));
+                    Menu.AddGroupLabel("Lane Clear");
+                    Menu.Add("lcUseQ", new CheckBox("Kullan Q"));
+                    Menu.Add("lcUseE", new CheckBox("Kullan E"));
                     Menu.Add("lcUseTiamatHydra", new CheckBox("Kullan Tiamat / Hydra"));
                     Menu.Add("lcMana", new Slider("En fazla mana kullanımı ({0}%)", 40));
                 }
@@ -422,8 +422,8 @@ namespace JokerFioraBuddy
 
                 static LastHit()
                 {
-                    Menu.AddGroupLabel("Son Vuruş");
-                    Menu.Add("lhUseQ", new CheckBox("Q Kullan"));
+                    Menu.AddGroupLabel("Last Hit");
+                    Menu.Add("lhUseQ", new CheckBox("Kullan Q"));
                     Menu.Add("lhMana", new Slider("En fazla mana kullanımı ({0}%)", 40));
                 }
 
@@ -442,8 +442,8 @@ namespace JokerFioraBuddy
 
                 static Flee()
                 {
-                    Menu.AddGroupLabel("Flee(Kaç)");
-                    Menu.Add("fleeUseQ", new CheckBox("Q Kullan"));
+                    Menu.AddGroupLabel("Flee");
+                    Menu.Add("fleeUseQ", new CheckBox("Kullan Q"));
                 }
 
                 public static void Initialize()

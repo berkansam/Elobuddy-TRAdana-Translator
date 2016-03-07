@@ -27,7 +27,7 @@ namespace JokerFioraBuddy
                         {
                             gitVersion = new System.Version(string.Format("{0}.{1}.{2}.{3}", match.Groups[1], match.Groups[2], match.Groups[3], match.Groups[4]));
 
-                            Chat.Print("<font color='#15C3AC'>Joker Fiora - The Grand Duelist: </font>" + "<font color='#C0C0C0'> Joker Fiora Kullandiginiz icin Tesekkurler <3 ceviri tradana!" + "</font>");
+                            Chat.Print("<font color='#15C3AC'>Joker Fiora - The Grand Duelist: </font>" + "<font color='#C0C0C0'>Thanks for using Joker Fiora <3!" + "</font>");
                         }
                     }
                 }

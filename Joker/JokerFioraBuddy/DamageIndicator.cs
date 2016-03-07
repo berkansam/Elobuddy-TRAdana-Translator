@@ -51,13 +51,13 @@ namespace JokerFioraBuddy
                     if (damage > unit.Health)
                     {
                         TextKillable.Position = new Vector2((int)barPos.X - 15, (int)barPos.Y + yOffset + 20);
-                        TextKillable.TextValue = "Komboyla öldürülebilir!";
+                        TextKillable.TextValue = "Killable with Combo!";
                         TextKillable.Color = System.Drawing.Color.LimeGreen;
                     }
                     else
                     {
                         TextKillable.Position = new Vector2((int)barPos.X, (int)barPos.Y + yOffset + 20);
-                        TextKillable.TextValue = ("Öldürülemez!");
+                        TextKillable.TextValue = "Not Killable!";
                         TextKillable.Color = System.Drawing.Color.Red;
                     }
 
