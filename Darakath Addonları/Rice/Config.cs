@@ -65,7 +65,7 @@ namespace Rice
                     MiscMenu.AddGroupLabel("Otomatik Yük");
                     _AutoStackQ = MiscMenu.Add(
                         "AutoStackQ",
-                        new KeyBind("Auto Stack Passive", false, KeyBind.BindTypes.PressToggle, 'Z'));
+                        new KeyBind("Pasif kasma tuşu", false, KeyBind.BindTypes.PressToggle, 'Z'));
 
                     _AutoStackQ.OnValueChange += delegate(ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
                         {
@@ -76,7 +76,7 @@ namespace Rice
                             Program.StackingStatus.Color = args.NewValue ? Color.LimeGreen : Color.Red;
                         };
 
-                    _AutoStackMana = MiscMenu.Add("AutoStackMana", new Slider("gereken mana %", 30));
+                    _AutoStackMana = MiscMenu.Add("AutoStackMana", new Slider("En az mana yüzde", 30));
 
                     _MaxStacks = MiscMenu.Add("MaxStacks", new Slider("Şu Kadar Yük Tut", 3, 1, 4));
 
@@ -123,7 +123,7 @@ namespace Rice
                 static Humanizer()
                 {
                     MiscMenu.AddGroupLabel("İnsancıl Ayar");
-                    _MinDelay = MiscMenu.Add("minDelay", new Slider("En az Gecikme", 10, 0, 200));
+                    _MinDelay = MiscMenu.Add("minDelay", new Slider(""En az Gecikme", 10, 0, 200));
                     _MaxDelay = MiscMenu.Add("maxDelay", new Slider("En fazla Gecikme", 75, 0, 250));
                     _Humanize = MiscMenu.Add("humanize", new CheckBox("İnsancıl", false));
                 }
@@ -198,7 +198,7 @@ namespace Rice
                 static Combo()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Kombo");
+                    ModesMenu.AddGroupLabel("Combo");
                     _useQ = ModesMenu.Add("comboQ", new CheckBox("Kullan Q"));
                     _useW = ModesMenu.Add("comboW", new CheckBox("Kullan W"));
                     _useE = ModesMenu.Add("comboE", new CheckBox("Kullan E"));
@@ -359,9 +359,9 @@ namespace Rice
                 static Draw()
                 {
                     DrawMenu.AddGroupLabel("Göstergeler");
-                    _drawReady = DrawMenu.Add("drawReady", new CheckBox("Sadece Büyüler Hazırsa Göster", false));
-                    _drawHealth = DrawMenu.Add("drawHealth", new CheckBox("Draw Damage in HealthBar"));
-                    _drawStackStatus = DrawMenu.Add("drawStackStatus", new CheckBox("Draw Stacking Status Text"));
+                    _drawReady = DrawMenu.Add("drawReady", new CheckBox("Sadece Büyüler Hazırsa Göster.", false));
+                    _drawHealth = DrawMenu.Add("drawHealth", new CheckBox("Can barında hasarı göster"));
+                    _drawStackStatus = DrawMenu.Add("drawStackStatus", new CheckBox("stack durumunu yaz"));
                     DrawMenu.AddColorItem("colorHealth");
                     DrawMenu.AddSeparator();
                     //Q
@@ -477,7 +477,7 @@ namespace Rice
                 static JungleClear()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Orman Temizleme");
+                    ModesMenu.AddGroupLabel("JungleClear");
                     _useQ = ModesMenu.Add("jungleQ", new CheckBox("Kullan Q"));
                     _useW = ModesMenu.Add("jungleW", new CheckBox("Kullan W"));
                     _useE = ModesMenu.Add("jungleE", new CheckBox("Kullan E"));
@@ -525,7 +525,7 @@ namespace Rice
                 static KillSteal()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Kill Çalma");
+                    ModesMenu.AddGroupLabel("KillSteal");
                     _useQ = ModesMenu.Add("killQ", new CheckBox("Kullan Q"));
                     _useW = ModesMenu.Add("killW", new CheckBox("Kullan W"));
                     _useE = ModesMenu.Add("killE", new CheckBox("Kullan E"));
@@ -591,7 +591,7 @@ namespace Rice
                 static LaneClear()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("LaneTemizleme");
+                    ModesMenu.AddGroupLabel("LaneClear");
                     _useQ = ModesMenu.Add("laneQ", new CheckBox("Kullan Q"));
                     _useW = ModesMenu.Add("laneW", new CheckBox("Kullan W"));
                     _useE = ModesMenu.Add("laneE", new CheckBox("Kullan E"));
@@ -629,7 +629,7 @@ namespace Rice
                 static LastHit()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Sonvuruş");
+                    ModesMenu.AddGroupLabel("LastHit");
                     _useQ = ModesMenu.Add("lastQ", new CheckBox("Kullan Q"));
                     _minMana = ModesMenu.Add("lastMana", new Slider("en az Mana"));
                 }
@@ -689,7 +689,7 @@ namespace Rice
                     _QCollision = MiscMenu.Add("QCollision", new Slider("Q Çarpışmada: Her Zaman Düşmana Kullan", 0, 0, 1));
                     _ChangeNames = MiscMenu.Add("ChangeNames", new CheckBox("Hero Adını Değiştir (Deneysel)", false));
                     _AutoWGapCloser = MiscMenu.Add("AutoWGapCloser", new CheckBox("Gapcloser Otomatik Yerleşme"));
-                    _AutoWInterruptible = MiscMenu.Add("AutoWInterruptible", new CheckBox("Interruptible Otomatik Yerleşme "));
+                    _AutoWInterruptible = MiscMenu.Add("AutoWInterruptible", new CheckBox("Interruptible Otomatik Yerleşme"));
 
                     _QCollision.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                         {
@@ -801,7 +801,7 @@ namespace Rice
                     MiscMenu.AddGroupLabel("Sürekli Yük");
                     _AutoStackQ = MiscMenu.Add(
                         "AutoTear",
-                        new KeyBind("Otomatik Yük Tear", false, KeyBind.BindTypes.PressToggle, 'T'));
+                        new KeyBind("Otomatik Yük Tuşu", false, KeyBind.BindTypes.PressToggle, 'T'));
 
                     _AutoStackMana = MiscMenu.Add("AutoTearMana", new Slider("en az mana %", 30));
 
@@ -858,8 +858,9 @@ namespace Rice
             // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("Rice");
-            Menu.AddLabel("10/10 with Darakath", 50);
-            Menu.AddLabel("Thank you for your suggestions.", 50);
+            Menu.AddLabel("Tamamen Darakath tarafından yapılmıştır", 50);
+            Menu.AddLabel("Desteğiniz için teşekkürler.", 50);
+            Menu.AddLabel("Çeviri TRAdana");
 
             // Initialize the modes
             Modes.Initialize();

@@ -1,8 +1,8 @@
-﻿using EloBuddy;
-using EloBuddy.SDK;
-
-namespace Rice
+﻿namespace Rice
 {
+    using EloBuddy;
+    using EloBuddy.SDK;
+
     public static class SpellDamage
     {
         public static float GetTotalDamage(Obj_AI_Base target)

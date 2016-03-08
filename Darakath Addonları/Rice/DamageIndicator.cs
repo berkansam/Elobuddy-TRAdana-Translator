@@ -1,6 +1,4 @@
-﻿using Settings = Rice.Config.Modes.Draw;
-
-namespace Rice
+﻿namespace Rice
 {
     using System;
     using System.Linq;
@@ -46,8 +44,8 @@ namespace Rice
         public static void Initialize(DamageToUnitDelegate damageToUnit)
         {
             DamageToUnit = damageToUnit;
-            DrawingColor = Settings.colorHealth;
-            HealthbarEnabled = Settings.DrawHealth;
+            DrawingColor = Config.Modes.Draw.colorHealth;
+            HealthbarEnabled = Config.Modes.Draw.DrawHealth;
 
             Drawing.OnEndScene += OnEndScene;
         }

@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using EloBuddy.SDK.Menu;
-using EloBuddy.SDK.Menu.Values;
-
-namespace Rice
+﻿namespace Rice
 {
+    using System.Linq;
+
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+
     public static class WidthMenu
     {
         private static readonly float[] Values =

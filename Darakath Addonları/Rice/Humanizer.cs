@@ -1,8 +1,5 @@
 ﻿namespace Rice
 {
-    using System;
-
-    using EloBuddy;
     using EloBuddy.SDK;
 
     //By 0x0539

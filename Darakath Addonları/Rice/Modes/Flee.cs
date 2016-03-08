@@ -1,7 +1,7 @@
-﻿using EloBuddy.SDK;
-
-namespace Rice.Modes
+﻿namespace Rice.Modes
 {
+    using EloBuddy.SDK;
+
     public sealed class Flee : ModeBase
     {
         public override bool ShouldBeExecuted()
