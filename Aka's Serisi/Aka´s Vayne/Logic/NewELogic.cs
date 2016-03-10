@@ -66,9 +66,12 @@ namespace Aka_s_Vayne_reworked.Logic
                 case 2:
                     //Marksman / Gosu
                     return Marksman.GetTarget(fromPosition);
-                case 3:
+                //case 3:
                     //Shine#
-                    return VHRevolution.GetTarget(fromPosition);
+                    //return VHRevolution.GetTarget(fromPosition);
+                case 4:
+                    // VH Rev Old
+                    return VHRevolution_Old.GetTarget(fromPosition);
             }
             return null;
         }

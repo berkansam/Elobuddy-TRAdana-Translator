@@ -50,7 +50,6 @@ namespace Aka_s_Vayne_reworked
             _game.LevelUpSpells();
             _game.AutoPotions();
             _game.LowlifeE();
-            _game.QKs();
 
             AutoE.OnExecute();
 
