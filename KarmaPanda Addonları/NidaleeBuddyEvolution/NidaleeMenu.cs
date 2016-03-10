@@ -27,7 +27,7 @@ namespace NidaleeBuddyEvolution
         /// </summary>
         public static void Create()
         {
-            DefaultMenu = MainMenu.AddMenu("NidaleeBuddyEvolution", "NidaleeBuddyEvolution");
+            DefaultMenu = MainMenu.AddMenu("NidaleeBuddy", "NidaleeBuddy");
             DefaultMenu.AddGroupLabel("Bu addon yapımcısı Karmapandadır.");
             DefaultMenu.AddGroupLabel(
                 "Any unauthorized redistribution without credits will result in severe consequences.");
@@ -37,7 +37,7 @@ namespace NidaleeBuddyEvolution
             #region Combo
 
             ComboMenu = DefaultMenu.AddSubMenu("Combo", "Combo");
-            ComboMenu.AddGroupLabel("Combo Ayarları");
+            ComboMenu.AddGroupLabel("Combo Settings");
             ComboMenu.Add("useQH", new CheckBox("İnsan Formunda Q At"));
             ComboMenu.Add("useWH", new CheckBox("İnsan Formunda W at"));
             ComboMenu.Add("useQC", new CheckBox("Puma Modunda Q at"));
@@ -55,7 +55,7 @@ namespace NidaleeBuddyEvolution
 
             #region Last Hit
 
-            LastHitMenu = DefaultMenu.AddSubMenu("SonVuruş", "Last Hit");
+            LastHitMenu = DefaultMenu.AddSubMenu("Last Hit", "Last Hit");
             LastHitMenu.AddGroupLabel("SonVuruş Ayarları");
             LastHitMenu.Add("useQC", new CheckBox("Puma Formunda öldürülemeyecek minyona Q"));
             LastHitMenu.Add("useEC", new CheckBox("Puma Formunda öldürülemeyecek minyona E", false));
@@ -65,7 +65,7 @@ namespace NidaleeBuddyEvolution
 
             #region Harass
 
-            HarassMenu = DefaultMenu.AddSubMenu("Dürtme", "Harass");
+            HarassMenu = DefaultMenu.AddSubMenu("Harass", "Harass");
             HarassMenu.AddGroupLabel("Dürtme Ayarları");
             HarassMenu.Add("useQH", new CheckBox("İnsan Formunda Q"));
             HarassMenu.Add("useR", new CheckBox("Zorlamak için İnsan Formunda R"));
@@ -76,7 +76,7 @@ namespace NidaleeBuddyEvolution
 
             #region Kill Steal
 
-            KillStealMenu = DefaultMenu.AddSubMenu("Kill Çalma", "Kill Steal");
+            KillStealMenu = DefaultMenu.AddSubMenu("Kill Steal", "Kill Steal");
             KillStealMenu.AddGroupLabel("Kill Çalma Ayarları");
             KillStealMenu.Add("useQH", new CheckBox("Kill Çalma Q"));
             KillStealMenu.Add("predQH", new Slider("Q İsabet Oranı", 75));
@@ -86,7 +86,7 @@ namespace NidaleeBuddyEvolution
 
             #region Lane Clear
 
-            LaneClearMenu = DefaultMenu.AddSubMenu("LaneTemizleme", "Lane Clear");
+            LaneClearMenu = DefaultMenu.AddSubMenu("Lane Clear", "Lane Clear");
             LaneClearMenu.AddGroupLabel("LaneTemizleme Ayarları");
             LaneClearMenu.Add("useQC", new CheckBox("Puma Formunda Q"));
             LaneClearMenu.Add("useWC", new CheckBox("Puma Formunda W"));
@@ -94,13 +94,13 @@ namespace NidaleeBuddyEvolution
             LaneClearMenu.Add("useR", new CheckBox("Lanetemizleme için R", false));
             LaneClearMenu.AddLabel("Farm Ayarları - Puma Formunda");
             LaneClearMenu.Add("predWC", new Slider("W için gereken minyon sayısı", 1, 1, 7));
-            LaneClearMenu.Add("predEC", new Slider("E tutma oranı", 75));
+            LaneClearMenu.Add("predEC", new Slider("E tutma oranı", 1, 1, 7));
 
             #endregion
 
             #region Jungle Clear
 
-            JungleClearMenu = DefaultMenu.AddSubMenu("OrmanTemizleme", "Jungle Clear");
+            JungleClearMenu = DefaultMenu.AddSubMenu("Jungle Clear", "Jungle Clear");
             JungleClearMenu.AddGroupLabel("OrmanTemizleme Ayarları");
             JungleClearMenu.Add("useQH", new CheckBox("Q İnsan Formunda"));
             JungleClearMenu.Add("useQC", new CheckBox("Puma Formunda Q"));
@@ -110,13 +110,13 @@ namespace NidaleeBuddyEvolution
             JungleClearMenu.AddLabel("İsabet Oranı Ayarları");
             JungleClearMenu.Add("predQH", new Slider("Q İsabet Oranı İnsan Formunda", 75));
             JungleClearMenu.Add("predWC", new Slider("W İsabet Oranı Puma Formunda", 75));
-            JungleClearMenu.Add("predEC", new Slider("E İsabet Oranı Puma Formunda", 75));
+            JungleClearMenu.Add("predEC", new Slider("E İsabet Oranı Puma Formunda", 1, 1, 3));
 
             #endregion
 
             #region Jungle Steal
 
-            JungleStealMenu = DefaultMenu.AddSubMenu("Orman Çal", "Jungle Steal");
+            JungleStealMenu = DefaultMenu.AddSubMenu("Jungle Steal", "Jungle Steal");
             JungleStealMenu.AddGroupLabel("Orman Çal");
             JungleStealMenu.Add("useQH", new CheckBox("Ormanı çalmak için Q at"));
             JungleStealMenu.Add("predQH", new Slider("Q İsabet Oranı", 75));
@@ -135,14 +135,14 @@ namespace NidaleeBuddyEvolution
                     JungleStealMenu.AddLabel("Küçük Kamplar");
                     JungleStealMenu.Add("SRU_Gromp", new CheckBox("Kurbağa", false));
                     JungleStealMenu.Add("SRU_Murkwolf", new CheckBox("AlacaKurt", false));
-                    JungleStealMenu.Add("SRU_Krug", new CheckBox("Yampiri Yengeç", false));
+                    JungleStealMenu.Add("SRU_Krug", new CheckBox("Golem", false));
                     JungleStealMenu.Add("SRU_Razorbeak", new CheckBox("SivriGagalar", false));
-                    JungleStealMenu.Add("Sru_Crab", new CheckBox("Skuttles", false));
+                    JungleStealMenu.Add("Sru_Crab", new CheckBox("Yampiri Yengeç", false));
                     break;
                 case GameMapId.TwistedTreeline:
                     JungleStealMenu.AddLabel("Epics");
-                    JungleStealMenu.Add("TT_Spiderboss8.1", new CheckBox("Örümcek?"));
-                    JungleStealMenu.AddLabel("Kamplar");
+                    JungleStealMenu.Add("TT_Spiderboss8.1", new CheckBox("Örümcek"));
+                    JungleStealMenu.AddLabel("Camps");
                     JungleStealMenu.Add("TT_NWraith1.1", new CheckBox("Hayalet"));
                     JungleStealMenu.Add("TT_NWraith4.1", new CheckBox("Hayalet"));
                     JungleStealMenu.Add("TT_NGolem2.1", new CheckBox("Golem"));
@@ -156,12 +156,12 @@ namespace NidaleeBuddyEvolution
 
             #region Drawing
 
-            DrawingMenu = DefaultMenu.AddSubMenu("Gösterge", "Drawing");
+            DrawingMenu = DefaultMenu.AddSubMenu("Drawing", "Drawing");
             DrawingMenu.AddGroupLabel("Gösterge Ayarları");
-            DrawingMenu.Add("drawQH", new CheckBox("Göster Javelin Range"));
-            DrawingMenu.Add("drawPred", new CheckBox("Göster Javelin Prediction"));
-            DrawingMenu.AddLabel("DamageIndicator");
-            DrawingMenu.Add("draw.Damage", new CheckBox("Göster Damage"));
+            DrawingMenu.Add("drawQH", new CheckBox("Göster Javelin Menzili"));
+            DrawingMenu.Add("drawPred", new CheckBox("Göster Javelin İsabet Oranı"));
+            DrawingMenu.AddLabel("HasarTespitçisi");
+            DrawingMenu.Add("draw.Damage", new CheckBox("Göster hasarı"));
             DrawingMenu.Add("draw.Q", new CheckBox("Q hasarı hesapla"));
             DrawingMenu.Add("draw.W", new CheckBox("W hasarı hesapla"));
             DrawingMenu.Add("draw.E", new CheckBox("E hasarı hesapla"));
@@ -176,25 +176,25 @@ namespace NidaleeBuddyEvolution
 
             #region Misc
 
-            MiscMenu = DefaultMenu.AddSubMenu("Ek Menu", "Misc Menu");
+            MiscMenu = DefaultMenu.AddSubMenu("Misc Menu", "Misc Menu");
             MiscMenu.AddGroupLabel("Auto Heal Ayarları");
-            MiscMenu.Add("autoHeal", new CheckBox("Auto Heal Allies and Me"));
-            MiscMenu.Add("autoHealPercent", new Slider("Auto Heal Percent", 50));
+            MiscMenu.Add("autoHeal", new CheckBox("Otomatik can dostlara ve bana"));
+            MiscMenu.Add("autoHealPercent", new Slider("Otomatik can yüzdesi", 50));
 
             foreach (var a in EntityManager.Heroes.Allies.OrderBy(a => a.BaseSkinName))
             {
-                MiscMenu.Add("autoHeal_" + a.BaseSkinName, new CheckBox("Auto Heal " + a.BaseSkinName));
+                MiscMenu.Add("autoHeal_" + a.BaseSkinName, new CheckBox("Otomatik Can " + a.BaseSkinName));
             }
 
-            MiscMenu.AddGroupLabel("Spell Ayarları");
-            MiscMenu.AddLabel("Sadece Birini Seçin");
+            MiscMenu.AddGroupLabel("Büyü Ayarları");
+            MiscMenu.AddLabel("Only choose one of them below.");
             MiscMenu.Add("useQC_AfterAttack", new CheckBox("Saldırıdan sonra puma formunda Q at"));
             MiscMenu.Add("useQC_BeforeAttack", new CheckBox("Saldırıdan önce puma formunda Q at", false));
             MiscMenu.Add("useQC_OnUpdate", new CheckBox("Cast Q in Cougar Form on Update", false));
             MiscMenu.AddGroupLabel("ManaYardımcısı");
-            MiscMenu.Add("manaQ", new Slider("Use Q İnsan Formunda en az mana >= x", 25));
-            MiscMenu.Add("manaW", new Slider("Use W İnsan Formunda en az mana >= x", 25));
-            MiscMenu.Add("manaE", new Slider("Use E İnsan Formunda en az mana >= x", 25));
+            MiscMenu.Add("manaQ", new Slider("Kullan Q İnsan Formunda en az mana >= x", 25));
+            MiscMenu.Add("manaW", new Slider("Kullan W İnsan Formunda en az mana >= x", 25));
+            MiscMenu.Add("manaE", new Slider("Kullan E İnsan Formunda en az mana >= x", 25));
             MiscMenu.Add("disableMM", new CheckBox("Kombo Modunda mana yardımcısı Devredışı"));
 
             #endregion
