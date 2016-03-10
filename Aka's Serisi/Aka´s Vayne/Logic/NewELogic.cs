@@ -69,9 +69,9 @@ namespace Aka_s_Vayne_reworked.Logic
                 //case 3:
                     //Shine#
                     //return VHRevolution.GetTarget(fromPosition);
-                case 4:
+                //case 4:
                     // VH Rev Old
-                    return VHRevolution_Old.GetTarget(fromPosition);
+                    //return VHRevolution_Old.GetTarget(fromPosition);
             }
             return null;
         }

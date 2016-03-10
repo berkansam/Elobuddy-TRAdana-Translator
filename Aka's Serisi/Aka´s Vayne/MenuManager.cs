@@ -153,8 +153,8 @@ namespace Aka_s_Vayne_reworked
         {
             CondemnMenu = VMenu.AddSubMenu("Condemn", "Condemn");
             CondemnMenu.AddGroupLabel("Condemn");
-            CondemnMenu.AddLabel("Shine devredışı bırkaıldı aka tekrar koyana kdr");
-            CondemnMenu.Add("Condemnmode", new ComboBox("Condemn Mode", 4, "En İyi", "Yeni", "Nişancı", "Shine", "Aka"));
+            CondemnMenu.AddLabel("Shine + Aka devredışı bırkaıldı best kullanmalısın!");
+            CondemnMenu.Add("Condemnmode", new ComboBox("Condemn Mode", 0, "Best", "New", "Marksman", "Shine", "Aka"));
             CondemnMenu.Add("UseEauto", new CheckBox("Otomatik E Kullan??"));
             CondemnMenu.Add("UseEc", new CheckBox("Sadece Sabitlicekse Kullan?", false));
             CondemnMenu.Add("condemnPercent", new Slider("Condemn isabet şansı %", 33, 1));
@@ -253,26 +253,26 @@ namespace Aka_s_Vayne_reworked
             ItemMenu.Add("qss", new CheckBox("Kullan Qss"));
             ItemMenu.Add("delay", new Slider("Gecikme", 1000, 0, 2000));
             ItemMenu.Add("Blind",
-                new CheckBox("Blind", false));
+                new CheckBox("Kör", false));
             ItemMenu.Add("Charm",
-                new CheckBox("Charm"));
+                new CheckBox("Çekme"));
             ItemMenu.Add("Fear",
-                new CheckBox("Fear"));
+                new CheckBox("Korku"));
             ItemMenu.Add("Polymorph",
                 new CheckBox("Polymorph"));
             ItemMenu.Add("Stun",
-                new CheckBox("Stun"));
+                new CheckBox("Sabit"));
             ItemMenu.Add("Snare",
-                new CheckBox("Snare"));
+                new CheckBox("Yavaşlama"));
             ItemMenu.Add("Silence",
-                new CheckBox("Silence", false));
+                new CheckBox("Sessiz", false));
             ItemMenu.Add("Taunt",
-                new CheckBox("Taunt"));
+                new CheckBox("Dalga Geçme"));
             ItemMenu.Add("Suppression",
-                new CheckBox("Suppression"));
+                new CheckBox("Önleme"));
 
         }
-      
+
         public static void Drawingmenu()
         {
             DrawingMenu = VMenu.AddSubMenu("Göstergeler", "Drawings");
