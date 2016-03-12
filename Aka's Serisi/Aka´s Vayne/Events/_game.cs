@@ -171,7 +171,7 @@ DamageType.Physical);
             }
 
             Variables.bought = true;
-            if (Game.MapId == GameMapId.SummonersRift)
+            if (Game.MapId == GameMapId.SummonersRift && Variables._Player.Level == 1)
             {
                 Shop.BuyItem(ItemId.Dorans_Blade);
                 Shop.BuyItem(ItemId.Health_Potion);

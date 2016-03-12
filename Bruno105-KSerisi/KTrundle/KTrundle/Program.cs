@@ -47,8 +47,8 @@ namespace KTrundle
             //GameObject.OnDelete += Game_OnDelete;
             //Orbwalker.OnPostAttack += Reset;
             Game.OnTick += Game_OnTick;
-            //Interrupter.OnInterruptableSpell += KInterrupter;
-            //Gapcloser.OnGapcloser += KGapCloser;
+            Interrupter.OnInterruptableSpell += KInterrupter;
+            Gapcloser.OnGapcloser += KGapCloser;
 
         }
         static void Game_OnStart(EventArgs args)
@@ -73,7 +73,8 @@ namespace KTrundle
 
                 Menu = MainMenu.AddMenu("KTrundle", "Trundle");
                 Menu.AddSeparator();
-                Menu.AddLabel("Criado por Bruno105");
+                Menu.AddLabel("Bruno105 Tarafından");
+                Menu.AddLabel("Çeviri TRAdana");
 
 
                 //------------//

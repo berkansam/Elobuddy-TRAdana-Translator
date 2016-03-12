@@ -157,15 +157,15 @@ namespace AddonTemplate.Logic
                 switch (mode)
                 {
                     case 1:
-                        var smartQPosition = NewQPrediction();
-                        var smartQCheck = smartQPosition != Vector3.Zero;
-                        var QPosition = smartQCheck ? smartQPosition : Game.CursorPos;
-                        var QPosition2 = Provider.GetQPosition() != Vector3.Zero ? Provider.GetQPosition() : QPosition;
+                      //  var smartQPosition = NewQPrediction();
+                        //var smartQCheck = smartQPosition != Vector3.Zero;
+                       // var QPosition = smartQCheck ? smartQPosition : Game.CursorPos;
+                       // var QPosition2 = Provider.GetQPosition() != Vector3.Zero ? Provider.GetQPosition() : QPosition;
 
-                        if (!other.UnderEnemyTower((Vector2)QPosition2) || (other.UnderEnemyTower((Vector2)QPosition2) && other.UnderEnemyTower((Vector2)Variables._Player.Position)))
-                        {
-                            CastQ(QPosition2);
-                        }
+                        // (!other.UnderEnemyTower((Vector2)QPosition2) || (other.UnderEnemyTower((Vector2)QPosition2) && other.UnderEnemyTower((Vector2)Variables._Player.Position)))
+                       // {
+                         //   CastQ(QPosition2);
+                        //}
                         break;
                     case 0:
                         //To mouse

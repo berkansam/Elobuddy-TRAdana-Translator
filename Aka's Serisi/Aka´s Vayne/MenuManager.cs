@@ -50,8 +50,9 @@ namespace Aka_s_Vayne_reworked
         public static void Combomenu()
         {
             ComboMenu = VMenu.AddSubMenu("Combo", "Combo");
-            ComboMenu.AddGroupLabel("Kombo");
-            ComboMenu.AddGroupLabel("Q Modu");
+            ComboMenu.AddGroupLabel("Combo");
+            ComboMenu.AddGroupLabel("Q Mode");
+            ComboMenu.AddGroupLabel("Akıllı Mod devredışı(smart), eski veya yeni kullanın");
             var qmode = ComboMenu.Add("Qmode", new ComboBox("Q Mode", 1, "Mouse", "Akıllıca", "Kaçmaya Odaklı", "Eski", "Yeni"));
             qmode.OnValueChange += delegate
             {
@@ -153,8 +154,7 @@ namespace Aka_s_Vayne_reworked
         {
             CondemnMenu = VMenu.AddSubMenu("Condemn", "Condemn");
             CondemnMenu.AddGroupLabel("Condemn");
-            CondemnMenu.AddLabel("Shine + Aka devredışı bırkaıldı best kullanmalısın!");
-            CondemnMenu.Add("Condemnmode", new ComboBox("Condemn Mode", 0, "Best", "New", "Marksman", "Shine", "Aka"));
+            CondemnMenu.Add("Condemnmode", new ComboBox("Condemn Mode", 3, "En iyi", "Yeni", "Nişancı", "Shine", "Aka"));
             CondemnMenu.Add("UseEauto", new CheckBox("Otomatik E Kullan??"));
             CondemnMenu.Add("UseEc", new CheckBox("Sadece Sabitlicekse Kullan?", false));
             CondemnMenu.Add("condemnPercent", new Slider("Condemn isabet şansı %", 33, 1));
@@ -272,7 +272,7 @@ namespace Aka_s_Vayne_reworked
                 new CheckBox("Önleme"));
 
         }
-
+      
         public static void Drawingmenu()
         {
             DrawingMenu = VMenu.AddSubMenu("Göstergeler", "Drawings");
