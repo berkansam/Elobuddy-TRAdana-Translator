@@ -23,7 +23,6 @@ namespace Aka_s_Vayne_reworked
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpell;
             Obj_AI_Base.OnBuffGain += Obj_AI_Base_OnBuffGain;
             Obj_AI_Base.OnSpellCast += Obj_AI_Base_OnSpellCast;
-            //Spellbook.OnCastSpell += Spellbook_OnCastSpell;
             GameObject.OnCreate += GameObject_OnCreate;
             Game.OnTick += Game_OnTick;
             Game.OnUpdate += Game_OnUpdate;
@@ -39,7 +38,6 @@ namespace Aka_s_Vayne_reworked
         {
             _game.heal();
             _game.Skinhack();
-            _game.QKs();
         }
 
         public static void Game_OnTick(EventArgs args)
@@ -50,6 +48,7 @@ namespace Aka_s_Vayne_reworked
             _game.LevelUpSpells();
             _game.AutoPotions();
             _game.LowlifeE();
+            _game.QKs();
 
             AutoE.OnExecute();
 
@@ -60,9 +59,8 @@ namespace Aka_s_Vayne_reworked
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear)) Modes.JungleClear.Load();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee)) Modes.Flee.Load();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo)) Modes.Combo.Load();
-          //if ((Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) ||
-          //(Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))) Modes.LCLH.Load();
-          if (MenuManager.ComboMenu["AAReset"].Cast<CheckBox>().CurrentValue) _game.EloBuddyOrbDisabler();
+            //if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) Modes.LCLH.Load();
+            if (MenuManager.ComboMenu["AAReset"].Cast<CheckBox>().CurrentValue) _game.EloBuddyOrbDisabler();
         }
 
         public static void GameObject_OnCreate(GameObject sender, EventArgs args)

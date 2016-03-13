@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KA_Shyvanna;
 using Settings = KA_Shyvanna.Config.Modes.LastHit;
 
-namespace KA_Shyvanna
+namespace KA_Shyvanna.Modes
 {
     public sealed class LastHit : ModeBase
     {

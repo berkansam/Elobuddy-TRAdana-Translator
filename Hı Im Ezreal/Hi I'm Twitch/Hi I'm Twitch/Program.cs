@@ -26,7 +26,8 @@ namespace AddonTemplate
             SpellManager.Initialize();
             ModeManager.Initialize();
 
-            DamageHelper.Initialize(DamageHelper.GetEDamage);
+            DamageHelper.Initialize();
+            StealthHelper.Initialize();
 
             Drawing.OnDraw += GameEvent.OnDraw;
         }

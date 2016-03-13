@@ -66,12 +66,12 @@ namespace Aka_s_Vayne_reworked.Logic
                 case 2:
                     //Marksman / Gosu
                     return Marksman.GetTarget(fromPosition);
-                case 3:
+                //case 3:
                     //Shine#
-                    return VHRevolution.GetTarget(fromPosition);
-                case 4:
+                    //return VHRevolution.GetTarget(fromPosition);
+                //case 4:
                     // VH Rev Old
-                    return VHRevolution_Old.GetTarget(fromPosition);
+                   //return VHRevolution_Old.GetTarget(fromPosition);
             }
             return null;
         }
@@ -89,7 +89,8 @@ namespace Aka_s_Vayne_reworked.Logic
                 var finalPosition2 = targetPosition.Extend(fromPosition, -(pushDistance / 2f));
                 var collFlags = NavMesh.GetCollisionFlags(finalPosition);
                 var collFlags2 = NavMesh.GetCollisionFlags(finalPosition2);
-                if (collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building) || collFlags2.HasFlag(CollisionFlags.Wall) || collFlags2.HasFlag(CollisionFlags.Building))
+                var j4Flag = MenuManager.CondemnMenu["j4flag"].Cast<CheckBox>().CurrentValue && (Variables.IsJ4Flag(finalPosition.To3D(), target) || Variables.IsJ4Flag(finalPosition.To3D(), target));
+                if (collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building) || collFlags2.HasFlag(CollisionFlags.Wall) || collFlags2.HasFlag(CollisionFlags.Building) || j4Flag)
                 {
                     if (MenuManager.CondemnMenu["UseEc"].Cast<CheckBox>().CurrentValue &&
                         TargetSelector.GetTarget((int)Variables._Player.GetAutoAttackRange(),
@@ -128,7 +129,8 @@ namespace Aka_s_Vayne_reworked.Logic
                 {
                     Vector3 finalPosition = targetPosition + (pushDirection * checkDistance * i);
                     var collFlags = NavMesh.GetCollisionFlags(finalPosition);
-                    if (collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building)) //not sure about building, I think its turrets, nexus etc
+                    var j4Flag = MenuManager.CondemnMenu["j4flag"].Cast<CheckBox>().CurrentValue && (Variables.IsJ4Flag(finalPosition, target));
+                    if (collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building) || j4Flag) //not sure about building, I think its turrets, nexus etc
                     {
                         if (MenuManager.CondemnMenu["UseEc"].Cast<CheckBox>().CurrentValue && TargetSelector.GetTarget((int)Variables._Player.GetAutoAttackRange(),DamageType.Physical) != null &&
                                         !target.NetworkId.Equals(TargetSelector.GetTarget((int)Variables._Player.GetAutoAttackRange(),DamageType.Physical).NetworkId))
@@ -180,9 +182,10 @@ namespace Aka_s_Vayne_reworked.Logic
                 {
                     var v3 = (targetPosition - fromPosition).Normalized();
                     var extendedPosition = targetPosition + v3 * (numberOfChecks * i);
+                    var j4Flag = MenuManager.CondemnMenu["j4flag"].Cast<CheckBox>().CurrentValue && (Variables.IsJ4Flag(extendedPosition, target));
                     //var underTurret = MenuExtensions.GetItemValue<bool>("dz191.vhr.misc.condemn.condemnturret") && (Helpers.UnderAllyTurret_Ex(finalPosition) || Helpers.IsFountain(finalPosition));
                     var collFlags = NavMesh.GetCollisionFlags(extendedPosition);
-                    if ((collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building)) && (target.Path.Count() < 2) && !target.IsDashing())
+                    if ((collFlags.HasFlag(CollisionFlags.Wall) || collFlags.HasFlag(CollisionFlags.Building) || j4Flag) && (target.Path.Count() < 2) && !target.IsDashing())
                     {
 
                         if (target.Health + 10 <=

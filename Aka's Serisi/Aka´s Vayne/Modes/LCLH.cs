@@ -31,8 +31,7 @@ namespace Aka_s_Vayne_reworked.Modes
                         m =>
                             m.Health <=
                             Variables._Player.GetAutoAttackDamage(m) +
-                            Variables._Player.GetSpellDamage(m, SpellSlot.Q))
-                    .ToList();
+                            Variables._Player.GetSpellDamage(m, SpellSlot.Q)).ToList();
 
             if (minionsInRange.Count() > 1)
             {
@@ -40,7 +39,7 @@ namespace Aka_s_Vayne_reworked.Modes
                 var afterTumblePosition = QLogic.GetAfterTumblePosition(Game.CursorPos);
                 if (afterTumblePosition.Distance(firstMinion.ServerPosition) <= Variables._Player.GetAutoAttackRange())
                 {
-                    QLogic.DefaultQCast(Game.CursorPos, firstMinion);
+                    QLogic.Cast(Game.CursorPos);
                     Orbwalker.ForcedTarget = firstMinion;
                 }
             }

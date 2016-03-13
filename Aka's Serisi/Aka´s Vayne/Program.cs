@@ -20,7 +20,7 @@ namespace Aka_s_Vayne_reworked
         public static Spell.Targeted E3;
         public static Spell.Active R;
         public static Spell.Active Heal;
-        public static Item totem, Qss, Mercurial, HPPot;
+        public static Item totem, Qss, Mercurial, HPPot, Biscuit;
 
         private static void Main(string[] args1)
         {
@@ -46,6 +46,7 @@ namespace Aka_s_Vayne_reworked
             Qss = new Item((int) ItemId.Quicksilver_Sash);
             Mercurial = new Item((int) ItemId.Mercurial_Scimitar);
             HPPot = new Item(2003);
+            Biscuit = new Item(2010);
 
             EventManager.Load();
             MenuManager.Load();

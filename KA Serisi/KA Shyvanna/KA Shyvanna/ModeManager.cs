@@ -4,6 +4,7 @@ using EloBuddy;
 using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Utils;
 using KA_Shyvanna;
+using KA_Shyvanna.Modes;
 
 namespace KA_Shyvanna
 {

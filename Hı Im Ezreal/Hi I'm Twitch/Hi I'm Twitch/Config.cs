@@ -124,16 +124,56 @@ namespace AddonTemplate
             public static class Draw
             {
                 private static readonly CheckBox _dmgIndicator;
+                private static readonly CheckBox _sleathDistance;
+                private static readonly CheckBox _miniMapSleathDistance;
 
                 public static bool DamageIndicator
                 {
                     get { return _dmgIndicator.CurrentValue; }
+                }
+                public static bool StealthDistance
+                {
+                    get { return _sleathDistance.CurrentValue; }
+                }
+                public static bool MinimapStealthDistance
+                {
+                    get { return _miniMapSleathDistance.CurrentValue; }
                 }
 
                 static Draw()
                 {
                     MenuDraw.AddGroupLabel("Görsel");
                     _dmgIndicator = MenuDraw.Add("damageIndicator", new CheckBox("Hasar Tespiti"));
+                    _sleathDistance = MenuDraw.Add("stealthdistance", new CheckBox("Gizlilik mesafesi"));
+                    _miniMapSleathDistance = MenuDraw.Add("minimapstealthdistance", new CheckBox("Haritada gizlilik mesafesi"));
+                }
+
+                public static void Initialize()
+                {
+                }
+            }
+
+            public static class Misc
+            {
+                private static readonly CheckBox _eBigMinion;
+                private static readonly CheckBox _eBaronDragon;
+
+                public static bool EBigMinion
+                {
+                    get { return _eBigMinion.CurrentValue; }
+                }
+
+                public static bool EBaronDragon
+                {
+                    get { return _eBaronDragon.CurrentValue; }
+                }
+
+                static Misc()
+                {
+                    MenuDraw.AddGroupLabel("Ek");
+                    _eBigMinion = MenuDraw.Add("ebigminion", new CheckBox("Büyük minyona E"));
+                    _eBaronDragon = MenuDraw.Add("ebarondragon", new CheckBox("Barona Ejdere E"));
+
                 }
 
                 public static void Initialize()

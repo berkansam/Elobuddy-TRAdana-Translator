@@ -116,8 +116,7 @@ namespace Aka_s_Vayne_reworked.Events
         {
             if (sender.IsMe)
             {
-                Variables.stopmove = false;
-                Variables.lastaa = Game.Time*1000;
+                Variables.lastaa = Game.Time * 1000;
             }
         }
 

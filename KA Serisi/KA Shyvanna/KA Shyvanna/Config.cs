@@ -33,15 +33,15 @@ namespace KA_Shyvanna
 
             static Modes()
             {
-                SpellsMenu = Menu.AddSubMenu("::Büyü Menüleri::");
+                SpellsMenu = Menu.AddSubMenu("::SpellsMenu::");
                 Combo.Initialize();
                 Harass.Initialize();
 
-                FarmMenu = Menu.AddSubMenu("::Farm::");
+                FarmMenu = Menu.AddSubMenu("::FarmMenu::");
                 LaneClear.Initialize();
                 LastHit.Initialize();
 
-                DrawMenu = Menu.AddSubMenu("::Gösterge::");
+                DrawMenu = Menu.AddSubMenu("::Drawings::");
                 Draw.Initialize();
             }
 

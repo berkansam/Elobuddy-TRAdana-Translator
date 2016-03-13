@@ -23,25 +23,51 @@ namespace Aka_s_Vayne_reworked.Events
             var Target = TargetSelector.GetTarget((int)Variables._Player.GetAutoAttackRange(),
 DamageType.Physical);
 
-            if (Variables.stopmove && Game.Time * 1000 > Variables.lastaaclick + Variables._Player.AttackCastDelay * 1000)
+            if (Target != null)
             {
-                Variables.stopmove = false;
-            }
-            if (!Variables.stopmove)
-            {
-                if (Game.Time * 1000 >
-                    Variables.lastaa + Variables._Player.AttackCastDelay * 1000 - Game.Ping / 2 +
-                    MenuManager.ComboMenu["AACancel"].Cast<Slider>().CurrentValue)
+                if (Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackDelay * 1000 - Game.Ping * 2.15)
+                {
+                    Player.IssueOrder(GameObjectOrder.AttackUnit, Target);
+                }
+                else if (Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackCastDelay * 1000 - Game.Ping / 2.15 + 50f && Game.Time * 1000 > Variables.lastmove + 150f)
                 {
                     Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
+                    Variables.lastmove = Game.Time * 1000;
                 }
             }
-            if (Target != null && Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackDelay * 1000 - Game.Ping / 2 * 4.3)
+            else
             {
-                Variables.stopmove = true;
-                Player.IssueOrder(GameObjectOrder.AttackUnit, Target);
+                if (Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackCastDelay * 1000 - Game.Ping / 2.15 + 50f && Game.Time * 1000 > Variables.lastmove + 150f)
+                {
+                    Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
+                    Variables.lastmove = Game.Time * 1000;
+                }
             }
         }
+
+        public static void Customorbwalker()
+        {
+            var target = TargetSelector.GetTarget((int)Variables._Player.GetAutoAttackRange(),
+    DamageType.Physical);
+
+            if (target != null)
+            {
+                if (Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackDelay * 1000 - Game.Ping * 2)
+                {
+                    Player.IssueOrder(GameObjectOrder.AttackUnit, target);
+                }
+                else
+                {
+                    Functions.Events._game.Move(50f, 175f);
+                }
+                Functions.Events._game.Botrk2(target);
+            }
+            else
+            {
+                Functions.Events._game.Move(50f, 175f);
+            }
+        }
+    
 
         public static void AutoBuyTrinkets()
         {
@@ -189,6 +215,16 @@ DamageType.Physical);
                 if (Program.HPPot.IsReady() && Program.HPPot.IsOwned())
                 {
                     Program.HPPot.Cast();
+                }
+            }
+
+            if (MenuManager.ItemMenu["autobiscuit"].Cast<CheckBox>().CurrentValue && !Variables._Player.IsInShopRange() &&
+    Variables._Player.HealthPercent <= MenuManager.ItemMenu["autobiscuithp"].Cast<Slider>().CurrentValue &&
+    !(Player.HasBuff("RegenerationPotion")))
+            {
+                if (Program.Biscuit.IsReady() && Program.Biscuit.IsOwned())
+                {
+                    Program.Biscuit.Cast();
                 }
             }
         }

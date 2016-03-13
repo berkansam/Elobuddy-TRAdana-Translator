@@ -12,27 +12,12 @@ namespace AddonTemplate
 {
     public static class DamageHelper
     {
-        private const int BarWidth = 104;
-        private const int LineThickness = 9;
-        public delegate float DamageToUnitDelegate(AIHeroClient hero);
+        private const int BarWidth = 105;
+        private const float LineThickness = 10;
+        private static readonly Vector2 BarOffset = new Vector2(2.5f, 9);
 
-        private static DamageToUnitDelegate DamageToUnit { get; set; }
-
-        private static readonly Vector2 BarOffset = new Vector2(2.5f, -6);
-
-        private static Color _drawingColor;
-        public static Color DrawingColor
+        public static void Initialize()
         {
-            get { return _drawingColor; }
-            set { _drawingColor = Color.FromArgb(170, value); }
-        }
-        public static void Initialize(DamageToUnitDelegate damageToUnit)
-        {
-            // Apply needed field delegate for damage calculation
-            DamageToUnit = damageToUnit;
-            DrawingColor = Color.Green;
-
-            // Register event handlers
             Drawing.OnEndScene += OnEndScene;
         }
 
@@ -47,46 +32,47 @@ namespace AddonTemplate
             {
                 foreach (var unit in EntityManager.Heroes.Enemies.Where(u => u.IsValidTarget() && u.IsHPBarRendered))
                 {
-                    // Get damage to unit
-                    var damage = DamageToUnit(unit);
-
-                    // Continue on 0 damage
+                    var damage = GetEDamage(unit);
                     if (damage <= 0)
                     {
                         continue;
                     }
+                    var damagePercentage = ((unit.TotalShieldHealth() - damage) > 0 ? (unit.TotalShieldHealth() - damage) : 0) /
+                                            (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
+                    var currentHealthPercentage = unit.TotalShieldHealth() / (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
+                
+                    var startPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + damagePercentage * BarWidth), (int)(unit.HPBarPosition.Y + BarOffset.Y));
+                    var endPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + currentHealthPercentage * BarWidth) + 0.5f, (int)(unit.HPBarPosition.Y + BarOffset.Y));
 
-                        // Get remaining HP after damage applied in percent and the current percent of health
-                        var damagePercentage = ((unit.TotalShieldHealth() - damage) > 0 ? (unit.TotalShieldHealth() - damage) : 0) /
-                                               (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
-                        var currentHealthPercentage = unit.TotalShieldHealth() / (unit.MaxHealth + unit.AllShield + unit.AttackShield + unit.MagicShield);
-
-                        // Calculate start and end point of the bar indicator
-                        var startPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + damagePercentage * BarWidth), (int)(unit.HPBarPosition.Y + BarOffset.Y));
-                        var endPoint = new Vector2((int)(unit.HPBarPosition.X + BarOffset.X + currentHealthPercentage * BarWidth) + 1, (int)(unit.HPBarPosition.Y + BarOffset.Y));
-
-                        // Draw the line
-                        Drawing.DrawLine(startPoint, endPoint, LineThickness, DrawingColor);
-
+                    Drawing.DrawLine(startPoint, endPoint, LineThickness, Color.FromArgb(170, Color.Green));
                 }
             }
         }
 
-        public static float GetEDamage(AIHeroClient target)
+
+        public static int getEStacks(this Obj_AI_Base target)
         {
-            var buff = target.HasBuff("twitchdeadlyvenom");
-            var bc = target.GetBuffCount("twitchdeadlyvenom");
-            if (!buff || !SpellManager.E.IsLearned) return 0f;
-            var total = Player.Instance.CalculateDamageOnUnit(target, DamageType.True, (float)
-                (new[] { 15, 20, 25, 30, 35 }[SpellManager.E.Level - 1] * bc +
+            var buffs =
+                ObjectManager.Get<Obj_GeneralParticleEmitter>().Where(b => b.Position.Distance(target.ServerPosition) < 150 && b.Name.Contains("twitch_poison_counter_"));
+            if (buffs.Any())
+            {
+                string str = buffs.ElementAt(0).Name;
+                return str["twitch_poison_counter_0".Length] - 48; // 48 : ascii to number
+            }
+            return 0;
+        }
+
+        public static float GetEDamage(Obj_AI_Base target)
+        {
+            var bc = getEStacks(target);
+            if (bc == 0)
+                return 0;
+            var total = Player.Instance.CalculateDamageOnUnit(target, DamageType.True,
+                (float)(new[] { 20, 35, 50, 65, 80 }[SpellManager.E.Level - 1] + 
+                (new[] { 15, 20, 25, 30, 35 }[SpellManager.E.Level - 1] * getEStacks(target) +
                 0.2 * Player.Instance.FlatMagicDamageMod +
-                0.25 * Player.Instance.FlatPhysicalDamageMod +
-                new[] { 20, 35, 50, 65, 80 }[SpellManager.E.Level - 1]));
-            Chat.Print("Total : " + total);
-            var damage = DamageLibrary.GetSpellDamage(Player.Instance, target, SpellSlot.E);
-            Chat.Print("Auto : " + damage);
+                0.25 * Player.Instance.FlatPhysicalDamageMod)));
             return total;
         }
-      
     }
 }

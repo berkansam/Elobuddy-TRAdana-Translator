@@ -5,6 +5,8 @@ using SharpDX;
 using EloBuddy.SDK;
 using System;
 using System.Media;
+using System.Linq;
+using EloBuddy.SDK.Menu.Values;
 
 namespace Aka_s_Vayne_reworked
 {
@@ -23,6 +25,8 @@ namespace Aka_s_Vayne_reworked
         public static float lastaa, lastaaclick;
 
         public static bool stopmove;
+
+        public static float lastmove; //new humanizer for inbuilt orbwalk.
 
         public static AIHeroClient _Player
         {
@@ -61,6 +65,10 @@ namespace Aka_s_Vayne_reworked
             }
         }
 
-        public static SoundPlayer Welcomemsg;
+        public static bool IsJ4Flag(Vector3 endPosition, Obj_AI_Base target)
+        {
+            return MenuManager.CondemnMenu["j4flag"].Cast<CheckBox>().CurrentValue
+                && ObjectManager.Get<Obj_AI_Base>().Any(m => m.Distance(endPosition) <= target.BoundingRadius && m.Name == "Beacon");
+        }
     }
 }

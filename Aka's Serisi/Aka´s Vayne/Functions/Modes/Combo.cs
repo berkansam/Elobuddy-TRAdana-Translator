@@ -10,9 +10,7 @@ namespace Aka_s_Vayne_reworked.Functions.Modes
         {
             get
             {
-                if (Game.Time * 1000 <
-                    Variables.lastaa + Variables._Player.AttackDelay * 1000 - Variables._Player.AttackDelay * 1000 / 1.5 &&
-                    Game.Time * 1000 > Variables.lastaa + Variables._Player.AttackCastDelay * 1000)
+                if (Game.Time * 1000 < Variables.lastaa + ObjectManager.Player.AttackDelay * 1000 - ObjectManager.Player.AttackDelay * 1000 / 2.35 && Game.Time * 1000 > Variables.lastaa + ObjectManager.Player.AttackCastDelay * 1000 + 25f)
                 {
                     return true;
                 }

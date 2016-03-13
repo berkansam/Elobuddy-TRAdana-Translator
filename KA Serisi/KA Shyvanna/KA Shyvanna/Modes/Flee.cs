@@ -1,7 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
-namespace KA_Shyvanna
+namespace KA_Shyvanna.Modes
 {
     public sealed class Flee : ModeBase
     {

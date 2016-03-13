@@ -1,7 +1,6 @@
 ﻿using EloBuddy.SDK;
-using KA_Shyvanna;
 
-namespace KA_Shyvanna
+namespace KA_Shyvanna.Modes
 {
     public abstract class ModeBase
     {

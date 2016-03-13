@@ -1,6 +1,6 @@
-﻿using EloBuddy;
+﻿
 
-namespace KA_Shyvanna
+namespace KA_Shyvanna.Modes
 {
     public sealed class PermaActive : ModeBase
     {

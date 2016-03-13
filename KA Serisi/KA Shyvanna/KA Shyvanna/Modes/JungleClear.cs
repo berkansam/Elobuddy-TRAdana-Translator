@@ -1,10 +1,8 @@
 ﻿using System.Linq;
-using EloBuddy;
 using EloBuddy.SDK;
-using KA_Shyvanna;
 using Settings = KA_Shyvanna.Config.Modes.LaneClear;
 
-namespace KA_Shyvanna
+namespace KA_Shyvanna.Modes
 {
     public sealed class JungleClear : ModeBase
     {
@@ -15,26 +13,34 @@ namespace KA_Shyvanna
 
         public override void Execute()
         {
-            var jgminion =
+            var jgminionQ =
+                EntityManager.MinionsAndMonsters.GetJungleMonsters()
+                    .OrderByDescending(j => j.Health)
+                    .FirstOrDefault(j => j.IsValidTarget(Q.Range));
+
+            var jgminionW =
+                EntityManager.MinionsAndMonsters.GetJungleMonsters()
+                    .OrderByDescending(j => j.Health)
+                    .FirstOrDefault(j => j.IsValidTarget(W.Range));
+
+            var jgminionE =
                 EntityManager.MinionsAndMonsters.GetJungleMonsters()
                     .OrderByDescending(j => j.Health)
                     .FirstOrDefault(j => j.IsValidTarget(E.Range));
 
-            if (jgminion == null)return;
-
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ && EventsManager.CanQ)
+            if (Q.IsReady() && jgminionQ.IsValidTarget(Q.Range) && Settings.UseQ && EventsManager.CanQ)
             {
                 Q.Cast();
             }
 
-            if (W.IsReady() && Settings.UseW && jgminion.IsValidTarget(W.Range))
+            if (W.IsReady() && Settings.UseW && jgminionW.IsValidTarget(W.Range))
             {
                 W.Cast();
             }
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && jgminionE.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(E.GetPrediction(jgminion).CastPosition);
+                E.Cast(E.GetPrediction(jgminionE).CastPosition);
             }
         }
     }

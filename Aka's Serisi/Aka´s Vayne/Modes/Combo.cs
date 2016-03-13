@@ -18,9 +18,8 @@ namespace Aka_s_Vayne_reworked.Modes
             UseQ();
             UseE();
             UseR();
-            Events._game.FastBotrk();
             UseTrinket(target);
-            if (MenuManager.ComboMenu["AAReset"].Cast<CheckBox>().CurrentValue) Events._game.AAReset();
+            if (MenuManager.ComboMenu["AAReset"].Cast<CheckBox>().CurrentValue) Events._game.Customorbwalker();
         }
 
         public static void UseQ()
