@@ -43,6 +43,7 @@ namespace FedKatarinaV2
 
         private static void Load_OnLoad(EventArgs a)
         {
+
             if (Player.Instance.Hero != Champion.Katarina) return;
 
             menu = MainMenu.AddMenu("FedKatarinaV2", "FedSeries");
@@ -66,6 +67,8 @@ namespace FedKatarinaV2
             KillStealMenu.Add("kQ", new CheckBox("Kullan Q", true));
             KillStealMenu.Add("kW", new CheckBox("Kullan W", true));
             KillStealMenu.Add("kE", new CheckBox("Kullan E", true));
+            KillStealMenu.Add("kR", new CheckBox("Kullan R", true));
+
 
             Q = new Spell.Targeted(SpellSlot.Q, 675);
 
@@ -77,40 +80,14 @@ namespace FedKatarinaV2
 
 
             Drawing.OnDraw += Drawing_OnDraw;
-            //SupaKS.Init();
             StateManager.Init();
             WardJumper.Init();
-            Game.OnTick += Game_OnTick;
+            DamageIndicator.DamageIndicator.Initialize(DamageIndicator.SpellDamage.GetTotalDamage);
+
 
             Chat.Print("FedKatarinaV2 Yuklendi!tradana iyi oyunlar diler", System.Drawing.Color.LightBlue);
         }
 
-        private static void Game_OnTick(EventArgs args)
-        {
-            KillSteal();
-        }
-
-        public static void KillSteal()
-        {
-              foreach (var enemy in EntityManager.Heroes.Enemies.Where(a => !a.IsDead && !a.IsZombie && a.Health > 0))
-            {
-                if (enemy.IsValidTarget(E.Range) && enemy.HealthPercent <= 40)
-                {
-
-                    if (_Player.GetSpellDamage(enemy, SpellSlot.Q) + _Player.GetSpellDamage(enemy, SpellSlot.W) + _Player.GetSpellDamage(enemy, SpellSlot.E) >= enemy.Health)
-                    {
-                        if (KillStealMenu["kQ"].Cast<CheckBox>().CurrentValue && (_Player.GetSpellDamage(enemy, Q.Slot) >= enemy.Health) && Q.IsInRange(enemy) && Q.IsReady())
-                        { Q.Cast(enemy); }
-                        if (KillStealMenu["kW"].Cast<CheckBox>().CurrentValue && (_Player.GetSpellDamage(enemy, W.Slot) >= enemy.Health) && W.IsInRange(enemy) && W.IsReady())
-                        { W.Cast(enemy); }
-                        if (KillStealMenu["kE"].Cast<CheckBox>().CurrentValue && (_Player.GetSpellDamage(enemy, E.Slot) >= enemy.Health) && E.IsInRange(enemy) && E.IsReady())
-                        { E.Cast(enemy); }
-                    }
-
-                }
-            }
-
-        }
 
         private static void Drawing_OnDraw(EventArgs args)
         {

@@ -10,7 +10,9 @@ namespace FedKatarinaV2
 {
     internal class StateManager
     {
-        public static Menu ComboMenu, HarassMenu, FarmMenu, JungleMenu, KillstealMenu;
+        public static Menu ComboMenu, HarassMenu, FarmMenu, JungleMenu;
+        private static bool isChanneling;
+        private static float rStart;
         public static AIHeroClient _Player
         {
             get { return ObjectManager.Player; }
@@ -52,10 +54,23 @@ namespace FedKatarinaV2
             JungleMenu.Add("jW", new CheckBox("W Kullan"));
 
             Game.OnTick += Game_OnUpdate;
+            Orbwalker.OnPreAttack += Orbwalker_PreAttack;
+            Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
+            Player.OnIssueOrder += Player_OnIssueOrder;
+        }
+
+        private static void Orbwalker_PreAttack(AttackableUnit target, Orbwalker.PreAttackArgs args)
+        {
+            if (args.Target.IsMe)
+            {
+                args.Process = !_Player.HasBuff("KatarinaR");
+            }
         }
 
         private static void Game_OnUpdate(EventArgs args)
         {
+
+            SupaKS.KillSteal.Execute();
             if (HasRBuff())
             {
                 Orbwalker.DisableMovement = true;
@@ -80,14 +95,38 @@ namespace FedKatarinaV2
         {
             return _Player.HasBuff("KatarinaR") || Player.Instance.Spellbook.IsChanneling || _Player.HasBuff("katarinarsound");
         }
-  
+
+        private static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (!sender.IsMe || args.SData.Name != "KatarinaR" || !_Player.HasBuff("katarinarsound"))
+            {
+                return;
+            }
+
+            isChanneling = true;
+            Orbwalker.DisableAttacking = true;
+            Orbwalker.DisableMovement = true;
+            EloBuddy.SDK.Core.DelayAction(MovementOn, 2500);
+            isChanneling = false;
+        }
+
+        public static void MovementOn()
+        {
+            Orbwalker.DisableAttacking = false;
+            Orbwalker.DisableMovement = false;
+        }
+
+        private static void Player_OnIssueOrder(Obj_AI_Base sender, PlayerIssueOrderEventArgs args)
+        {
+            if (sender.IsMe && Environment.TickCount < rStart + 300 && args.Order == GameObjectOrder.MoveTo)
+            {
+                args.Process = false;
+            }
+        }
         public static void LastHit()
         {
             var minions = EntityManager.MinionsAndMonsters.EnemyMinions.Where(a => a.Distance(Player.Instance) < 1400).OrderBy(a => a.Health);
-            var minion =
-                minions.FirstOrDefault(
-                    a => Extended.BuffedEnemy != null && a.NetworkId == Extended.BuffedEnemy.NetworkId) ??
-                minions.FirstOrDefault();
+            var minion = minions.FirstOrDefault();
             if (minion == null || !minion.IsValidTarget()) return;
             if (FarmMenu["lQ"].Cast<CheckBox>().CurrentValue && (Damage.QDamage(minion) > minion.Health) && Program.Q.IsReady() && Program.Q.IsInRange(minion))
             {
@@ -97,12 +136,13 @@ namespace FedKatarinaV2
             {
                 Program.W.Cast();
             }
+
         }
 
         public static void WaveClear()
         {
             var minions = EntityManager.MinionsAndMonsters.EnemyMinions.Where(a => a.Distance(Player.Instance) < 1400).OrderBy(a => a.Health);
-            var minion = (Extended.BuffedEnemy != null && Extended.BuffedEnemy.IsValidTarget(1400)) ? Extended.BuffedEnemy : minions.FirstOrDefault();
+            var minion = minions.FirstOrDefault();
             if (minion == null) return;
             
             if (FarmMenu["fQ"].Cast<CheckBox>().CurrentValue && (Damage.QDamage(minion) > minion.Health) && Program.Q.IsReady() && Program.Q.IsInRange(minion))
@@ -154,6 +194,8 @@ namespace FedKatarinaV2
 
                     Orbwalker.DisableAttacking = true;
                     Orbwalker.DisableMovement = true;
+                    rStart = Environment.TickCount;
+
                     Program.E.Cast(target);
                 }
             }
@@ -170,6 +212,7 @@ namespace FedKatarinaV2
 
                     Orbwalker.DisableAttacking = true;
                     Orbwalker.DisableMovement = true;
+                    rStart = Environment.TickCount;
                     Program.E.Cast(target);
                 }
 
@@ -192,6 +235,8 @@ namespace FedKatarinaV2
                     Orbwalker.DisableAttacking = true;
                     Orbwalker.DisableMovement = true;
                     Program.R.Cast();
+
+                    rStart = Environment.TickCount;
                 }
             }
         }

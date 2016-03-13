@@ -81,9 +81,8 @@ namespace KSejuani
 
 
                 Menu = MainMenu.AddMenu("KSejuani", "sejuani");
-                Menu.AddSeparator();
                 Menu.AddLabel("Criado por Bruno105");
-                Menu.AddLabel("Çeviri TRAdana-Addon Güncellendiğinde pm atın");
+                Menu.AddLabel("Çeviri TRAdana-");
 
 
                 //------------//
@@ -130,10 +129,10 @@ namespace KSejuani
                 //-Misc Menu-//
                 //----------//
 
-                Misc = Menu.AddSubMenu("Ek Menü", "Misc");
+                Misc = Menu.AddSubMenu("MiscMenu", "Misc");
                 Misc.Add("aarest", new CheckBox("W ile AA sıfırla"));
                 //Misc.Add("useQGapCloser", new CheckBox("Q on GapCloser", true));
-                Misc.Add("eInterrupt", new CheckBox("Interrupt için E Kullan ", true));
+                Misc.Add("eInterrupt", new CheckBox("Interrupt için E Kullan", true));
 
             }
 

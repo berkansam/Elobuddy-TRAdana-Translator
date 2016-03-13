@@ -27,21 +27,21 @@ namespace FedKatarinaV2
             Drawing.OnDraw += Drawing_OnDraw;
 
             WardjumpMenu = Program.menu.AddSubMenu("WardJump Settings", "wardJumpSettings");
-            WardjumpMenu.AddGroupLabel("Wardjump Settings");
-            var a = WardjumpMenu.Add("alwaysMax", new CheckBox("Always Jump To Max Range"));
-            var b = WardjumpMenu.Add("onlyToCursor", new CheckBox("Always Jump To Cursor", false));
+            WardjumpMenu.AddGroupLabel("Totem atlama Ayarları");
+            var a = WardjumpMenu.Add("alwaysMax", new CheckBox("Her zaman en uzun menzile zıpla"));
+            var b = WardjumpMenu.Add("onlyToCursor", new CheckBox("Her zaman farenin olduğu yere zıpla", false));
             a.OnValueChange += delegate { if (a.CurrentValue) b.CurrentValue = false; };
             b.OnValueChange += delegate { if (b.CurrentValue) a.CurrentValue = false; };
             WardjumpMenu.AddSeparator();
-            WardjumpMenu.AddLabel("Time Modifications");
-            WardjumpMenu.Add("checkTime", new Slider("Position Reset Time (ms)", 100, 1, 2000));
+            WardjumpMenu.AddLabel("Zaman Ayarlamaları");
+            WardjumpMenu.Add("checkTime", new Slider("Pozisyon sıfırlama süresi (ms)", 100, 1, 2000));
             WardjumpMenu.AddSeparator();
-            WardjumpMenu.AddLabel("Keybind Settings");
+            WardjumpMenu.AddLabel("Tuş Ayarları");
 
             var wj = WardjumpMenu.Add("wardjumpKeybind",
                 new KeyBind("WardJump", false, KeyBind.BindTypes.HoldActive, 'G'));
 
-            WardjumpMenu.Add("drawWJ", new CheckBox("Draw WardJump"));
+            WardjumpMenu.Add("drawWJ", new CheckBox("Göster Toteme atlama"));
 
             GameObject.OnCreate += GameObject_OnCreate;
             Game.OnTick += delegate
