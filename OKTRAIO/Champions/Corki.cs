@@ -133,7 +133,7 @@ namespace OKTRAIO.Champions
                     //Draw Menu
                     MainMenu.DrawKeys();
                     MainMenu.Draw.AddSeparator();
-                    MainMenu.Draw.AddCheckBox("draw.hp.bar", "Draw Combo Damage", true, true);
+                    MainMenu.Draw.AddCheckBox("draw.hp.bar", "Kombo Hasarýný Göster", true, true);
                     Value.Init();
                 }
                 catch (Exception e)
