@@ -69,7 +69,7 @@ namespace JokerFioraBuddy
                 Menu.AddGroupLabel("Drawings");
                 Menu.Add("drawingKillable", new CheckBox("Öldürülebilir şampiyon olduğunda yaz"));
                 Menu.Add("drawingChampionTarget", new CheckBox("Hedef Şampiyonu Göster"));
-                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster"));      
+                Menu.Add("drawingNotification", new CheckBox("Oyun başladığında bildirimleri göster"));
             }
 
             public static void Initialize()
@@ -123,7 +123,7 @@ namespace JokerFioraBuddy
                 Menu = Config.Menu.AddSubMenu("Dispeller");
                 Menu.AddGroupLabel("Çekirdek Ayarları");
                 Menu.Add("dispellSpellsW", new CheckBox("Otomatik Engelleme Büyü dışındaki hasarlar (W)"));
-               Menu.AddSeparator();
+                Menu.AddSeparator();
 
                 Menu.AddGroupLabel("Düşman Büyü dışındaki hasarlar");
             }
@@ -181,8 +181,8 @@ namespace JokerFioraBuddy
             public static CheckBox wdraw = new CheckBox("Göster W", false);
             public static CheckBox edraw = new CheckBox("Göster E", false);
             public static CheckBox rdraw = new CheckBox("Göster R", false);
-            static Color[] colorlist = {Color.Green,Color.Aqua,Color.Black,Color.Blue,Color.Firebrick,Color.Gold,Color.Pink,Color.Violet,Color.White,Color.Lime,Color.LimeGreen,Color.Yellow,Color.Magenta};
-            static Slider masterColorSlider = new Slider("Renk Değiştrici",0,0,colorlist.Length-1);
+            static Color[] colorlist = { Color.Green, Color.Aqua, Color.Black, Color.Blue, Color.Firebrick, Color.Gold, Color.Pink, Color.Violet, Color.White, Color.Lime, Color.LimeGreen, Color.Yellow, Color.Magenta };
+            static Slider masterColorSlider = new Slider("Renk Değiştrici", 0, 0, colorlist.Length - 1);
 
             static Misc()
             {
@@ -443,7 +443,7 @@ namespace JokerFioraBuddy
                 static Flee()
                 {
                     Menu.AddGroupLabel("Flee");
-                    Menu.Add("fleeUseQ", new CheckBox("Kullan Q"));
+                    Menu.Add("fleeUseQ", new CheckBox("Use Q"));
                 }
 
                 public static void Initialize()
