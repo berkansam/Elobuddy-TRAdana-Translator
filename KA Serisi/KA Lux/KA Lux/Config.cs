@@ -22,7 +22,7 @@ namespace KA_Lux
         static Config()
         {
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("KA-Çeviri tradana " + Player.Instance.ChampionName);
+            Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
             Modes.Initialize();
         }
 
@@ -37,22 +37,22 @@ namespace KA_Lux
 
             static Modes()
             {
-                SpellsMenu = Menu.AddSubMenu("::Büyüler::");
+                SpellsMenu = Menu.AddSubMenu("::SpellsMenu::");
                 Combo.Initialize();
                 Harass.Initialize();
 
-                FarmMenu = Menu.AddSubMenu("::Farm::");
+                FarmMenu = Menu.AddSubMenu("::FarmMenu::");
                 LaneClear.Initialize();
                 JungleClear.Initialize();
                 LastHit.Initialize();
 
-                MiscMenu = Menu.AddSubMenu("::EK::");
+                MiscMenu = Menu.AddSubMenu("::Misc::");
                 Misc.Initialize();
 
                 DrawMenu = Menu.AddSubMenu("::Drawings::");
                 Draw.Initialize();
 
-                SettingsMenu = Menu.AddSubMenu("::Ayarlar::");
+                SettingsMenu = Menu.AddSubMenu("::Settings::");
                 Settings.Initialize();
             }
 
@@ -366,25 +366,25 @@ namespace KA_Lux
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Ek Ayarlar");
-                    _interruptSpell = MiscMenu.Add("interruptQ", new CheckBox("Use Q to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Use Q to antigapcloser spells ?"));
-                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    _interruptSpell = MiscMenu.Add("interruptQ", new CheckBox("İnterrupt Q ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Antigapcloser Q ?"));
+                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min Mana ?", 20));
                     MiscMenu.AddGroupLabel("Kill Çalma Ayarları");
                     _killStealQ = MiscMenu.Add("killstealQ", new CheckBox("KS'DE Q Kullan ?"));
                     _killStealE = MiscMenu.Add("killstealE", new CheckBox("KS'DE E Kullan"));
                     _killStealR = MiscMenu.Add("killstealR", new CheckBox("KS'DE R Kullan"));
                     _ksMana = MiscMenu.Add("killstealMana", new Slider("Kill çalmak için şu kadardan fazla manam olsun ?", 15));
                     MiscMenu.AddGroupLabel("W Ayarları");
-                    _wDefense = MiscMenu.Add("safetyW", new CheckBox("Use W when the player is receiving a spell ?"));
-                    _wDefenseAlly = MiscMenu.Add("safetyWAlly", new CheckBox("Use W when an ally is receiving a spell ?"));
+                    _wDefense = MiscMenu.Add("safetyW", new CheckBox("Koruyucu W kullan ?"));
+                    _wDefenseAlly = MiscMenu.Add("safetyWAlly", new CheckBox("Koruyucu W dostlara kullan ?"));
                     _wMana = MiscMenu.Add("wMana", new Slider("W için gereken mana  ?", 10));
                     MiscMenu.AddGroupLabel("Orman Çalma Ayarları; ");
                     _jugSteal = MiscMenu.Add("jungleSteal", new CheckBox("R ile Çal ?"));
                     MiscMenu.AddSeparator(1);
-                    _jugStealBlue = MiscMenu.Add("junglestealBlue", new CheckBox("JungleSteal Blue ?"));
-                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("JungleSteal Red ?", false));
-                    _jugStealDragon = MiscMenu.Add("junglestealDrag", new CheckBox("JungleSteal Ejder ?"));
-                    _jugStealBaron = MiscMenu.Add("junglestealBaron", new CheckBox("JungleSteal Baron ?"));
+                    _jugStealBlue = MiscMenu.Add("junglestealBlue", new CheckBox("Çal Blue ?"));
+                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("Çal Red ?", false));
+                    _jugStealDragon = MiscMenu.Add("junglestealDrag", new CheckBox("Çal Ejder ?"));
+                    _jugStealBaron = MiscMenu.Add("junglestealBaron", new CheckBox("Çal Baron ?"));
                 }
 
                 public static void Initialize()
@@ -476,22 +476,22 @@ namespace KA_Lux
 
                 static Draw()
                 {
-                    DrawMenu.AddGroupLabel("Spell drawings Settings :");
-                    _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
-                    _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
-                    _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
-                    _drawStatiscs = DrawMenu.Add("statiscsIndicatorDraw", new CheckBox("Draw damage statistics ?"));
+                    DrawMenu.AddGroupLabel("Büyü Gösterge Ayarları :");
+                    _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Büyü hazırsa göster ?"));
+                    _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Hasar tespitçisi göster ?"));
+                    _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Hasarı yüzde olarka göster ?"));
+                    _drawStatiscs = DrawMenu.Add("statiscsIndicatorDraw", new CheckBox("Hasar istatistiklerini göster ?"));
                     DrawMenu.AddSeparator(1);
-                    _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
-                    _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
-                    _drawE = DrawMenu.Add("eDraw", new CheckBox("Draw E spell range ?"));
-                    _drawR = DrawMenu.Add("rDraw", new CheckBox("Draw R spell range ?"));
+                    _drawQ = DrawMenu.Add("qDraw", new CheckBox("Göster Q  Menzili ?"));
+                    _drawW = DrawMenu.Add("wDraw", new CheckBox("Göster W  Menzili ?"));
+                    _drawE = DrawMenu.Add("eDraw", new CheckBox("Göster E  Menzili ?"));
+                    _drawR = DrawMenu.Add("rDraw", new CheckBox("Göster R  Menzili ?"));
 
-                    _healthColor = new ColorConfig(DrawMenu, "healthColorConfig", Color.Orange, "Color Damage Indicator:");
-                    _qColor = new ColorConfig(DrawMenu, "qColorConfig", Color.Blue, "Color Q:");
-                    _wColor = new ColorConfig(DrawMenu, "wColorConfig", Color.Red, "Color W:");
-                    _eColor = new ColorConfig(DrawMenu, "eColorConfig", Color.DeepPink, "Color E:");
-                    _rColor = new ColorConfig(DrawMenu, "rColorConfig", Color.Yellow, "Color R:");
+                    _healthColor = new ColorConfig(DrawMenu, "healthColorConfig", Color.Orange, "Hasartespiti rengi:");
+                    _qColor = new ColorConfig(DrawMenu, "qColorConfig", Color.Blue, "Renk Q:");
+                    _wColor = new ColorConfig(DrawMenu, "wColorConfig", Color.Red, "Renk W:");
+                    _eColor = new ColorConfig(DrawMenu, "eColorConfig", Color.DeepPink, "Renk E:");
+                    _rColor = new ColorConfig(DrawMenu, "rColorConfig", Color.Yellow, "Renk R:");
                 }
 
                 public static void Initialize()
@@ -536,14 +536,14 @@ namespace KA_Lux
 
                 static Settings()
                 {
-                    SettingsMenu.AddGroupLabel("Danger Settings");
-                    EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
+                    SettingsMenu.AddGroupLabel("Tehlike Ayarları");
+                    EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("En az düşman", 1, 1, 5));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1000, 600, 2500));
-                    Spells = SettingsMenu.Add("considerspells", new CheckBox("Consider spells ?"));
-                    Skillshots = SettingsMenu.Add("considerskilshots", new CheckBox("Consider SkillShots ?"));
-                    AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
+                    Spells = SettingsMenu.Add("considerspells", new CheckBox("Dikkatli Büyü Kullan ?"));
+                    Skillshots = SettingsMenu.Add("considerskilshots", new CheckBox("Dikkatli Büyüler ?"));
+                    AAs = SettingsMenu.Add("consideraas", new CheckBox("Dikkatli Otomatik Atak ?"));
                     SettingsMenu.AddSeparator();
-                    SettingsMenu.AddGroupLabel("Dangerous Spells");
+                    SettingsMenu.AddGroupLabel("Tehlike Büyüleri");
                     foreach (var spell in DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
                         SettingsMenu.Add(spell.Hero.ToString() + spell.Slot, new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));

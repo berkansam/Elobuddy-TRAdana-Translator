@@ -54,7 +54,7 @@ namespace KA_Lux.Modes
                     else
                     {
                         var pred = R.GetPrediction(target);
-                        if (pred.HitChancePercent >= 85)
+                        if (pred.HitChancePercent >= 95)
                         {
                             R.Cast(pred.CastPosition);
                         }
