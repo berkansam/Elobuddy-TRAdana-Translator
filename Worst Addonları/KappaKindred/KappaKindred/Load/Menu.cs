@@ -1,0 +1,93 @@
+﻿namespace KappaKindred
+{
+    using EloBuddy;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+
+    internal class Menu
+    {
+        private static EloBuddy.SDK.Menu.Menu menuIni;
+
+        public static EloBuddy.SDK.Menu.Menu ComboMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu DrawMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu HarassMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu JungleMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu LaneMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu ManaMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu FleeMenu { get; private set; }
+
+        public static EloBuddy.SDK.Menu.Menu UltMenu { get; private set; }
+
+        public static void Load()
+        {
+            menuIni = MainMenu.AddMenu("Kindred", "Kindred");
+            menuIni.AddGroupLabel("Welcome to the Worst Kindred addon!");
+
+            UltMenu = menuIni.AddSubMenu("Ultimate");
+            UltMenu.AddGroupLabel("Ulti Ayarları");
+            UltMenu.Add("Rally", new CheckBox("R Dostları ve kendini koruma"));
+            UltMenu.Add("Rallyh", new Slider("Dost şampların cnaı şundan azsa krutarmak için kullan %", 20, 0, 100));
+            UltMenu.AddGroupLabel("Şu durumda ulti kullanma: ");
+            foreach (var ally in ObjectManager.Get<AIHeroClient>())
+            {
+                CheckBox cb = new CheckBox(ally.BaseSkinName) { CurrentValue = false };
+                if (ally.Team == ObjectManager.Player.Team)
+                {
+                    UltMenu.Add("DontUlt" + ally.BaseSkinName, cb);
+                }
+            }
+
+            ComboMenu = menuIni.AddSubMenu("Combo");
+            ComboMenu.AddGroupLabel("Kombo Ayarları");
+            ComboMenu.Add("Q", new CheckBox("Kullan Q"));
+            ComboMenu.Add("W", new CheckBox("Kullan W"));
+            ComboMenu.Add("E", new CheckBox("Kullan E"));
+            ComboMenu.AddGroupLabel("Ek Ayarlar");
+            ComboMenu.Add("Qmode", new ComboBox("Q Mode", 0, "To Target", "To Mouse"));
+            ComboMenu.Add("Emark", new CheckBox("Focus target with E mark"));
+            ComboMenu.Add("Pmark", new CheckBox("Focus target with Passive mark"));
+
+            HarassMenu = menuIni.AddSubMenu("Harass");
+            HarassMenu.AddGroupLabel("Dürtme Ayarları");
+            HarassMenu.Add("Q", new CheckBox("Kullan Q"));
+            HarassMenu.Add("W", new CheckBox("Kullan W", false));
+            HarassMenu.Add("E", new CheckBox("Kullan E"));
+
+            LaneMenu = menuIni.AddSubMenu("Lane Clear");
+            LaneMenu.AddGroupLabel("LaneTemizleme Ayarları");
+            LaneMenu.Add("Q", new CheckBox("Kullan Q"));
+            LaneMenu.Add("W", new CheckBox("Kullan W", false));
+            LaneMenu.Add("E", new CheckBox("Kullan E", false));
+
+            JungleMenu = menuIni.AddSubMenu("Jungle Clear");
+            JungleMenu.AddGroupLabel("OrmanTemizleme Ayarları");
+            JungleMenu.Add("Q", new CheckBox("Kullan Q"));
+            JungleMenu.Add("W", new CheckBox("Kullan W", false));
+            JungleMenu.Add("E", new CheckBox("Kullan E", false));
+
+            FleeMenu = menuIni.AddSubMenu("Flee");
+            FleeMenu.AddGroupLabel("Flee Ayarları");
+            FleeMenu.Add("Q", new CheckBox("Kullan Q"));
+
+            ManaMenu = menuIni.AddSubMenu("Mana Yardımcısı");
+            ManaMenu.AddGroupLabel("Dürtme");
+            ManaMenu.Add("harassmana", new Slider("Dürtme mana %", 75, 0, 100));
+            ManaMenu.AddGroupLabel("Lanetemizleme");
+            ManaMenu.Add("lanemana", new Slider("Lanetemizleme mana %", 60, 0, 100));
+
+            DrawMenu = menuIni.AddSubMenu("Drawings");
+            DrawMenu.AddGroupLabel("Gösterge Ayarları");
+            DrawMenu.Add("Q", new CheckBox("Göster Q"));
+            DrawMenu.Add("W", new CheckBox("Göster W"));
+            DrawMenu.Add("E", new CheckBox("Göster E"));
+            DrawMenu.Add("R", new CheckBox("Göster R"));
+            DrawMenu.Add("debug", new CheckBox("Hataayıklama", false));
+        }
+    }
+}
