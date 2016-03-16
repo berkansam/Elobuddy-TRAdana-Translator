@@ -7,6 +7,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 using SharpDX;
 using Color = System.Drawing.Color;
+using KillSteal = AddonTemplate.KillSteal;
 
 namespace AddonTemplate
 {
@@ -19,11 +20,6 @@ namespace AddonTemplate
         public static void Initialize()
         {
             Drawing.OnEndScene += OnEndScene;
-        }
-
-        public static float TotalShieldHealth(this Obj_AI_Base target)
-        {
-            return target.Health + target.AllShield + target.AttackShield + target.MagicShield;
         }
 
         private static void OnEndScene(EventArgs args)

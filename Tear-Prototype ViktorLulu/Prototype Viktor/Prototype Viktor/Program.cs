@@ -18,6 +18,7 @@ namespace Protype_Viktor
         public static AIHeroClient _Player { get { return ObjectManager.Player; } }
         private static List<string> DangerousEnemies = new List<string>() { "Amumu", "Lissandra", "Thresh", "Blitzcrank", "MissFortune" };
         private static Spell.Targeted Q, Ignite;
+        private static SpellSlot IgniteSlot;
         private static bool bIgnite;
         private static Spell.Skillshot W, E, R;
         private static int EMaxRange = 1225;
@@ -181,13 +182,14 @@ namespace Protype_Viktor
         #region Events
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
-            if (Player.Instance.ChampionName != "Viktor")
-                return;
-            bIgnite = Player.Spells.FirstOrDefault(o => o.SData.Name.Contains("summonerdot")) != null;
-            if (bIgnite)
+            if (_Player.ChampionName != "Viktor") return;
+
+            IgniteSlot = _Player.GetSpellSlotFromName("summonerdot");
+            if (IgniteSlot != SpellSlot.Unknown)
             {
-                Ignite = new Spell.Targeted(_Player.GetSpellSlotFromName("summonerdot"), 600);
-                Console.WriteLine("Tutuştur Bulundu! " + Ignite.Slot);
+                Console.WriteLine("Ignite Spell found on slot: " + IgniteSlot);
+                bIgnite = true;
+                Ignite = new Spell.Targeted(IgniteSlot, 600);
             }
 
             LoadSkills();
@@ -218,8 +220,8 @@ namespace Protype_Viktor
             Drawing.OnDraw += Drawing_OnDraw;
 
 
-            Chat.Print("Prototype Viktor " + version + " Yuklendi!-Ceviri tradana");
-            Console.WriteLine("Prototype Viktor " + version + " Yuklendi!-Ceviri tradana");
+            Chat.Print("Prototype Viktor " + version + " Loaded!");
+            Console.WriteLine("Prototype Viktor " + version + " Loaded!");
 
         }
 
@@ -259,7 +261,7 @@ namespace Protype_Viktor
         #region SkillsInit
         private static void LoadSkills()
         {
-            Q = new Spell.Targeted(SpellSlot.Q, 600);
+            Q = new Spell.Targeted(SpellSlot.Q, 670);
             W = new Spell.Skillshot(SpellSlot.W, 700, SkillShotType.Circular, 500, int.MaxValue, 300);
             W.AllowedCollisionCount = int.MaxValue;
             E = new Spell.Skillshot(SpellSlot.E, 525, SkillShotType.Linear, 250, int.MaxValue, 100);
@@ -272,7 +274,7 @@ namespace Protype_Viktor
         #region Drawings
         private static void Drawing_OnDraw(EventArgs args)
         {
-            if (ViktorDrawMenu["Göstergeleri Kapat"].Cast<CheckBox>().CurrentValue == false)
+            if (ViktorDrawMenu["DisableDraws"].Cast<CheckBox>().CurrentValue == false)
             { 
 
             if (_DrawQ && Q.IsReady())
@@ -360,7 +362,7 @@ namespace Protype_Viktor
             ViktorDrawMenu.Add("DrawE", new CheckBox("Göster E"));
             ViktorDrawMenu.Add("DrawR", new CheckBox("Göster R"));
 
-            ViktorMiscMenu = ViktorMenu.AddSubMenu("Ek", "Misc");
+            ViktorMiscMenu = ViktorMenu.AddSubMenu("Misc", "Misc");
             /*
             ViktorMiscMenu.AddLabel("[Skin Selector]");
             ViktorMiscMenu.Add("SkinChanger", new Slider("Skin ID:", 1, 1, 4));

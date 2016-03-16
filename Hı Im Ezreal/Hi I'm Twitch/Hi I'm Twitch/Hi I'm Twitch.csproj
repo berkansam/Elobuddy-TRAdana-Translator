@@ -54,6 +54,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="DamageHelper.cs" />
     <Compile Include="GameEvent.cs" />
+    <Compile Include="KillSteal.cs" />
     <Compile Include="ModeManager.cs" />
     <Compile Include="Modes\PermaActive.cs" />
     <Compile Include="Modes\Flee.cs" />
