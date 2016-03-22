@@ -40,7 +40,8 @@ namespace Vayne
         private static void OnLoad(EventArgs args)
         {
 
-            if (myHero.ChampionName != Champion.Vayne.ToString()) {
+            if (myHero.ChampionName != Champion.Vayne.ToString())
+            {
                 Chat.Print("[Berb] : You are not playing Vayne, this addon will not load.");
                 return;
             }
@@ -52,7 +53,7 @@ namespace Vayne
             E2 = new Spell.Skillshot(SpellSlot.E, 550, SkillShotType.Linear, (int)0.42f, 1300, 50);
 
             var clean = Player.Spells.FirstOrDefault(o => o.SData.Name == "SummonerBoost");
-            var h = Player.Spells.FirstOrDefault(o => o.SData.Name == "summonerheal");
+            var h = Player.Spells.FirstOrDefault(o => o.SData.Name == "SummonerHeal");
 
             if (clean != null)
             {
@@ -62,7 +63,7 @@ namespace Vayne
 
             if (h != null)
             {
-                SpellSlot he = EloBuddy.SDK.Extensions.GetSpellSlotFromName(myHero, "summonerheal");
+                SpellSlot he = EloBuddy.SDK.Extensions.GetSpellSlotFromName(myHero, "SummonerHeal");
                 heal = new Spell.Active(he);
             }
 
@@ -89,7 +90,7 @@ namespace Vayne
                     var rengarEntity = LS.HeroManager.Enemies.Find(h => h.ChampionName.Equals("Rengar") && h.IsValidTarget(E.Range));
                     if (rengarEntity != null)
                     {
-                        E.Cast(rengarEntity);
+                        myHero.Spellbook.CastSpell(SpellSlot.E, rengarEntity);
                     }
                 }
             }
@@ -99,9 +100,9 @@ namespace Vayne
         {
             if (UseEAntiGapcloserBool && E.IsReady())
             {
-                if (gapcloser.Sender.IsValidTarget(E.Range) && gapcloser.End.Distance(ObjectManager.Player.ServerPosition) <= 400f && GPSub[string.Format("dz191.vhr.agplist.{0}.{1}", gapcloser.Sender.ChampionName.ToLowerInvariant(), gapcloser.SpellName)].Cast<CheckBox>().CurrentValue)
+                if (gapcloser.Sender.IsValidTarget(E.Range) && GPMenu[string.Format("dz191.vhr.agplist.{0}.{1}", gapcloser.Sender.ChampionName.ToLowerInvariant(), gapcloser.SpellName)].Cast<CheckBox>().CurrentValue)
                 {
-                    E.Cast(gapcloser.Sender);
+                    myHero.Spellbook.CastSpell(SpellSlot.E, gapcloser.Sender);
                 }
             }
         }
@@ -140,8 +141,6 @@ namespace Vayne
             {
                 return;
             }
-
-            Console.WriteLine("past checks");
 
             if (CleanSpells)
             {
@@ -218,17 +217,26 @@ namespace Vayne
         public static void OnUpdate(EventArgs args)
         {
 
-            if (_autoLevel) 
+            if (_autoLevel)
             {
                 AutoLevel._AutoSpell();
             }
 
-            if (UseEAntiGapcloserBool && E.IsReady()) 
+            if (UseEAntiGapcloserBool && E.IsReady())
             {
                 var getTrist = EntityManager.Heroes.Enemies.Where(x => x.ChampionName == Champion.Tristana.ToString() && x.HasBuff("TristanaW") && x.IsValidTarget(E.Range));
-                if (getTrist.Any() && GPSub[string.Format("dz191.vhr.agplist.{0}.{1}", "tristana", "rocketjump")].Cast<CheckBox>().CurrentValue)
+                if (getTrist.Any() && GPMenu[string.Format("dz191.vhr.agplist.{0}.{1}", "tristana", "rocketjump")].Cast<CheckBox>().CurrentValue)
                 {
-                    E.Cast(getTrist.FirstOrDefault());
+                    myHero.Spellbook.CastSpell(SpellSlot.E, getTrist.FirstOrDefault());
+                }
+            }
+
+            if (UseEAntiGapcloserBool && E.IsReady())
+            {
+                var getAli = EntityManager.Heroes.Enemies.Where(x => x.ChampionName == Champion.Alistar.ToString() && x.HasBuff("AlistarTrample") && x.IsValidTarget(E.Range));
+                if (getAli.Any() && GPMenu[string.Format("dz191.vhr.agplist.{0}.{1}", "Alistar", "headbutt")].Cast<CheckBox>().CurrentValue)
+                {
+                    myHero.Spellbook.CastSpell(SpellSlot.E, getAli.FirstOrDefault());
                 }
             }
 
@@ -239,15 +247,18 @@ namespace Vayne
                 if (meleeEnemies.Any())
                 {
                     var mostDangerous = meleeEnemies.OrderByDescending(m => m.GetAutoAttackDamage(ObjectManager.Player)).First();
-                    E.Cast(mostDangerous);
+                    myHero.Spellbook.CastSpell(SpellSlot.E, mostDangerous);
                 }
             }
 
-            if (useHeal)
+            if (useHeal && heal != null)
             {
-                if (myHero.HealthPercent <= lowerHeal && (myHero.CountEnemiesInRange(400) >= 1 || myHero.HasBuff("summonerdot")))
+                if (heal.IsReady())
                 {
-                    heal.Cast();
+                    if (myHero.HealthPercent <= lowerHeal && (myHero.CountEnemiesInRange(325) >= 1 || myHero.HasBuff("summonerdot")))
+                    {
+                        heal.Cast();
+                    }
                 }
             }
 
@@ -304,7 +315,7 @@ namespace Vayne
                 {
                     if (IsCondemnable(enemy))
                     {
-                        E.Cast(enemy);
+                        myHero.Spellbook.CastSpell(SpellSlot.E, enemy);
                     }
                 }
             }
@@ -315,7 +326,7 @@ namespace Vayne
                 {
                     if (IsCondemnable(enemy))
                     {
-                        E.Cast(enemy);
+                        myHero.Spellbook.CastSpell(SpellSlot.E, enemy);
                     }
                 }
             }
@@ -327,7 +338,7 @@ namespace Vayne
             {
                 if (e.DangerLevel == DangerLevel.High && sender.IsValidTarget(E.Range))
                 {
-                    E.Cast(sender);
+                    myHero.Spellbook.CastSpell(SpellSlot.E, sender);
                 }
             }
         }
@@ -357,7 +368,7 @@ namespace Vayne
                     {
                         if (s2.IsValidTarget(E.Range))
                         {
-                            E.Cast(s2);
+                            myHero.Spellbook.CastSpell(SpellSlot.E, s2);
                         }
                     }
                 }
@@ -396,7 +407,7 @@ namespace Vayne
             {
                 if (args.SData.Name == "summonerflash" && args.End.Distance(myHero.ServerPosition) < 350)
                 {
-                    E.Cast((AIHeroClient)sender);
+                    myHero.Spellbook.CastSpell(SpellSlot.E, (AIHeroClient)sender);
                 }
 
                 var sdata = Evade.EvadeSpellDatabase.GetByName(args.SData.Name);
@@ -407,7 +418,7 @@ namespace Vayne
                     {
                         if (E.IsReady())
                         {
-                            E.Cast((AIHeroClient)sender);
+                            myHero.Spellbook.CastSpell(SpellSlot.E, (AIHeroClient)sender);
                         }
                         if (Q.IsReady())
                         {
@@ -691,7 +702,7 @@ namespace Vayne
             {
                 if (possible2WTarget.IsValidTarget() && UseEAs3rdWProcBool && possible2WTarget.Path.LastOrDefault().Distance(myHero.ServerPosition) < 1000)
                 {
-                    E.Cast(possible2WTarget);
+                    myHero.Spellbook.CastSpell(SpellSlot.E, possible2WTarget);
                 }
             }
             if (target is AIHeroClient && UseQBool)
@@ -853,20 +864,20 @@ namespace Vayne
                 {
                     if (MobNames.Contains((tg as Obj_AI_Base).CharData.BaseSkinName) && tg.IsValidTarget() && UseEJungleFarm)
                     {
-                        E.Cast(tg);
+                        myHero.Spellbook.CastSpell(SpellSlot.E, tg);
                     }
                 }
-                if (UseQFarm && Q.IsReady())
+                if (Q.IsReady())
                 {
-                    if (tg.Name.Contains("SRU_") && !IsDangerousPosition(Game.CursorPos))
+                    if (tg.Name.Contains("SRU_") && !IsDangerousPosition(Game.CursorPos) && useQJG)
                     {
                         myHero.Spellbook.CastSpell(SpellSlot.Q, Game.CursorPos);
                     }
-                    if (EntityManager.MinionsAndMonsters.EnemyMinions.Count(m => m.Position.Distance(myHero.Position) < 550 && m.Health < myHero.GetAutoAttackDamage(m) + myHero.GetSpellDamage(m, SpellSlot.Q)) > 1 && !IsDangerousPosition(Game.CursorPos))
+                    if (useQLane && EntityManager.MinionsAndMonsters.EnemyMinions.Count(m => m.Position.Distance(myHero.Position) < 550 && m.Health < myHero.GetAutoAttackDamage(m) + myHero.GetSpellDamage(m, SpellSlot.Q)) > 1 && !IsDangerousPosition(Game.CursorPos))
                     {
                         myHero.Spellbook.CastSpell(SpellSlot.Q, Game.CursorPos);
                     }
-                    if (UnderAllyTurret(myHero.Position))
+                    if (useQLane && UnderAllyTurret(myHero.Position))
                     {
                         if (EntityManager.MinionsAndMonsters.EnemyMinions.Count(m => m.Position.Distance(myHero.Position) < 550 && m.Health < myHero.GetAutoAttackDamage(m) + myHero.GetSpellDamage(m, SpellSlot.Q)) > 0 && !IsDangerousPosition(Game.CursorPos))
                         {
@@ -1310,7 +1321,8 @@ namespace Vayne
         public static bool UseEAs3rdWProcBool { get { return ExtraMenu["usee3rdwproc"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseQBonusOnEnemiesNotCS { get { return ExtraMenu["useqonenemiesnotcs"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseQOnlyAt2WStacksBool { get { return ExtraMenu["useqonlyon2stackedenemies"].Cast<CheckBox>().CurrentValue; } }
-        public static bool UseQFarm { get { return FarmSettings["useqfarm"].Cast<CheckBox>().CurrentValue; } }
+        public static bool useQLane { get { return FarmSettings["useQLane"].Cast<CheckBox>().CurrentValue; } }
+        public static bool useQJG { get { return FarmSettings["useQJG"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseEJungleFarm { get { return FarmSettings["useejgfarm"].Cast<CheckBox>().CurrentValue; } }
         public static bool DrawWStacksBool { get { return DrawingMenu["drawwstacks"].Cast<CheckBox>().CurrentValue; } }
         public static bool menuKey { get { return DrawingMenu["menuKey"].Cast<CheckBox>().CurrentValue; } }
@@ -1366,26 +1378,16 @@ namespace Vayne
 
         #region Menu
 
-        private static Menu Menu, ComboMenu, QSettings, CondemnSettings, ESettings, FarmSettings, ExtraMenu, DrawingMenu, ItemMenu, GPMenu, GPSub;
+        private static Menu Menu, ComboMenu, QSettings, CondemnSettings, ESettings, FarmSettings, ExtraMenu, DrawingMenu, ItemMenu, GPMenu;
 
         public static void BuildMenu()
         {
             GPMenu = MainMenu.AddMenu("[VHR] Anti-GP List", "dz191.vhr.agplist");
             {
                 var enemyHeroesNames = ObjectManager.Get<AIHeroClient>().Where(h => h.IsEnemy).Select(hero => hero.ChampionName).ToList();
-
-                foreach (var champ in enemyHeroesNames)
-                {
-                    if (CustomAntigapcloser.Spells.All(h => h.ChampionName != champ))
-                    {
-                        continue;
-                    }
-                    GPSub = GPMenu.AddSubMenu(string.Format("{0}", champ));
-                }
-
                 foreach (var gp in CustomAntigapcloser.Spells.Where(h => enemyHeroesNames.Contains(h.ChampionName)))
                 {
-                    GPSub.Add(string.Format("dz191.vhr.agplist.{0}.{1}", gp.ChampionName.ToLowerInvariant(), gp.SpellName), new CheckBox(gp.ChampionName + " " + gp.Slot + " (" + gp.SpellName + ")", true));
+                    GPMenu.Add(string.Format("dz191.vhr.agplist.{0}.{1}", gp.ChampionName.ToLowerInvariant(), gp.SpellName), new CheckBox(gp.ChampionName + " " + gp.Slot + " (" + gp.SpellName + ")", true));
                 }
             }
         }
@@ -1403,9 +1405,9 @@ namespace Vayne
             ComboMenu.AddGroupLabel("Combo");
             ComboMenu.Add("useq", new CheckBox("Kullan Q")); // UseQBool
             ComboMenu.AddSeparator();
-            ComboMenu.Add("focus2w", new CheckBox("Try To Focus 2W", false)); // TryToFocus2WBool
-            ComboMenu.Add("lowlifepeel", new CheckBox("Peel w/ E when Low HP", false)); // lowlifepeel
-            ComboMenu.Add("dontattackwhileinvisible", new CheckBox("Smart Invisible Attacking")); // DontAttackWhileInvisibleAndMeelesNearBool
+            ComboMenu.Add("focus2w", new CheckBox("2 düz vuruş odaklan", false)); // TryToFocus2WBool
+            ComboMenu.Add("lowlifepeel", new CheckBox("Can azsa E kullan", false)); // lowlifepeel
+            ComboMenu.Add("dontattackwhileinvisible", new CheckBox("Akıllı görünmez atak")); // DontAttackWhileInvisibleAndMeelesNearBool
             ComboMenu.AddSeparator();
             ComboMenu.Add("user", new KeyBind("Komboda R KUllan tuşu", false, KeyBind.BindTypes.PressToggle, 'A')); // UseRBool
             ComboMenu.Add("GetAutoR", new Slider("Şu kadar düşman varsa R : ", 2, 1, 5)); // GetAutoR
@@ -1418,12 +1420,12 @@ namespace Vayne
             ComboMenu.Add("dontaaenemy", new Slider("^ # Düşman sayısı", 3, 1, 5));
             ComboMenu.AddSeparator();
 
-            QSettings = Menu.AddSubMenu("Q Ayarları", "qsettings");
-            QSettings.AddGroupLabel("Q Ayarları");
+            QSettings = Menu.AddSubMenu("Q Settings", "qsettings");
+            QSettings.AddGroupLabel("Q Settings");
             QSettings.AddSeparator();
             QSettings.AddLabel("1 : Prada | 2 : Marksman | 3 : VHR/SOLO | 4 : Sharpshooter | 5 : SAC");
-            QSettings.AddLabel("6 : Cursor | 7 : Kite Melee | 8 : Kurisu");
-            QSettings.Add("qmode", new Slider("Q Mode:", 5, 1, 8)); // QModeStringList
+            QSettings.AddLabel("6 : Cursor | 7 : Kite Melee | 8 : Kurisu | 9 : Safe Position - HikiGaya");
+            QSettings.Add("qmode", new Slider("Q Mode:", 5, 1, 9)); // QModeStringList
             QSettings.AddSeparator();
             QSettings.AddGroupLabel("VHR/SOLOVayne Q Ayarları");
             QSettings.AddLabel("YOU HAVE TO HAVE OPTION 3 SELECTED TO USE THIS");
@@ -1439,7 +1441,7 @@ namespace Vayne
             QSettings.AddLabel("YOU HAVE TO HAVE OPTION 5 SELECTED TO USE THIS");
             QSettings.AddLabel("1 : Otomatik Pozisyon | 2 : Mouse Pozisyonu");
             QSettings.Add("sacMode", new Slider("Q Mode: ", 1, 1, 2)); // sacMode
-            QSettings.Add("DontSafeCheck", new CheckBox("Dont check tumble position is safe", true)); // DontSafeCheck
+            QSettings.Add("DontSafeCheck", new CheckBox("Güvenli takla pozisyonunu kontrol etme", true)); // DontSafeCheck
             QSettings.Add("DontQIntoEnemies", new CheckBox("Düşmanın içine Q atma", true)); // DontQIntoEnemies
             QSettings.Add("Wall", new CheckBox("Duvardan geçecekse Q kullan", true)); // Wall
             QSettings.Add("Only2W", new CheckBox("Sadece 2W varsa takla at", false)); // Only2W
@@ -1456,8 +1458,8 @@ namespace Vayne
             CondemnSettings = Menu.AddSubMenu("Condemn Settings", "condemnsettings");
             CondemnSettings.AddGroupLabel("Condemn Menu");
             CondemnSettings.AddSeparator();
-            CondemnSettings.AddLabel("1 : Herzaman/Otomatik | 2 : Komboda | 3 : Asla");
-            CondemnSettings.Add("usee", new Slider("Kullan E", 1, 1, 3)); // UseEBool
+            CondemnSettings.AddLabel("1 : Her zaman otomatik| 2 : Komboda | 3 : Asla");
+            CondemnSettings.Add("usee", new Slider("Use E", 1, 1, 3)); // UseEBool
             CondemnSettings.AddSeparator();
             CondemnSettings.AddLabel("1 : Prada Smart | 2 : Prada Perfect | 3 : Marksman");
             CondemnSettings.AddLabel("4 : Sharpshooter | 5 : Gosu | 6 : VHR");
@@ -1480,7 +1482,7 @@ namespace Vayne
             ESettings.AddLabel("YOU HAVE TO HAVE OPTION 10 SELECTED TO USE THIS");
             ESettings.Add("Accuracy", new Slider("Doğruluk", 12, 2, 12)); // Accuracy
             ESettings.Add("TumbleCondemnCount", new Slider("Q->E Pozisyonlarını kontrol et", 12, 2, 12)); // TumbleCondemnCount
-            ESettings.Add("TumbleCondemn", new CheckBox("Q->E when possible")); // TumbleCondemn
+            ESettings.Add("TumbleCondemn", new CheckBox("Q->E yapılabilirse")); // TumbleCondemn
             ESettings.AddSeparator();
             ESettings.Add("TumbleCondemnSafe", new CheckBox("Sadece Q->E Güvenli takla pozisyonu", false)); // TumbleCondemnSafe
             ESettings.Add("DontCondemnTurret", new CheckBox("Kule altında condemn kullanma?", true)); // TumbleCondemnSafe
@@ -1538,7 +1540,7 @@ namespace Vayne
             ItemMenu.AddSeparator();
 
             DrawingMenu = Menu.AddSubMenu("Draw Settings", "draw");
-            DrawingMenu.AddGroupLabel("Drawing Menu");
+            DrawingMenu.AddGroupLabel("Gsötergeler Menüsü");
             DrawingMenu.AddSeparator();
             DrawingMenu.Add("drawwstacks", new CheckBox("W stack göster")); // DrawWStacksBool
             DrawingMenu.Add("menukey", new CheckBox("Menü TUşlarını göster")); // DrawWStacksBool

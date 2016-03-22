@@ -95,7 +95,7 @@ namespace TheSupport
                     var entry = spellEntry;
                     var slot = entry.Key;
 
-                    var comboBox = new ComboBox(slot + " En az isabet oranı", HitChances.Select(o => o.ToString()), 1);
+                    var comboBox = new ComboBox(slot + "En az isabet oranı", HitChances.Select(o => o.ToString()), 1);
                     comboBox.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                     {
                         var newValue = (HitChance) Enum.Parse(typeof (HitChance), ((ComboBox) sender).SelectedText);

@@ -92,8 +92,8 @@ namespace TheSupport
 
             // Notify successfull loading
             Notifications.Show(new SimpleNotification(
-                "TheSupport Yapim Hellsing",
-                string.Format("TheSupport Yuklendi '{0}' TRAdana iyi oyunlar diler!", Player.Instance.ChampionName)),
+                "TheSupport by Hellsing",
+                string.Format("TheSupport has successfully loaded the champion '{0}' for you! Have fun playing!", Player.Instance.ChampionName)),
                 15000);
         }
 

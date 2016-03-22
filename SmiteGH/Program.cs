@@ -79,8 +79,8 @@ namespace SmiteGH
             MobsToSmite.AddSeparator();
             MobsToSmite.Add("killsmite", new CheckBox("KS için Çarp Kullan"));
             MobsToSmite.AddSeparator();
-            
-             if (Game.MapId == GameMapId.TwistedTreeline)
+
+            if (Game.MapId == GameMapId.TwistedTreeline)
             {
                 MobsToSmite.Add("TT_Spiderboss", new CheckBox("Örümcek Aktif"));
                 MobsToSmite.Add("TT_NGolem", new CheckBox("Golem Aktif"));
@@ -840,7 +840,7 @@ namespace SmiteGH
 
         public static Obj_AI_Minion GetNearest(Vector3 pos)
         {
-            var mobs = ObjectManager.Get<Obj_AI_Minion>().Where(minion => minion.IsValid && MonstersNames.Any(name => minion.Name.StartsWith(name)) && !MonstersNames.Any(name => minion.Name.Contains("Mini")) && !MonstersNames.Any(name => minion.Name.Contains("Spawn")));
+            var mobs = ObjectManager.Get<Obj_AI_Minion>().Where(minion => minion.IsValid && MonstersNames.Any(name => minion.Name.ToLower().StartsWith(name.ToLower())) && !MonstersNames.Any(name => minion.Name.Contains("Mini")) && !MonstersNames.Any(name => minion.Name.Contains("Spawn")));
             var objAimobs = mobs as Obj_AI_Minion[] ?? mobs.ToArray();
             Obj_AI_Minion NearestMonster = objAimobs.FirstOrDefault();
             double? nearest = null;

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using Karthus.Modes;
@@ -19,7 +21,8 @@ namespace Karthus
                 new PermaActive(instance),
                 new Combo(instance),
                 new Harass(instance),
-                //new LaneClear(instance) // TODO: Enable
+                new LaneClear(instance),
+                new JungleFarming(instance)
             };
         }
 
@@ -33,6 +36,13 @@ namespace Karthus
                 {
                     break;
                 }
+            }
+
+            // Check if Defile should be turned off
+            if (ModeBase.ShouldTurnOffDefile)
+            {
+                Instance.SpellHandler.E.Cast();
+                ModeBase.ShouldTurnOffDefile = false;
             }
         }
     }
@@ -63,6 +73,13 @@ namespace Karthus
             get { return Instance.SpellHandler.R; }
         }
 
+        protected bool IsDefileActive
+        {
+            get { return Instance.SpellHandler.IsDefileActive(); }
+        }
+
+        public static bool ShouldTurnOffDefile { get; set; }
+
         protected ModeBase(Karthus instance)
         {
             // Initialize properties
@@ -72,5 +89,37 @@ namespace Karthus
         public abstract bool ShouldBeExecuted(Orbwalker.ActiveModes activeModes);
 
         public abstract bool Execute();
+
+        protected bool CastDefilePulse()
+        {
+            if (E.IsReady() && !IsDefileActive)
+            {
+                E.OnSpellCasted += DeactivateAfterSpellCast;
+                if (!E.Cast())
+                {
+                    E.OnSpellCasted -= DeactivateAfterSpellCast;
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private void DeactivateAfterSpellCast(Spell.SpellBase spell, GameObjectProcessSpellCastEventArgs args)
+        {
+            E.OnSpellCasted -= DeactivateAfterSpellCast;
+            Game.OnTick += DeactivateDefile;
+        }
+
+        private void DeactivateDefile(EventArgs args)
+        {
+            // Check if Defile is ready and active
+            if (E.IsReady() && IsDefileActive)
+            {
+                // Recast E and remove the tick listener
+                Game.OnTick -= DeactivateDefile;
+                E.Cast();
+            }
+        }
     }
 }
