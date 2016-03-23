@@ -52,6 +52,7 @@
             ComboMenu.Add("Qmode", new ComboBox("Q Mode", 0, "To Target", "To Mouse"));
             ComboMenu.Add("Emark", new CheckBox("Focus target with E mark"));
             ComboMenu.Add("Pmark", new CheckBox("Focus target with Passive mark"));
+            ComboMenu.Add("Pspells", new CheckBox("Hedefe ulti kullanmak için canı yüzde 15ten az olsun", false));
 
             HarassMenu = menuIni.AddSubMenu("Harass");
             HarassMenu.AddGroupLabel("Dürtme Ayarları");

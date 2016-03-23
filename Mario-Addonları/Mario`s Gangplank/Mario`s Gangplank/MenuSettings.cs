@@ -63,8 +63,8 @@ namespace Mario_sGangplank
             LaneClearMenu.Add("eLane", new CheckBox("• Kullan E."));
             LaneClearMenu.Add("eKeep", new Slider("• şu kadar varil", 1, 0, 4));
             LaneClearMenu.AddGroupLabel("-:Lanetemizleme Ayarları:-");
-            LaneClearMenu.Add("qLaneCount", new Slider("Varil Q için gereken minyon", 2,0,6));
-            LaneClearMenu.Add("eLaneCount", new Slider("Varil yerleştirmek için gereken minyon.", 3,0,6));
+            LaneClearMenu.Add("qLaneCount", new Slider("Varil Q için gereken minyon", 2, 0, 6));
+            LaneClearMenu.Add("eLaneCount", new Slider("Varil yerleştirmek için gereken minyon.", 3, 0, 6));
             LaneClearMenu.Add("manaLane", new Slider("Lanetemizleme için gereken en az mana", 30));
             #endregion LaneClear
 
@@ -95,7 +95,7 @@ namespace Mario_sGangplank
             SettingsMenu.Add("rKSOverkill", new Slider("R KS hızlıkil, Ulti için gereken hedefin canı [{0}]", 150, 50, 400));
             SettingsMenu.Add("rToSaveAlly", new CheckBox("• Ryi dostlarını korumak için kullan"));
             SettingsMenu.Add("rToSaveAllyPercent", new Slider("• Dostları korumak için dostların klan canı ({0}).", 15));
-            SettingsMenu.AddGroupLabel("-:W Ayarları:-"); 
+            SettingsMenu.AddGroupLabel("-:W Ayarları:-");
             SettingsMenu.Add("wUsePercent", new Slider("• Canım şundan azsa  W Kullan({0}).", 20));
             SettingsMenu.AddSeparator(1);
             SettingsMenu.Add("wBuffStun", new CheckBox("• Sabitleme"));
