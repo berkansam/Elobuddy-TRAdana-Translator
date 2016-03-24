@@ -123,13 +123,13 @@
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
             Obj_AI_Base.OnBasicAttack += OnBasicAttack;
         }
-
+        
         private static void OnDraw(EventArgs args)
         {
             AutoReveal.Draw();
+            Tracker.Traps();
             Tracker.HPtrack();
             Tracker.track();
-            Tracker.Traps();
         }
 
         private static void Game_OnUpdate(EventArgs args)

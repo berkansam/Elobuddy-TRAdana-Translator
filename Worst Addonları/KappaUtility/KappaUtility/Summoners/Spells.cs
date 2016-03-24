@@ -6,7 +6,6 @@
     using EloBuddy.SDK;
     using EloBuddy.SDK.Menu;
     using EloBuddy.SDK.Menu.Values;
-    using static EloBuddy.SDK.DamageLibrary;
 
     internal class Spells
     {
@@ -51,8 +50,8 @@
             if (Player.Spells.FirstOrDefault(o => o.SData.Name.Contains("SummonerBarrier")) != null)
             {
                 SummMenu.AddGroupLabel("Bariyer Ayarları");
-                SummMenu.Add("barrier", new CheckBox("Barrier", false));
-                SummMenu.Add("barrierme", new Slider("Use On My Health %", 30, 0, 100));
+                SummMenu.Add("barrier", new CheckBox("Bariyer", false));
+                SummMenu.Add("barrierme", new Slider("Benim canım %", 30, 0, 100));
                 SummMenu.AddSeparator();
                 Barrier = new Spell.Active(ObjectManager.Player.GetSpellSlotFromName("SummonerBarrier"));
             }
@@ -140,7 +139,7 @@
                 var ignitec = SummMenu["ignite"].Cast<CheckBox>().CurrentValue && Ignite.IsReady();
 
                 if (ignitec && target != null
-                    && Player.Instance.GetSummonerSpellDamage(target, SummonerSpells.Ignite)
+                    && Player.Instance.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Ignite)
                     >= target.TotalShieldHealth() + (target.HPRegenRate * 4))
                 {
                     if (target.IsValidTarget(Ignite.Range) && !target.IsDead

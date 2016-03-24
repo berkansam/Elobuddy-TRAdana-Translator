@@ -19,7 +19,7 @@ namespace Garen
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("DrGaren");
             Menu.AddLabel("Doctor");
-            Menu.AddLabel("İyi Şanslar.");
+            Menu.AddLabel("İyi Şanslar");
             ModesMenu.Initialize();
             MiscMenu.Initialize();
             DrawingMenu.Initialize();
