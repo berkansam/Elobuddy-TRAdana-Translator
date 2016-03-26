@@ -100,7 +100,7 @@ namespace DrMundo
                     _useE = MenuModes.Add("comboUseE", new CheckBox("Kullan E"));
                     _maxQDistance = MenuModes.Add("comboMaxQDistance",
                         new Slider("en fazla Q menzili", 800, 0, 1000));
-                    
+
                 }
 
                 public static void Initialize()
@@ -152,7 +152,7 @@ namespace DrMundo
                     _minAutoQHealth = MenuModes.Add("minAutoQHealth", new Slider("otomatik Q için can", 65, 0, 100));
                     foreach (var enemy in EntityManager.Heroes.Enemies)
                     {
-                        MenuModes.Add("blacklist"+enemy.ChampionName, new CheckBox("Otomatik Q kullanma "+enemy.ChampionName, false));
+                        MenuModes.Add("blacklist" + enemy.ChampionName, new CheckBox("Otomatik Q kullanma " + enemy.ChampionName, false));
                     }
                 }
 

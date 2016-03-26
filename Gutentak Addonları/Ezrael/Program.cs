@@ -137,7 +137,7 @@ namespace GuTenTak.Ezreal
                 ModesMenu3.Add("FleeQ", new CheckBox("Kaçarken Q ", true));
                 ModesMenu3.Add("FleeE", new CheckBox("E Kullan", true));
                 ModesMenu3.Add("ManaFlQ", new Slider("Q Mana %", 35));
-                
+
                 ModesMenu3.AddLabel("Komboda kullnaılacak itemler");
                 ModesMenu3.Add("useYoumuu", new CheckBox("Kullan Youmuu", true));
                 ModesMenu3.Add("usehextech", new CheckBox("Kullan Hextech", true));
@@ -224,11 +224,6 @@ namespace GuTenTak.Ezreal
                     {
                         Circle.Draw(Color.Red, 400, Player.Instance.Position);
                     }
-                }
-
-                if (R.IsReady() && R.IsLearned)
-                {
-                    Circle.Draw(Color.Black, R.Range, Player.Instance.Position);
                 }
             }
             catch (Exception e)
