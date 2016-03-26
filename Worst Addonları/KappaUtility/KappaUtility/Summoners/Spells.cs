@@ -32,7 +32,7 @@
             if (Player.Spells.FirstOrDefault(o => o.SData.Name.Contains("SummonerDot")) != null)
             {
                 SummMenu.AddGroupLabel("Tutuştur Ayarları");
-                SummMenu.Add("ignite", new CheckBox("Ignite", false));
+                SummMenu.Add("ignite", new CheckBox("Tutuştur", false));
                 SummMenu.AddGroupLabel("Tutuştur Kullanma:");
                 foreach (var enemy in ObjectManager.Get<AIHeroClient>())
                 {
@@ -183,7 +183,7 @@
             var caster = sender;
             var target = (AIHeroClient)args.Target;
 
-            if ((caster is AIHeroClient || caster is Obj_AI_Turret) && caster != null && target != null)
+            if ((caster is AIHeroClient || caster is Obj_AI_Turret) && caster != null && target != null && caster.IsEnemy)
             {
                 if (target.IsAlly && !target.IsMe)
                 {
@@ -301,7 +301,7 @@
             var caster = sender;
             var target = (AIHeroClient)args.Target;
 
-            if ((caster is AIHeroClient || caster is Obj_AI_Turret) && caster != null && target != null)
+            if ((caster is AIHeroClient || caster is Obj_AI_Turret) && caster != null && target != null && caster.IsEnemy)
             {
                 if (target.IsAlly && !target.IsMe)
                 {

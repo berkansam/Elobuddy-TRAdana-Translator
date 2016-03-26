@@ -24,7 +24,6 @@
             DefMenu = Load.UtliMenu.AddSubMenu("Defence Items");
             DefMenu.AddGroupLabel("Savunma Ayarları");
             DefMenu.Add("Zhonyas", new CheckBox("Kullan Zhonyas", false));
-            DefMenu.Add("ZhonyasD", new CheckBox("Tehlikeli büyüleri önemseme", false));
             DefMenu.Add("Zhonyash", new Slider("Kullan Zhonyas için Can", 25, 0, 100));
             DefMenu.AddSeparator();
             DefMenu.Add("Seraph", new CheckBox("1000mana", false));
@@ -38,6 +37,9 @@
             DefMenu.AddSeparator();
             DefMenu.Add("Randuin", new CheckBox("Randuin kullan", false));
             DefMenu.Add("Randuinh", new Slider("Randuin için gereken düşman", 2, 1, 5));
+            DefMenu.AddSeparator();
+            DefMenu.AddGroupLabel("Zhonya Tehlikeli Büyüler");
+            DefMenu.Add("ZhonyasD", new CheckBox("Tehlikeli büyülerde kullanma", false));
             Zhonya.OnLoad();
         }
 
