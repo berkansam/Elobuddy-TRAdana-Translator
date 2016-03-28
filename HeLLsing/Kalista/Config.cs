@@ -122,7 +122,7 @@ namespace Hellsing.Kalista
 
                 static Combo()
                 {
-                    Menu.AddGroupLabel("Kombo");
+                    Menu.AddGroupLabel("Combo");
 
                     _useQ = Menu.Add("comboUseQ", new CheckBox("Kullan Q"));
                     _useQAA = Menu.Add("comboUseQAA", new CheckBox("Otomatik vuruştan sonra Q kullan"));
@@ -155,7 +155,7 @@ namespace Hellsing.Kalista
 
                 static Harass()
                 {
-                    Menu.AddGroupLabel("Dürtme");
+                    Menu.AddGroupLabel("Harass");
 
                     _useQ = Menu.Add("harassUseQ", new CheckBox("Kullan Q"));
                     _mana = Menu.Add("harassMana", new Slider("En az mana %", 30));
@@ -223,7 +223,7 @@ namespace Hellsing.Kalista
 
                 static JungleClear()
                 {
-                    Menu.AddGroupLabel("OrmanTemizleme");
+                    Menu.AddGroupLabel("JungleClear");
 
                     _useE = Menu.Add("jungleUseE", new CheckBox("kullan E"));
                 }
@@ -433,7 +433,7 @@ namespace Hellsing.Kalista
 
             static Items()
             {
-                Menu = Config.Menu.AddSubMenu("İtemler");
+                Menu = Config.Menu.AddSubMenu("Items");
 
                 _cutlass = Menu.Add("cutlass", new CheckBox("BilgeWater Palası Kullan"));
                 _botrk = Menu.Add("botrk", new CheckBox("Mahvolmuş Kılıç Kullan"));
@@ -572,8 +572,8 @@ namespace Hellsing.Kalista
 
                     const int blitzcrankQrange = 925;
                     _balistaTriggerRange = Menu.Add("balistaTriggerRange",
-                        new Slider("Çekilmiş hedefi senin çekmen(r basman) gecikmesi", (int) SpellManager.R.Range, (int) SpellManager.R.Range,
-                            (int) (SpellManager.R.Range + blitzcrankQrange * 0.8f)));
+                        new Slider("Çekilmiş hedefi senin çekmen(r basman) gecikmesi", (int)SpellManager.R.Range, (int)SpellManager.R.Range,
+                            (int)(SpellManager.R.Range + blitzcrankQrange * 0.8f)));
 
                     // Handle Blitzcrank hooks in Kalista.OnTickBalistaCheck
                     Obj_AI_Base.OnBuffGain += delegate(Obj_AI_Base sender, Obj_AI_BaseBuffGainEventArgs eventArgs)

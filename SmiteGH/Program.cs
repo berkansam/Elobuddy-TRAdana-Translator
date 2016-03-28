@@ -26,7 +26,7 @@ namespace SmiteGH
 
         public static Spell.Targeted Smite;
         public static Obj_AI_Base Monster;
-        public static Text SmiteStatus = new EloBuddy.SDK.Rendering.Text("", new System.Drawing.Font(System.Drawing.FontFamily.GenericSansSerif, 9, System.Drawing.FontStyle.Bold));
+        public static Text SmiteStatus; 
         public static string[] SupportedChampions =
         {
             "Nunu" , "Chogath", "Shaco", "Vi", "MasterYi", "Rengar",
@@ -45,7 +45,7 @@ namespace SmiteGH
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
             Bootstrap.Init(null);
-
+            SmiteStatus = new EloBuddy.SDK.Rendering.Text("", new System.Drawing.Font(System.Drawing.FontFamily.GenericSansSerif, 9, System.Drawing.FontStyle.Bold));
             if (SmiteNames.Contains(ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Summoner1).Name.ToLower()))
             {
                 Smite = new Spell.Targeted(SpellSlot.Summoner1, (uint)570f);
@@ -85,19 +85,19 @@ namespace SmiteGH
                 MobsToSmite.Add("TT_Spiderboss", new CheckBox("Örümcek Aktif"));
                 MobsToSmite.Add("TT_NGolem", new CheckBox("Golem Aktif"));
                 MobsToSmite.Add("TT_NWolf", new CheckBox("Kurt Aktif"));
-                MobsToSmite.Add("TT_NWraith", new CheckBox("Wraith Aktif"));
+                MobsToSmite.Add("TT_NWraith", new CheckBox("Hayalet Aktif"));
             }
             else
             {
                 MobsToSmite.Add("SRU_Baron", new CheckBox("Baron Aktif"));
-                MobsToSmite.Add("SRU_RiftHerald", new CheckBox("Baronun kız kardeşi Aktif"));
+                MobsToSmite.Add("SRU_RiftHerald", new CheckBox("Baronun Kız kardeşi Aktif"));
                 MobsToSmite.Add("SRU_Dragon", new CheckBox("Ejder Aktif"));
                 MobsToSmite.Add("SRU_Blue", new CheckBox("Mavi Aktif"));
                 MobsToSmite.Add("SRU_Red", new CheckBox("Kırmızı Aktif"));
                 MobsToSmite.Add("SRU_Gromp", new CheckBox("Kurbağa Aktif"));
-                MobsToSmite.Add("SRU_Murkwolf", new CheckBox("AlacaKurt Aktif"));
+                MobsToSmite.Add("SRU_Murkwolf", new CheckBox("Alacakurt Aktif"));
                 MobsToSmite.Add("SRU_Krug", new CheckBox("Golem Aktif"));
-                MobsToSmite.Add("SRU_Razorbeak", new CheckBox("SivriGagalar Aktif"));
+                MobsToSmite.Add("SRU_Razorbeak", new CheckBox("Sivrigagalar Aktif"));
                 MobsToSmite.Add("Sru_Crab", new CheckBox("Yampiri Yengeç Aktif"));
             }
 
