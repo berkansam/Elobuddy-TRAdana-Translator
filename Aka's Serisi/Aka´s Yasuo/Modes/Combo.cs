@@ -163,7 +163,7 @@ namespace AkaYasuo.Modes
                             }
                         }
                     }
-                    else
+                    else if (!Variables.isDashing)
                     {
                         var target = TargetSelector.GetTarget(
                             !Variables.HaveQ3 ? Variables.QRange : Variables.Q2Range,
@@ -190,11 +190,11 @@ namespace AkaYasuo.Modes
                                 }
                                 if (predPos.IsValid())
                                 {
-                                    Program.Q2.Cast(predPos);
+                                    Core.DelayAction(() => Program.Q2.Cast(predPos), 250);
                                 }
                                 else
                                 {
-                                    Program.Q2.Cast(target.Position);
+                                    Core.DelayAction(() => Program.Q2.Cast(target.Position), 250);
                                 }
                             }
                         }

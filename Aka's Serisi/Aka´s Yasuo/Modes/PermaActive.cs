@@ -73,22 +73,13 @@ namespace AkaYasuo.Modes
             }
         }
 
-        public static void sChoose()
+        public static void Skinhack()
         {
-            var style = MenuManager.MiscMenu["sID"].DisplayName;
-
-            switch (style)
+            if (MenuManager.MiscMenu["skinhack"].Cast<CheckBox>().CurrentValue)
             {
-                case "Classic":
-                    Player.SetSkinId(0);
-                    break;
-                case "High-Noon Yasuo":
-                    Player.SetSkinId(1);
-                    break;
-                case "Project Yasuo":
-                    Player.SetSkinId(2);
-                    break;
+                Player.SetSkinId((int)MenuManager.MiscMenu["skinId"].Cast<ComboBox>().CurrentValue);
             }
         }
+
     }
 }

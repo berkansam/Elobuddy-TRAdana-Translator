@@ -11,7 +11,7 @@ namespace AkaYasuo.Modes
     {
         public static void Lasthitmode()
         {
-            if (MenuManager.LastHitMenu["Q"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady() && !Variables._Player.IsDashing()
+            if (MenuManager.LastHitMenu["Q"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady() && !Variables.isDashing
     && (!Variables.HaveQ3 || MenuManager.LastHitMenu["Q3"].Cast<CheckBox>().CurrentValue))
             {
                 var obj =

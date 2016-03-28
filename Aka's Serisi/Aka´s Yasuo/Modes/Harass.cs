@@ -15,7 +15,7 @@ namespace AkaYasuo.Modes
         public static void Harass2()
         {
             if (MenuManager.HarassMenu["QLastHit"].Cast<CheckBox>().CurrentValue && !Variables.HaveQ3
-    && !Variables._Player.IsDashing())
+    && !Variables.isDashing)
             {
                 var obj =
                     EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Variables._Player.ServerPosition, Program.Q.Range)

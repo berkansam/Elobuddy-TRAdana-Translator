@@ -36,8 +36,8 @@ namespace AkaYasuo
                                 {
                                     evadeSpells.Add("WDelay", new Slider("Extra Delay", 100, 0, 150));
                                 }
-                                evadeSpells.Add("DangerLevel", new Slider("If Danger Level >=", spell.DangerLevel, 1, 5));
-                                evadeSpells.Add("Enabled", new CheckBox("Enabled", false));
+                                evadeSpells.Add("DangerLevel", new Slider("If Danger Level >=", 2, 1, 5));
+                                evadeSpells.Add("Enabled", new CheckBox("Enabled"));
                             }
                         }
                     foreach (var spell in

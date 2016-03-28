@@ -200,7 +200,11 @@ namespace AkaYasuo
         {
             get
             {
-                return _Player.IsDashing();
+                if (Program.E.State == SpellState.Surpressed
+                    && !Variables._Player.HasBuffOfType(BuffType.Suppression))
+                    return true;
+                else
+                    return false;
             }
         }
     }

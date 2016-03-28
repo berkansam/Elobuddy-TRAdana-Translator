@@ -18,7 +18,7 @@ namespace AkaYasuo.Modes
 
             if (MenuManager.LaneClearMenu["Q"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady() && (!Variables.HaveQ3 || MenuManager.LaneClearMenu["Q3"].Cast<CheckBox>().CurrentValue))
             {
-                if (Variables._Player.IsDashing())
+                if (Variables.isDashing)
                 {
                     var minionObj = (EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
                         Variables._Player.GetDashInfo().EndPos,

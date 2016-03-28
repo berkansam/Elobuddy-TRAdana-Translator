@@ -14,7 +14,7 @@ namespace AkaYasuo.Modes
     {
         public static void Flee2()
         {
-            if (MenuManager.FleeMenu["EscQ"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady() && !Variables.HaveQ3 && Variables._Player.IsDashing())
+            if (MenuManager.FleeMenu["EscQ"].Cast<CheckBox>().CurrentValue && Program.Q.IsReady() && !Variables.HaveQ3 && Variables.isDashing)
             {
                 if (Variables.QCirTarget != null)
                 {

@@ -27,9 +27,6 @@ namespace AkaYasuo
             DogeMenu,
             ItemMenu;
 
-        public static string[] gapcloser;
-        public static string[] interrupt;
-        public static string[] notarget;
         public static Dictionary<string, Menu> SubMenu = new Dictionary<string, Menu>() { };
 
         public static void Load()
@@ -57,7 +54,7 @@ namespace AkaYasuo
 
         public static void Combomenu()
         {
-            ComboMenu = YMenu.AddSubMenu("Kombo", "Combo");
+            ComboMenu = YMenu.AddSubMenu("Combo", "Combo");
             ComboMenu.AddGroupLabel("Kombo");
             ComboMenu.Add("Q", new CheckBox("Kullan Q"));
             ComboMenu.Add("EC", new CheckBox("Kullan E"));
@@ -86,7 +83,7 @@ namespace AkaYasuo
 
         public static void Harassmenu()
         {
-            HarassMenu = YMenu.AddSubMenu("Dürtme", "Harass");
+            HarassMenu = YMenu.AddSubMenu("Harass", "Harass");
             HarassMenu.AddGroupLabel("Otomatik Dürtme");
             HarassMenu.Add("AutoQ", new KeyBind("Otomatik Q Tuşu", true, KeyBind.BindTypes.PressToggle, 'T'));
             HarassMenu.Add("AutoQ3", new CheckBox("Otomatik Q3"));
@@ -108,7 +105,7 @@ namespace AkaYasuo
 
         public static void LaneClearmenu()
         {
-            LaneClearMenu = YMenu.AddSubMenu("LaneTemizleme", "LaneClear");
+            LaneClearMenu = YMenu.AddSubMenu("LaneClear", "LaneClear");
             LaneClearMenu.AddGroupLabel("LaneTemizleme");
             LaneClearMenu.Add("Q", new CheckBox("Kullan Q"));
             LaneClearMenu.Add("Q3", new CheckBox("Kullan Q3"));
@@ -118,7 +115,7 @@ namespace AkaYasuo
 
         public static void JungleClearmenu()
         {
-            JungleClearMenu = YMenu.AddSubMenu("OrmanTemizleyici", "JungleClear");
+            JungleClearMenu = YMenu.AddSubMenu("JungleClear", "JungleClear");
             JungleClearMenu.AddGroupLabel("OrmanTemizleyici");
             JungleClearMenu.Add("Q", new CheckBox("Kullan Q"));
             JungleClearMenu.Add("E", new CheckBox("Kullan E"));
@@ -127,7 +124,7 @@ namespace AkaYasuo
 
         public static void LastHitmenu()
         {
-            LastHitMenu = YMenu.AddSubMenu("SonVuruş", "LastHit");
+            LastHitMenu = YMenu.AddSubMenu("LastHit", "LastHit");
             LastHitMenu.AddGroupLabel("SonVuruş");
             LastHitMenu.Add("Q", new CheckBox("Kullan Q"));
             LastHitMenu.Add("Q3", new CheckBox("Kullan Q3"));
@@ -136,7 +133,7 @@ namespace AkaYasuo
 
         public static void KillStealmenu()
         {
-            KillStealMenu = YMenu.AddSubMenu("Kill Çalma", "KillSteal");
+            KillStealMenu = YMenu.AddSubMenu("KillSteal", "KillSteal");
             KillStealMenu.AddGroupLabel("Kill Çalma");
             KillStealMenu.Add("KsQ", new CheckBox("Kullan Q"));
             KillStealMenu.Add("KsE", new CheckBox("Kullan E"));
@@ -145,8 +142,8 @@ namespace AkaYasuo
 
         public static void Miscmenu()
         {
-            MiscMenu = YMenu.AddSubMenu("Ek", "Misc");
-            MiscMenu.AddGroupLabel("Ek");
+            MiscMenu = YMenu.AddSubMenu("Misc", "Misc");
+            MiscMenu.AddGroupLabel("Misc");
             MiscMenu.Add("StackQ", new CheckBox("Q Yük Kas"));
             MiscMenu.Add("InterruptQ", new CheckBox("Interrupt için Q3 Kullan"));
             MiscMenu.Add("noEturret", new CheckBox("Taretlerden Atla-ma"));
@@ -163,20 +160,13 @@ namespace AkaYasuo
                     Variables.abilitySequence = new[] { 3, 1, 2, 3, 3, 4, 3, 1, 3, 1, 4, 1, 1, 2, 2, 4, 2, 2 };
                     break;
             }
-            var skin = MiscMenu.Add("sID", new Slider("Skin", 0, 0, 2));
-            var sID = new[] { "Classic", "High-Noon Yasuo", "Project Yasuo" };
-            skin.DisplayName = sID[skin.CurrentValue];
-
-            skin.OnValueChange +=
-                delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs changeArgs)
-                {
-                    sender.DisplayName = sID[changeArgs.NewValue];
-                };
+            MiscMenu.Add("skinhack", new CheckBox("Activate Skin hack"));
+            MiscMenu.Add("skinId", new ComboBox("Skin Hack", 0, "Default", "High Noon Yasuo" , "Project Yasuo", "Blood Moon Yasuo"));
         }
 
         public static void Drawingmenu()
         {
-            DrawingMenu = YMenu.AddSubMenu("Göstergeler", "Drawing");
+            DrawingMenu = YMenu.AddSubMenu("Drawing", "Drawing");
             DrawingMenu.AddGroupLabel("Göstergeler");
             DrawingMenu.Add("DrawQ", new CheckBox("Göster Q Menzili"));
             DrawingMenu.Add("DrawQ3", new CheckBox("Göster Q3 Menzili"));
@@ -204,23 +194,23 @@ namespace AkaYasuo
             ItemMenu.Add("use", new KeyBind("Kullan QSS", true, KeyBind.BindTypes.PressToggle, 'K'));
             ItemMenu.Add("delay", new Slider("Aktivasyon Gecikmesi", 1000, 0, 2000));
             ItemMenu.Add("Blind",
-                new CheckBox("Blind", false));
+                new CheckBox("Kör", false));
             ItemMenu.Add("Charm",
-                new CheckBox("Charm"));
+                new CheckBox("Çekicilik(ahri)"));
             ItemMenu.Add("Fear",
-                new CheckBox("Fear"));
+                new CheckBox("Korkmuş"));
             ItemMenu.Add("Polymorph",
                 new CheckBox("Polymorph"));
             ItemMenu.Add("Stun",
-                new CheckBox("Stun"));
+                new CheckBox("Sabit"));
             ItemMenu.Add("Snare",
-                new CheckBox("Snare"));
+                new CheckBox("Tuzağa düşmüş"));
             ItemMenu.Add("Silence",
-                new CheckBox("Silence", false));
+                new CheckBox("Sessiz", false));
             ItemMenu.Add("Taunt",
-                new CheckBox("Taunt"));
+                new CheckBox("Alay etme"));
             ItemMenu.Add("Suppression",
-                new CheckBox("Suppression"));
+                new CheckBox("Önleme"));
         }
     }
 }

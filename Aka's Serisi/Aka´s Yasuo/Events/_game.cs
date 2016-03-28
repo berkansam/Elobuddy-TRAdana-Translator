@@ -11,7 +11,7 @@ namespace AkaYasuo.Events
     {
         public static void AutoQ()
         {
-            if (!MenuManager.HarassMenu["AutoQ"].Cast<KeyBind>().CurrentValue || Variables._Player.IsDashing()
+            if (!MenuManager.HarassMenu["AutoQ"].Cast<KeyBind>().CurrentValue || Variables.isDashing
                 || (Variables.HaveQ3 && !MenuManager.HarassMenu["AutoQ3"].Cast<CheckBox>().CurrentValue)    
                 || (Variables._Player.IsUnderEnemyturret() && !MenuManager.HarassMenu["QTower"].Cast<CheckBox>().CurrentValue))
             {
@@ -27,7 +27,7 @@ namespace AkaYasuo.Events
 
         public static void StackQ()
         {
-            if (!MenuManager.MiscMenu["StackQ"].Cast<CheckBox>().CurrentValue || !Program.Q.IsReady() || Variables._Player.IsDashing() || Variables.HaveQ3)
+            if (!MenuManager.MiscMenu["StackQ"].Cast<CheckBox>().CurrentValue || !Program.Q.IsReady() || Variables.isDashing || Variables.HaveQ3)
             {
                 return;
             }

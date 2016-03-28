@@ -22,7 +22,7 @@ namespace AkaYasuo
         {
             Modes.PermaActive.AutoR();
             Modes.PermaActive.KillSteal();
-            Modes.PermaActive.sChoose();
+            Modes.PermaActive.Skinhack();
 
             Events._game.AutoQ();
             Events._game.LevelUpSpells();
