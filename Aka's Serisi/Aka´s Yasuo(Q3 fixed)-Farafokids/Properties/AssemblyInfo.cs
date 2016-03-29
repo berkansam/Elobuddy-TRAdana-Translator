@@ -1,28 +1,26 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-
-[assembly: AssemblyTitle("Karthus")]
+[assembly: AssemblyTitle("Aka´s Yasuo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Karthus")]
-[assembly: AssemblyCopyright("Copyright © Hellsing 2016")]
+[assembly: AssemblyProduct("Aka´s Yasuo")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-
-[assembly: Guid("2c7cd17d-0ae8-4cde-8ceb-6b581e15b8f1")]
+[assembly: Guid("c7ee2755-7c6f-43c0-89d4-ca4d61733e87")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,8 +31,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-
 // [assembly: AssemblyVersion("1.0.*")]
-
-[assembly: AssemblyVersion("6.6.1.0")]
-[assembly: AssemblyFileVersion("6.6.1.0")]
+[assembly: AssemblyVersion("6.6.0.0")]
+[assembly: AssemblyFileVersion("6.6.0.0")]
