@@ -52,7 +52,7 @@ namespace TimerBuddy
                 
                 Drawing.OnEndScene += Drawing_OnEndScene;
                 
-                Chat.Print("<font color='#9400D3'>TimerBuddy</font> <font color='#FFFFFF'>Yuklendi! Tradana cevirisi Kullandiginiz icin Tesekkurler</font>");
+                Chat.Print("<font color='#9400D3'>TimerBuddy</font> <font color='#FFFFFF'>Loaded</font>");
             }
             catch (Exception e)
             {

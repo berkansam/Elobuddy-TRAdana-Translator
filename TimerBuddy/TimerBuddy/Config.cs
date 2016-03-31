@@ -26,10 +26,10 @@ namespace TimerBuddy
                 var spellList = Program.SpellDB.Where(s => heroName.Contains(s.ChampionName) && s.SpellType == SpellType.Spell).ToList();
 
                 #region Main Menu
-                Menu = MainMenu.AddMenu("Zaman Bizimdir", "TimerBuddy", "TimerBuddy - Hayatın Zamanlamaya Bağlı!");
-                Menu.AddGroupLabel("TimerBuddy'e hoşgeldin xD çeviri Tradana Kullandığın için teşekkürler");
-                Menu.AddLabel(string.Format("{0} datas Loaded", summonerList.Count + itemList.Count + trapList.Count + spellList.Count + wardList.Count));
-                Menu.AddGroupLabel("Genel Ayarlar");
+                Menu = MainMenu.AddMenu("TimerBuddy", "TimerBuddy", "TimerBuddy - Life is all about Timing!");
+                Menu.AddGroupLabel("TimerBuddy'e hoşgeldin xD");
+                Menu.AddLabel(string.Format("{0} veriler yuklendi", summonerList.Count + itemList.Count + trapList.Count + spellList.Count + wardList.Count));
+                Menu.AddGroupLabel("General Settings");
                 Menu.AddImportanceItem("minImportance", "Minimum Importance Level to draw: ");
 
                 //Menu.AddGroupLabel("Spell Timer");
@@ -78,7 +78,7 @@ namespace TimerBuddy
                 #region SpellMenu
                 if (spellList.Count > 0)
                 {
-                    SpellMenu = Menu.AddSubMenu("Büyü Listesi");
+                    SpellMenu = Menu.AddSubMenu("Spell List");
                     foreach (var s in spellList)
                     {
                         if (MenuChecker.Contains(s.MenuCode))
@@ -100,7 +100,7 @@ namespace TimerBuddy
                 #region SummonerMenu
                 if (summonerList.Count > 0)
                 {
-                    SummonerMenu = Menu.AddSubMenu("Sihirdar Büyü Listesi");
+                    SummonerMenu = Menu.AddSubMenu("SummonerSpell List");
                     foreach (var t in summonerList)
                     {
                         if (MenuChecker.Contains(t.MenuCode))
@@ -160,7 +160,7 @@ namespace TimerBuddy
                 #region WardMenu
                 if (wardList.Count > 0)
                 {
-                    WardMenu = Menu.AddSubMenu("Totem Listesi");
+                    WardMenu = Menu.AddSubMenu("Ward List");
                     foreach (var w in wardList)
                     {
                         WardMenu.AddGroupLabel(w.MenuCode);

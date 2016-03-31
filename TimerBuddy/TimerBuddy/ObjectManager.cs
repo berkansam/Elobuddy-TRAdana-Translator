@@ -87,25 +87,25 @@ namespace TimerBuddy
             {
                                 
                 #region Item
-                new Spell { SpellType = SpellType.Item, Name = "ZhonyasHourglass", EndTime = 2500, MenuCode = "Zhonya Kullanımı", SpriteName = Resources.Zhonya_s_Hourglass, Importance = Importance.VeryHigh, DrawType = DrawType.NumberLine },
+                new Spell { SpellType = SpellType.Item, Name = "ZhonyasHourglass", EndTime = 2500, MenuCode = "Zhonyas Hourglass", SpriteName = Resources.Zhonya_s_Hourglass, Importance = Importance.VeryHigh, DrawType = DrawType.NumberLine },
                 //new Spell { SpellType = SpellType.Item, Name = "shurelyascrest", EndTime = 3000, MenuCode = "Talisman of Ascension", SpriteName = Resources.Talisman_of_Ascension },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "HealthBomb", MenuCode = "Dağın Sureti", SpriteName = Resources.Face_of_the_Mountain },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "IronStylusBuff", MenuCode = "Solarinin Tılsımı", SpriteName = Resources.Locket_of_the_Iron_Solari },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "SpectralFury", MenuCode = "Youumu", SpriteName = Resources.Youmuu_s_Ghostblade },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "HexdrunkEmpowered", MenuCode = "Hextech", SpriteName = Resources.Hexdrinker },
-                new Spell { SpellType = SpellType.Item, GameObject = true, Name = "LifeAura.troy", EndTime = 4000, MenuCode = "Koruyucu Melek", SpriteName = Resources.Guardian_Ange, Importance = Importance.VeryHigh },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "HealthBomb", MenuCode = "Face of the Mountain", SpriteName = Resources.Face_of_the_Mountain },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "IronStylusBuff", MenuCode = "Locket of the Iron Solari", SpriteName = Resources.Locket_of_the_Iron_Solari },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "SpectralFury", MenuCode = "Youmuu's Ghostblade", SpriteName = Resources.Youmuu_s_Ghostblade },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "HexdrunkEmpowered", MenuCode = "Hexdrinker", SpriteName = Resources.Hexdrinker },
+                new Spell { SpellType = SpellType.Item, GameObject = true, Name = "LifeAura.troy", EndTime = 4000, MenuCode = "Guardian Angel", SpriteName = Resources.Guardian_Ange, Importance = Importance.VeryHigh },
 
-                new Spell { SpellType = SpellType.Item, GameObject = true, Name = "Global_Trinket_Spotter.troy", EndTime = 6000, MenuCode = "Arayıcı Mercek", SpriteName = Resources.Sweeping_Lens__Trinket_ },
+                new Spell { SpellType = SpellType.Item, GameObject = true, Name = "Global_Trinket_Spotter.troy", EndTime = 6000, MenuCode = "Sweeping Lens", SpriteName = Resources.Sweeping_Lens__Trinket_ },
                 new Spell { SpellType = SpellType.Item, Buff = true, Name = "TrinketSweeperLvl3", MenuCode = "Oracle Alteration", SpriteName = Resources.Oracle_Alteration },
 
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "Health Potion", MenuCode = "Can İksiri", SpriteName = Resources.Health_Potion },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemMiniRegenPotion", MenuCode = "Can İksiri bisküvi", SpriteName = Resources.Total_Biscuit_of_Rejuvenation },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemCrystalFlask", MenuCode = "Doldurulabilir İksir", SpriteName = Resources.Refillable_Potion },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemCrystalFlaskJungle", MenuCode = "Avcının İksiri", SpriteName = Resources.Hunter_s_Potion },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemDarkCrystalFlask", MenuCode = "Tüketilebilir İksir", SpriteName = Resources.Corrupting_Potion },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfWrath", MenuCode = "Hiddet Karışımı", SpriteName = Resources.Elixir_of_Wrath, Importance = Importance.Low },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfSorcery", MenuCode = "Büyücülük Karışımı", SpriteName = Resources.Elixir_of_Sorcery, Importance = Importance.Low },
-                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfIron", MenuCode = "Sağlamlık Karışımı", SpriteName = Resources.Elixir_of_Iron, Importance = Importance.Low },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "Health Potion", MenuCode = "Health Potion", SpriteName = Resources.Health_Potion },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemMiniRegenPotion", MenuCode = "Biscuit", SpriteName = Resources.Total_Biscuit_of_Rejuvenation },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemCrystalFlask", MenuCode = "Refillable_Potion", SpriteName = Resources.Refillable_Potion },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemCrystalFlaskJungle", MenuCode = "Hunter's Potion", SpriteName = Resources.Hunter_s_Potion },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ItemDarkCrystalFlask", MenuCode = "Corrupting Potion", SpriteName = Resources.Corrupting_Potion },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfWrath", MenuCode = "Elixir of Wrath", SpriteName = Resources.Elixir_of_Wrath, Importance = Importance.Low },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfSorcery", MenuCode = "Elixir of Sorcery", SpriteName = Resources.Elixir_of_Sorcery, Importance = Importance.Low },
+                new Spell { SpellType = SpellType.Item, Buff = true, Name = "ElixirOfIron", MenuCode = "Elixir of Iron", SpriteName = Resources.Elixir_of_Iron, Importance = Importance.Low },
                 #endregion
 
                 #region Summoner Spell
