@@ -127,8 +127,11 @@
         private static void OnLoad(EventArgs args)
         {
             UtliMenu = MainMenu.AddMenu("KappaUtility", "KappaUtility");
-            AutoReveal.OnLoad();
+            AutoLvlUp.OnLoad();
             AutoQSS.OnLoad();
+            AutoTear.OnLoad();
+            AutoReveal.OnLoad();
+            GanksDetector.OnLoad();
             Tracker.OnLoad();
             Surrender.OnLoad();
             SkinHax.OnLoad();
@@ -138,17 +141,25 @@
             Defensive.OnLoad();
 
             Game.OnTick += Game_OnUpdate;
-            Drawing.OnEndScene += OnDraw;
+            Drawing.OnEndScene += OnEndScene;
+            Drawing.OnDraw += Drawing_OnDraw;
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
             Obj_AI_Base.OnBasicAttack += OnBasicAttack;
         }
 
-        private static void OnDraw(EventArgs args)
+        private static void Drawing_OnDraw(EventArgs args)
         {
-            AutoReveal.Draw();
+            Spells.Drawings();
+            GanksDetector.OnDraw();
+        }
+
+        private static void OnEndScene(EventArgs args)
+        {
+            AutoReveal.Drawings();
             Tracker.Traps();
             Tracker.HPtrack();
             Tracker.track();
+            GanksDetector.OnEndScene();
         }
 
         private static void Game_OnUpdate(EventArgs args)
@@ -159,10 +170,19 @@
                 Offensive.Items();
                 Defensive.Items();
             }
-
-            AutoReveal.Reveal();
-            Smite.Smiteopepi();
-            Spells.Cast();
+            try
+            {
+                AutoReveal.Reveal();
+                AutoLvlUp.Levelup();
+                AutoTear.OnUpdate();
+                GanksDetector.OnUpdate();
+                Smite.Smiteopepi();
+                Spells.Cast();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public static void OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -175,14 +195,15 @@
             var caster = sender;
             var target = (AIHeroClient)args.Target;
 
-            if ((!(caster is AIHeroClient) && !(caster is Obj_AI_Turret)) || caster == null || target == null && caster.IsEnemy)
+            if ((!(caster is AIHeroClient) && !(caster is Obj_AI_Turret)) || caster == null
+                || target == null && caster.IsEnemy)
             {
                 return;
             }
 
             if (target.IsValidTarget(Defensive.FOTM.Range) && _FaceOfTheMountainc)
             {
-                if (target.HealthPercent < _FaceOfTheMountainh)
+                if (target != null && target.HealthPercent < _FaceOfTheMountainh)
                 {
                     Defensive.FOTM.Cast(target);
                 }
@@ -195,7 +216,7 @@
 
             if (target.IsValidTarget(Defensive.Solari.Range) && _Solaric)
             {
-                if (target.HealthPercent < _Solarih)
+                if (target != null && target.HealthPercent < _Solarih)
                 {
                     Defensive.Solari.Cast();
                 }
@@ -206,7 +227,7 @@
                 }
             }
 
-            if (target.IsMe)
+            if (target != null && target.IsMe)
             {
                 if (_Refillablec)
                 {
@@ -311,7 +332,8 @@
             var caster = sender;
             var target = (AIHeroClient)args.Target;
 
-            if ((!(caster is AIHeroClient) && !(caster is Obj_AI_Turret)) || caster == null || target == null && caster.IsEnemy)
+            if ((!(caster is AIHeroClient) && !(caster is Obj_AI_Turret)) || caster == null
+                || target == null && caster.IsEnemy)
             {
                 return;
             }

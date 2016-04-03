@@ -50,8 +50,8 @@
             ComboMenu.Add("E", new CheckBox("Kullan E"));
             ComboMenu.AddGroupLabel("Ek Ayarlar");
             ComboMenu.Add("Qmode", new ComboBox("Q Mode", 0, "To Target", "To Mouse"));
-            ComboMenu.Add("Emark", new CheckBox("Focus target with E mark"));
-            ComboMenu.Add("Pmark", new CheckBox("Focus target with Passive mark"));
+            ComboMenu.Add("Emark", new CheckBox("Odaklanmış hedefe E işaretle"));
+            ComboMenu.Add("Pmark", new CheckBox("Odaklanmış hedefe pasif işaretle"));
             ComboMenu.Add("Pspells", new CheckBox("Hedefe ulti kullanmak için canı yüzde 15ten az olsun", false));
 
             HarassMenu = menuIni.AddSubMenu("Harass");
@@ -75,6 +75,7 @@
             FleeMenu = menuIni.AddSubMenu("Flee");
             FleeMenu.AddGroupLabel("Flee Ayarları");
             FleeMenu.Add("Q", new CheckBox("Kullan Q"));
+            FleeMenu.Add("Qgap", new CheckBox("Gapclose Q Kullan"));
 
             ManaMenu = menuIni.AddSubMenu("Mana Yardımcısı");
             ManaMenu.AddGroupLabel("Dürtme");

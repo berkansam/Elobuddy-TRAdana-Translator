@@ -1,6 +1,7 @@
 ﻿namespace KappaUtility.Trackers
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
 
@@ -10,7 +11,6 @@
     using EloBuddy.SDK.Events;
     using EloBuddy.SDK.Menu;
     using EloBuddy.SDK.Menu.Values;
-    using EloBuddy.SDK.Notifications;
     using EloBuddy.SDK.Rendering;
 
     using SharpDX;
@@ -23,6 +23,8 @@
 
         private static Vector2 PingLocation;
 
+        public static readonly List<Recall> Recalls = new List<Recall>();
+
         private static int LastPingT;
 
         public static Menu TrackMenu { get; private set; }
@@ -34,11 +36,9 @@
             TrackMenu.Add("Trackally", new CheckBox("Teslim olan dostları Takip et", false));
             TrackMenu.Add("Trackenemy", new CheckBox("Teslim olan düşmanları Takip et", false));
             TrackMenu.AddSeparator();
-            TrackMenu.AddGroupLabel("Bildirim Ayarları");
-            TrackMenu.Add("recallnotify", new CheckBox("Notify On Enemy Recall", false));
-            TrackMenu.AddSeparator();
             TrackMenu.AddGroupLabel("Tracker Ayarları");
             TrackMenu.Add("Track", new CheckBox("Düşmanların durumunu Takip et"));
+            TrackMenu.Add("trackrecalls", new CheckBox("B atan düşmanları takip et", false));
             TrackMenu.Add("Tracktraps", new CheckBox("Düşman tuzaklarını takip et", false));
             TrackMenu.Add("Trackping", new CheckBox("Öldürülebilecek hedefleri uyar(ping)", false));
             TrackMenu.Add("Trackway", new CheckBox("Track Enemy WayPoints", false));
@@ -58,7 +58,16 @@
             TrackMenu.Add("trackx", new Slider("Takip etme pozisyonu X", 0, 0, 100));
             TrackMenu.Add("tracky", new Slider("Takip etme pozisyonu Y", 0, 0, 100));
 
+            foreach (var hero in ObjectManager.Get<AIHeroClient>())
+            {
+                Recalls.Add(new Recall(hero, RecallStatus.Inactive));
+            }
+
             Teleport.OnTeleport += OnTeleport;
+        }
+
+        internal static void OnUpdate()
+        {
         }
 
         public static void track()
@@ -100,31 +109,31 @@
 
         public static int CalcDamage(Obj_AI_Base target)
         {
-            var aa = ObjectManager.Player.GetAutoAttackDamage(target, true);
+            var aa = Player.Instance.GetAutoAttackDamage(target, true);
             var damage = aa;
 
             if (Player.Instance.Spellbook.GetSpell(SpellSlot.Q).IsReady)
             {
                 // Q damage
-                damage += ObjectManager.Player.GetSpellDamage(target, SpellSlot.Q);
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.Q);
             }
 
             if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).IsReady)
             {
                 // W damage
-                damage += ObjectManager.Player.GetSpellDamage(target, SpellSlot.W);
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.W);
             }
 
             if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).IsReady)
             {
                 // E damage
-                damage += ObjectManager.Player.GetSpellDamage(target, SpellSlot.E);
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.E);
             }
 
             if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).IsReady)
             {
                 // R damage
-                damage += ObjectManager.Player.GetSpellDamage(target, SpellSlot.R);
+                damage += Player.Instance.GetSpellDamage(target, SpellSlot.R);
             }
 
             return (int)damage;
@@ -212,34 +221,46 @@
                 return;
             }
 
-            if (!TrackMenu["recallnotify"].Cast<CheckBox>().CurrentValue
-                || TrackMenu["DontTrack" + sender.BaseSkinName].Cast<CheckBox>().CurrentValue)
+            var unit = Recalls.Find(h => h.Unit.NetworkId == sender.NetworkId);
+
+            if (unit == null || args.Type != TeleportType.Recall)
             {
                 return;
             }
 
-            if (teleport == TeleportStatus.Start)
+            switch (teleport)
             {
-                Notifications.Show(
-                    new SimpleNotification(
-                        sender.BaseSkinName + " Is Recalling",
-                        sender.BaseSkinName + " Current Health = " + (int)sender.TotalShieldHealth()));
-            }
+                case TeleportStatus.Start:
+                    {
+                        unit.Status = RecallStatus.Active;
+                        unit.Started = Game.Time;
+                        unit.Duration = (float)args.Duration / 1000;
+                        break;
+                    }
 
-            if (teleport == TeleportStatus.Abort)
-            {
-                Notifications.Show(
-                    new SimpleNotification(
-                        sender.BaseSkinName + " Recall Aborted",
-                        sender.BaseSkinName + " Current Health = " + (int)sender.TotalShieldHealth()));
-            }
+                case TeleportStatus.Abort:
+                    {
+                        unit.Status = RecallStatus.Abort;
+                        unit.Ended = Game.Time;
 
-            if (teleport == TeleportStatus.Finish)
-            {
-                Notifications.Show(
-                    new SimpleNotification(
-                        sender.BaseSkinName + " Recall Finished",
-                        sender.BaseSkinName + " Current Health = " + (int)sender.TotalShieldHealth()));
+                        if (Game.Time == unit.Ended)
+                        {
+                            Core.DelayAction(() => unit.Status = RecallStatus.Inactive, 2000);
+                        }
+                        break;
+                    }
+
+                case TeleportStatus.Finish:
+                    {
+                        unit.Status = RecallStatus.Finished;
+                        unit.Ended = Game.Time;
+
+                        if (Game.Time == unit.Ended)
+                        {
+                            Core.DelayAction(() => unit.Status = RecallStatus.Inactive, 2000);
+                        }
+                        break;
+                    }
             }
         }
 
@@ -249,12 +270,14 @@
             var tracky = TrackMenu["tracky"].Cast<Slider>().CurrentValue;
             float timer = 0;
             float i = 0;
-            foreach (var hero in
-                EntityManager.Heroes.Enemies.Where(
+
+            foreach (var champ in
+                Recalls.Where(
                     hero =>
-                    hero != null && hero.IsEnemy
-                    && !TrackMenu["DontTrack" + hero.BaseSkinName].Cast<CheckBox>().CurrentValue))
+                    hero != null && hero.Unit.IsEnemy
+                    && !TrackMenu["DontTrack" + hero.Unit.BaseSkinName].Cast<CheckBox>().CurrentValue))
             {
+                var hero = champ.Unit;
                 if (TrackMenu["Track"].Cast<CheckBox>().CurrentValue)
                 {
                     var champion = hero.ChampionName;
@@ -331,7 +354,42 @@
                             (Drawing.Width * 0.18f) + (trackx * 20),
                             (Drawing.Height * 0.1f) + (tracky * 10) + i,
                             color,
-                            "Killable");
+                            "Killable ");
+                    }
+
+                    if (TrackMenu["trackrecalls"].Cast<CheckBox>().CurrentValue)
+                    {
+                        var recallpercent = GetRecallPercent(champ);
+
+                        if (champ.Status != RecallStatus.Inactive)
+                        {
+                            if (champ.Status == RecallStatus.Active && (int)(recallpercent * 100) != 100)
+                            {
+                                Drawing.DrawText(
+                                    (Drawing.Width * 0.23f) + (trackx * 20),
+                                    (Drawing.Height * 0.1f) + (tracky * 10) + i,
+                                    color,
+                                    "Recalling " + (int)(recallpercent * 100) + "%");
+                            }
+
+                            if (champ.Status == RecallStatus.Finished)
+                            {
+                                Drawing.DrawText(
+                                    (Drawing.Width * 0.23f) + (trackx * 20),
+                                    (Drawing.Height * 0.1f) + (tracky * 10) + i,
+                                    color,
+                                    "Recall Finished ");
+                            }
+
+                            if (champ.Status == RecallStatus.Abort && (int)(recallpercent * 100) != 100)
+                            {
+                                Drawing.DrawText(
+                                    (Drawing.Width * 0.23f) + (trackx * 20),
+                                    (Drawing.Height * 0.1f) + (tracky * 10) + i,
+                                    color,
+                                    "Recall Aborted ");
+                            }
+                        }
                     }
 
                     i += 20f;
@@ -344,20 +402,61 @@
                 {
                     continue;
                 }
-
+                timer += hero.Position.Distance(hero.Path.LastOrDefault()) / hero.MoveSpeed;
+                if (timer > 5000)
+                {
+                    return;
+                }
                 Drawing.DrawLine(
                     hero.Position.WorldToScreen(),
                     hero.Path.LastOrDefault().WorldToScreen(),
                     2,
                     Color.White);
                 Circle.Draw(SharpDX.Color.White, 50, hero.Path.LastOrDefault());
-                timer += hero.Position.Distance(hero.Path.LastOrDefault()) / hero.MoveSpeed;
                 Drawing.DrawText(
                     Drawing.WorldToScreen(hero.Path.LastOrDefault()) - new Vector2(25, -20),
                     Color.White,
                     hero.ChampionName + " " + timer.ToString("F"),
                     12);
             }
+        }
+
+        private static double GetRecallPercent(Recall recall)
+        {
+            var recallDuration = recall.Duration;
+            var cd = recall.Started + recallDuration - Game.Time;
+            var percent = (cd > 0 && Math.Abs(recallDuration) > float.Epsilon) ? 1f - (cd / recallDuration) : 1f;
+            return percent;
+        }
+
+        public class Recall
+        {
+            public Recall(AIHeroClient unit, RecallStatus status)
+            {
+                this.Unit = unit;
+                this.Status = status;
+            }
+
+            public AIHeroClient Unit { get; set; }
+
+            public RecallStatus Status { get; set; }
+
+            public float Started { get; set; }
+
+            public float Ended { get; set; }
+
+            public float Duration { get; set; }
+        }
+
+        public enum RecallStatus
+        {
+            Active,
+
+            Inactive,
+
+            Finished,
+
+            Abort
         }
     }
 }

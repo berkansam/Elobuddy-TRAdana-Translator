@@ -16,7 +16,7 @@
             var setskin = SkinMenu.Add(Player.Instance.ChampionName + "skins", new Slider("Seç Skin", 0, 0, 15));
             setskin.OnValueChange += delegate { Hax(); };
 
-            SkinMenu.AddLabel("Kendine göre skin seçebilirsin.");
+            SkinMenu.AddLabel("Değiştir gitsin :)");
         }
 
         public static void Hax()
