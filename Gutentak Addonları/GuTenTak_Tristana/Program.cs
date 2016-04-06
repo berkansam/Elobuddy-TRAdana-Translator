@@ -21,8 +21,6 @@ namespace GuTenTak.Tristana
         public const string ChampionName = "Tristana";
         public static Menu Menu, ModesMenu1, ModesMenu2, ModesMenu3, DrawMenu;
         public static int SkinBase;
-
-        private static HashSet<string> DB { get; set; }
         public static Item Youmuu = new Item(ItemId.Youmuus_Ghostblade);
         public static Item Botrk = new Item(ItemId.Blade_of_the_Ruined_King);
         public static Item Cutlass = new Item(ItemId.Bilgewater_Cutlass);
@@ -111,7 +109,7 @@ namespace GuTenTak.Tristana
                 ModesMenu1.AddLabel("E List");
                 foreach (var Enemy in EntityManager.Heroes.Enemies)
                 {
-                    ModesMenu1.Add(Enemy.ChampionName, new CheckBox("Use E to " + Enemy.ChampionName, true));
+                    ModesMenu1.Add(Enemy.ChampionName, new CheckBox("E Kullan " + Enemy.ChampionName, true));
                 }
                 ModesMenu1.AddSeparator();
                 ModesMenu1.AddLabel("Dürtme Ayarları");
