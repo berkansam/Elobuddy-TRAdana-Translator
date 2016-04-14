@@ -1,4 +1,5 @@
-﻿using EloBuddy;
+﻿using System;
+using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = AddonTemplate.Config.Modes.Combo;
@@ -39,6 +40,34 @@ namespace AddonTemplate.Modes
         public override void Execute()
         {
             ItemUsage();
+            if (Settings.UseQ && Q.IsReady())
+            {
+               Q.Cast();
+            }
+            if (Settings.UseW && W.IsReady())
+            {
+                var target = TargetSelector.GetTarget(W.Range - 50, DamageType.Physical);
+                if (target != null && target.IsValidTarget())
+                {
+                    if ((Settings.UseW && !Player.Instance.HasBuff("TwitchFullAutomatic")) || (Settings.UseWUlt && Player.Instance.HasBuff("TwitchFullAutomatic")))
+                    {
+                        var predW = W.GetPrediction(target);
+                        W.Cast(predW.CastPosition);
+                    }
+                }
+            }
+            if (Settings.UseE && E.IsReady())
+            {
+                var target = TargetSelector.GetTarget(E.Range, DamageType.Physical);
+                if (target != null && target.IsValidTarget() && target.Health < DamageHelper.GetEDamage(target))
+                {
+                    E.Cast();
+                }
+            }
+            if (Settings.UseR && R.IsReady() && Player.Instance.CountEnemiesInRange(850) >= Settings.NumberR)
+            {
+               R.Cast();
+            }
         }
     }
 }

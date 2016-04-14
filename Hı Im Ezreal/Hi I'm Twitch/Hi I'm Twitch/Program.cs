@@ -9,6 +9,7 @@ namespace AddonTemplate
     public static class Program
     {
         public const string ChampName = "Twitch";
+        public static int SkinBase;
 
         public static void Main(string[] args)
         {
@@ -30,11 +31,11 @@ namespace AddonTemplate
             StealthHelper.Initialize();
 
             Drawing.OnDraw += GameEvent.OnDraw;
+            Config.Modes.Misc._stealthRecall.OnValueChange += GameEvent.StealthRecall_OnValueChanged;
+
+            Config.Modes.Draw._useHax.OnValueChange += GameEvent.UseHax_OnValueChanged;
+            Config.Modes.Draw._skinhax.OnValueChange += GameEvent.SkinHax_OnValueChanged;
         }
 
-        private static void OnDraw(EventArgs args)
-        {
-            Circle.Draw(Color.Red, SpellManager.Q.Range, Player.Instance.Position);
-        }
     }
 }

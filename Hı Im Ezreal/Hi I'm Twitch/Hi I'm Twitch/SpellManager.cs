@@ -12,6 +12,7 @@ namespace AddonTemplate
         public static Spell.Skillshot W { get; private set; }
         public static Spell.Active E { get; private set; }
         public static Spell.Active R { get; private set; }
+        public static Spell.Active Recall { get; private set; }
 
         static SpellManager()
         {
@@ -19,6 +20,7 @@ namespace AddonTemplate
             W = new Spell.Skillshot(SpellSlot.W, 950, SkillShotType.Circular, 250, 1750, 275);
             E = new Spell.Active(SpellSlot.E, 1200);
             R = new Spell.Active(SpellSlot.R);
+            Recall = new Spell.Active(SpellSlot.Recall);
             W.AllowedCollisionCount = Int32.MaxValue;
         }
 

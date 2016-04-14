@@ -15,62 +15,61 @@ namespace _300_Pantheon.Assistants
             PantheonUi = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             PantheonUi.AddGroupLabel("THIS IS SCRIPTED !!!");
             PantheonUi.AddSeparator();
-            PantheonUi.AddLabel("Geliştirici    :   Enelx");
-            PantheonUi.AddLabel("Versiyon          :   2.0.0.0");
-            PantheonUi.AddLabel("Çevirmen TRAdana");
+            PantheonUi.AddLabel("Developer    :   Enelx");
+            PantheonUi.AddLabel("Version          :   2.0.0.0");
 
             // 300 Pantheon :: Combo Menu
-            ComboUi = PantheonUi.AddSubMenu("Kombo");
-            ComboUi.AddGroupLabel("Kombo :: Büyüleri");
-            ComboUi.Add("ComboQ", new CheckBox("Kullan Q"));
-            ComboUi.Add("ComboW", new CheckBox("Kullan W"));
-            ComboUi.Add("ComboE", new CheckBox("Kullan E"));
+            ComboUi = PantheonUi.AddSubMenu("Combo");
+            ComboUi.AddGroupLabel("Combo :: Spells");
+            ComboUi.Add("ComboQ", new CheckBox("Use Q"));
+            ComboUi.Add("ComboW", new CheckBox("Use W"));
+            ComboUi.Add("ComboE", new CheckBox("Use E"));
 
             // 300 Pantheon :: Harass Menu
-            HarassUi = PantheonUi.AddSubMenu("Dürtme");
-            HarassUi.AddGroupLabel("Dürtme :: Büyüleri");
-            HarassUi.Add("HarassQ", new CheckBox("Kullan Q"));
+            HarassUi = PantheonUi.AddSubMenu("Harass");
+            HarassUi.AddGroupLabel("Harass :: Spells");
+            HarassUi.Add("HarassQ", new CheckBox("Use Q"));
             HarassUi.AddSeparator();
-            HarassUi.AddGroupLabel("Dürtme :: Ayarları");
+            HarassUi.AddGroupLabel("Harass :: Settings");
             HarassUi.Add("ToggleHarass",
-                new KeyBind("Dürtme Tuşu", false, KeyBind.BindTypes.PressToggle, "T".ToCharArray()[0]));
+                new KeyBind("Toggle Harass", false, KeyBind.BindTypes.PressToggle, "T".ToCharArray()[0]));
             HarassUi.AddSeparator();
-            HarassUi.Add("HarassMana", new Slider("En az mana %", 40));
+            HarassUi.Add("HarassMana", new Slider("Mana Min. %", 40));
 
             // 300 Pantheon :: Clear Menu
             ClearUi = PantheonUi.AddSubMenu("Clear");
-            ClearUi.AddGroupLabel("SonVuruş :: Spells");
-            ClearUi.Add("LastQ", new CheckBox("Kullan Q"));
+            ClearUi.AddGroupLabel("Last Hit :: Spells");
+            ClearUi.Add("LastQ", new CheckBox("Use Q"));
             ClearUi.AddSeparator();
-            ClearUi.AddGroupLabel("LaneTemizleme :: Büyüleri");
-            ClearUi.Add("ClearQ", new CheckBox("Kullan Q"));
-            ClearUi.Add("ClearW", new CheckBox("Kullan W"));
-            ClearUi.Add("ClearE", new CheckBox("Kullan E"));
+            ClearUi.AddGroupLabel("Lane Clear :: Spells");
+            ClearUi.Add("ClearQ", new CheckBox("Use Q"));
+            ClearUi.Add("ClearW", new CheckBox("Use W"));
+            ClearUi.Add("ClearE", new CheckBox("Use E"));
             ClearUi.AddSeparator();
-            ClearUi.Add("ClearMana", new Slider("en az mana %", 50));
+            ClearUi.Add("ClearMana", new Slider("Mana Min. %", 50));
             ClearUi.AddSeparator();
-            ClearUi.AddGroupLabel("OrmanTemizleme :: Büyüleri");
-            ClearUi.Add("JungleQ", new CheckBox("Kullan Q"));
-            ClearUi.Add("JungleW", new CheckBox("Kullan W"));
-            ClearUi.Add("JungleE", new CheckBox("Kullan E"));
+            ClearUi.AddGroupLabel("Jungle Clear :: Spells");
+            ClearUi.Add("JungleQ", new CheckBox("Use Q"));
+            ClearUi.Add("JungleW", new CheckBox("Use W"));
+            ClearUi.Add("JungleE", new CheckBox("Use E"));
 
             // 300 Pantheon :: Killsteal Menu
             KsUi = PantheonUi.AddSubMenu("Killsteal");
-            KsUi.AddGroupLabel("Killsteal :: Büyüleri");
-            KsUi.Add("KsQ", new CheckBox("Kullan Q"));
-            KsUi.Add("KsW", new CheckBox("Kullan W"));
+            KsUi.AddGroupLabel("Killsteal :: Spells");
+            KsUi.Add("KsQ", new CheckBox("Use Q"));
+            KsUi.Add("KsW", new CheckBox("Use W"));
 
             // 300 Pantheon :: Misc Menu
-            MiscUi = PantheonUi.AddSubMenu("Ek");
-            MiscUi.AddGroupLabel("Ek :: Ayarlar");
-            MiscUi.Add("InterW", new CheckBox("İnterrupt için W"));
-            MiscUi.Add("GapW", new CheckBox("AntiGapcloser için W"));
+            MiscUi = PantheonUi.AddSubMenu("Misc");
+            MiscUi.AddGroupLabel("Misc :: Settings");
+            MiscUi.Add("InterW", new CheckBox("Use W for Interrupt"));
+            MiscUi.Add("GapW", new CheckBox("Use W for Anti Gapclose"));
             MiscUi.AddSeparator();
-            MiscUi.AddGroupLabel("Ek :: İtemler");
-            MiscUi.Add("UseItems", new CheckBox("Agresif İtemleri Kullan"));
+            MiscUi.AddGroupLabel("Misc :: Items");
+            MiscUi.Add("UseItems", new CheckBox("Use Agressive Items"));
             MiscUi.AddSeparator();
-            MiscUi.AddGroupLabel("Ek :: Göster");
-            MiscUi.Add("DrawSpells", new CheckBox("Göster Q W E"));
+            MiscUi.AddGroupLabel("Misc :: Draw");
+            MiscUi.Add("DrawSpells", new CheckBox("Draw Q W E"));
         }
 
         public static void Initialize()

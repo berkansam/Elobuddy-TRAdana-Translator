@@ -45,7 +45,6 @@ namespace AddonTemplate
             }
         }
 
-
         public static int getEStacks(this Obj_AI_Base target)
         {
             var buffs =

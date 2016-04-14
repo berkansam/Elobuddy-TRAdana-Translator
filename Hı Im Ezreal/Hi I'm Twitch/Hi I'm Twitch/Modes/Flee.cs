@@ -1,5 +1,7 @@
 ﻿using EloBuddy.SDK;
 
+using Settings = AddonTemplate.Config.Modes.Misc;
+
 namespace AddonTemplate.Modes
 {
     public sealed class Flee : ModeBase
@@ -11,7 +13,10 @@ namespace AddonTemplate.Modes
 
         public override void Execute()
         {
-
+            if (Settings.UseQ && Q.IsReady())
+            {
+                Q.Cast();
+            }
         }
     }
 }
