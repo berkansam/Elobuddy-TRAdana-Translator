@@ -30,10 +30,10 @@
             menuIni.AddGroupLabel("Welcome to the Worst Kindred addon!");
 
             UltMenu = menuIni.AddSubMenu("Ultimate");
-            UltMenu.AddGroupLabel("Ulti Ayarları");
-            UltMenu.Add("Rally", new CheckBox("R Dostları ve kendini koruma"));
-            UltMenu.Add("Rallyh", new Slider("Dost şampların cnaı şundan azsa krutarmak için kullan %", 20, 0, 100));
-            UltMenu.AddGroupLabel("Şu durumda ulti kullanma: ");
+            UltMenu.AddGroupLabel("Ultimate Settings");
+            UltMenu.Add("Rally", new CheckBox("R Save Ally / Self"));
+            UltMenu.Add("Rallyh", new Slider("R Ally Health %", 20, 0, 100));
+            UltMenu.AddGroupLabel("Don't Use Ult On: ");
             foreach (var ally in ObjectManager.Get<AIHeroClient>())
             {
                 CheckBox cb = new CheckBox(ally.BaseSkinName) { CurrentValue = false };
@@ -50,6 +50,8 @@
             ComboMenu.Add("E", new CheckBox("Kullan E"));
             ComboMenu.AddGroupLabel("Ek Ayarlar");
             ComboMenu.Add("Qmode", new ComboBox("Q Mode", 0, "To Target", "To Mouse"));
+            ComboMenu.Add("QW", new CheckBox("Q yu sadece w aktifse kullan", false));
+            ComboMenu.Add("QAA", new CheckBox("AA menzilinde hedefe Q kullanma", false));
             ComboMenu.Add("Emark", new CheckBox("Odaklanmış hedefe E işaretle"));
             ComboMenu.Add("Pmark", new CheckBox("Odaklanmış hedefe pasif işaretle"));
             ComboMenu.Add("Pspells", new CheckBox("Hedefe ulti kullanmak için canı yüzde 15ten az olsun", false));
